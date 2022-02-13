@@ -20,6 +20,9 @@ GtkWidget *sendButton ;
 GtkWidget *selectWindow ;
 GtkWidget *localEntry2 ;
 GtkWidget *sendButton2 ;
+GtkWidget *grid ;
+GtkWidget *listLable ;
+GtkWidget *view ;
 
 
 /* *************************fonction de l'affichage de la fentre des erreur *******************************/
@@ -53,6 +56,9 @@ char task[255] ;
 FILE *yaml ;
 char fileName[255] ;
 int status = 1 ;
+FILE *taskLog ;
+
+
 
 
 /* récupération des valeur des entrés GTK */
@@ -60,7 +66,7 @@ sprintf(date , "%s" , gtk_entry_get_text(GTK_ENTRY(dateEntry))) ;
 sprintf(local , "%s" , gtk_entry_get_text(GTK_ENTRY(localEntry))) ;
 sprintf(task , "%s" , gtk_entry_get_text(GTK_ENTRY(taskEntry))) ;
 
-strcat(strcpy(fileName , local) , ".yaml") ;
+strcat(strcat(strcpy(fileName , "yamlFiles/") ,local) , ".yaml") ;
 yaml = fopen(fileName , "a+") ;                               /* création ou ouverture du fichier yaml selon l'entrepot conserné <nom_de_l'entrepot.yaml> */
 
 if(yaml == NULL) {
@@ -110,9 +116,21 @@ if(yaml == NULL) {
   fputc('\n' , yaml) ;
   free(tmp) ;
 
+  tmp = malloc(255) ;
+
+  strcat(strcat(strcpy(tmp , date) , ":  " ),task) ;   /*tmp = dd/mm/yyyy:  task */
+
+  taskLog = fopen("./config/taskLog.txt" , "a+") ;       /* ecreture des taches effecué dans un fichier taskLog*/
+  fputs(tmp , taskLog) ;
+  fputc('\n' , taskLog) ;
+
+  fclose(taskLog) ;                                    /* ferméture du fichier taslLog */
+  free(tmp) ;
 
 }
+
 }
+
 fclose(yaml) ;                          /* ferméture de fichier yaml */
 
 
@@ -240,7 +258,7 @@ void on_showButton_clicked() {
          fclose(file);                                        /*ferméture de fichier */
          printf("téléchargement terminer \n") ;
 
-         system("open new.xls") ; 
+         system("open new.xls") ;
 
      }   else {
 
@@ -255,7 +273,6 @@ void on_showButton_clicked() {
 /***************************************** fonction main du programme ****************************************/
 
 int main(int argc , char **argv) {
-
 
   gtk_init(&argc , &argv) ;                                   /* initialisation de GTL */
 
@@ -272,10 +289,13 @@ int main(int argc , char **argv) {
   taskEntry = GTK_WIDGET(gtk_builder_get_object(builder , "taskEntry")) ;
   localEntry = GTK_WIDGET(gtk_builder_get_object(builder , "localEntry")) ;
   sendButton = GTK_WIDGET(gtk_builder_get_object(builder , "sendButton")) ;
+  grid = GTK_WIDGET(gtk_builder_get_object(builder , "grid")) ;
+  view =  GTK_WIDGET(gtk_builder_get_object(builder , "view")) ;
 
 
 
 
+ /* affichage de la liste des taches */
 
   /*affichage de la fentre principale du programme */
 
@@ -287,6 +307,7 @@ int main(int argc , char **argv) {
   gtk_main() ;
 
 
+fclose(log) ;
 
   return EXIT_SUCCESS ;
 }
