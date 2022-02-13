@@ -256,49 +256,32 @@
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <child>
-                  <object class="GtkFrame">
-                    <property name="width-request">430</property>
-                    <property name="height-request">270</property>
+                  <object class="GtkScrolledWindow">
+                    <property name="width-request">440</property>
+                    <property name="height-request">280</property>
                     <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="label-xalign">0</property>
-                    <property name="label-yalign">1</property>
+                    <property name="can-focus">True</property>
                     <property name="shadow-type">in</property>
                     <child>
-                      <object class="GtkScrolledWindow">
+                      <object class="GtkViewport">
                         <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="shadow-type">in</property>
+                        <property name="can-focus">False</property>
                         <child>
-                          <object class="GtkViewport" id="view">
+                          <!-- n-columns=1 n-rows=1 -->
+                          <object class="GtkGrid">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
                             <child>
-                              <!-- n-columns=100 n-rows=0 -->
-                              <object class="GtkGrid" id="grid">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                              </object>
+                              <placeholder/>
                             </child>
                           </object>
                         </child>
                       </object>
                     </child>
-                    <child type="label">
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="label" translatable="yes">     Taches</property>
-                        <attributes>
-                          <attribute name="font-desc" value="Sans Italic 12"/>
-                          <attribute name="foreground" value="#067aa5a1d7e3"/>
-                        </attributes>
-                      </object>
-                    </child>
                   </object>
                   <packing>
-                    <property name="x">10</property>
-                    <property name="y">20</property>
+                    <property name="x">1</property>
+                    <property name="y">1</property>
                   </packing>
                 </child>
               </object>

@@ -21,7 +21,7 @@ GtkWidget *selectWindow ;
 GtkWidget *localEntry2 ;
 GtkWidget *sendButton2 ;
 GtkWidget *grid ;
-GtkWidget *listLable ;
+GtkWidget *listLable[10000] ;
 GtkWidget *view ;
 
 
@@ -193,7 +193,6 @@ void on_sendButton2_clicked(int argc , char **argv) {
 
   }  else {
 
-
     curl_global_init(CURL_GLOBAL_ALL);                                      /* initialisation de curl */
     curl = curl_easy_init();
 
@@ -297,17 +296,43 @@ int main(int argc , char **argv) {
 
  /* affichage de la liste des taches */
 
+FILE *list = fopen ( "config/taskLog.txt" , "rt" ) ;             /* ouverture du fichier taslLog.txt en mode écréture */
+if ( list == NULL ) {
+  list = fopen("./config/taskLog.txt" , "w") ;                    /* si le fichier n'existe pas on le crée pour évité un erreur de segmentation */
+
+}
+
+int row = 0 ;                                                   /* valeur de la position des element de grid GTK */
+char tasks[1024] ;
+
+while (1) {
+
+  if (fgets(tasks , 1024 , list) == NULL ) {                   /* on lit le fichier ligne par ligne */
+    fclose(list) ;
+    break ;                                                   /* si le retour de fgets == NULL <fin du fichier> on quitte la boucle */
+  }
+  tasks[strlen(tasks) - 1] = '\0' ;
+  gtk_grid_insert_row (grid , row) ;                          /* on rajout une ligne au gride */
+  listLable[row] = gtk_label_new(tasks) ;                     /* création d'une label */
+  gtk_label_set_justify (GTK_LABEL(listLable[row]) , GTK_JUSTIFY_LEFT) ;                    /* position du label */
+  gtk_label_set_xalign (GTK_LABEL(listLable[row]) , 0.0) ;
+  gtk_grid_attach (GTK_GRID(grid) , listLable[row] , 1 ,row , 1 , 1 ) ;                  /*laison du label avec le grid */
+  row ++ ;             /* incrémentation du row */
+
+}
+
+
   /*affichage de la fentre principale du programme */
 
   gtk_builder_connect_signals(builder , NULL) ;                /* recupération des signaux et des callback GTK */
 
   g_object_unref(builder) ;
 
-  gtk_widget_show(mainWindow) ;                               /* affichage du fentre */
+  gtk_widget_show_all(mainWindow) ;                               /* affichage du fentre */
   gtk_main() ;
 
 
-fclose(log) ;
+
 
   return EXIT_SUCCESS ;
 }
