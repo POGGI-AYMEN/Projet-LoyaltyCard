@@ -131,6 +131,7 @@ if(yaml == NULL) {
 
 }
 
+
 fclose(yaml) ;                          /* ferméture de fichier yaml */
 
 
