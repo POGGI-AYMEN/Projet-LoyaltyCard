@@ -3,6 +3,7 @@
 #include <gtk/gtk.h>
 #include <curl/curl.h>
 #include <string.h>
+#include <mariadb/mariadb.h>
 
 
 /* declaration des variables GTK */
@@ -66,6 +67,14 @@ sprintf(date , "%s" , gtk_entry_get_text(GTK_ENTRY(dateEntry))) ;
 sprintf(local , "%s" , gtk_entry_get_text(GTK_ENTRY(localEntry))) ;
 sprintf(task , "%s" , gtk_entry_get_text(GTK_ENTRY(taskEntry))) ;
 
+/* récupération des donnée de la BDD */
+
+
+
+
+
+/* verification des erreur possible */
+
 strcat(strcat(strcpy(fileName , "yamlFiles/") ,local) , ".yaml") ;
 yaml = fopen(fileName , "a+") ;                               /* création ou ouverture du fichier yaml selon l'entrepot conserné <nom_de_l'entrepot.yaml> */
 
@@ -100,6 +109,7 @@ if(yaml == NULL) {
   }
   if(status == 1) {                                /* on execute cette partie du conde uniquement si tous les champs sont bien remplie */
   char *tmp ;                                      /* ecréture des donnée dans le fichier yaml */
+
   tmp = malloc(255) ;
   strcat(strcpy(tmp , "- date: ") , date) ;           //- date: date
   fputs(tmp , yaml) ;
