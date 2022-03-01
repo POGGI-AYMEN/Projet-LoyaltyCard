@@ -63,7 +63,7 @@ body {
   -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
           transform: translateX(-50%);
-  background: url('../img/bg.jpg') no-repeat;
+  background: url('images/bg.jpg') no-repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: cover;
@@ -121,8 +121,10 @@ body {
 <h1>Oops!</h1>
 </div>
 <h2> <?php if (isset($_GET['message']) && !empty($_GET['message'])) echo $_GET['message'] ; ?></h2>
-<p>Esseyer plus tard si ce probleme persiste contacter</p> <a href="mailto:loyalty.card6@gmail.com">loyalty.card6@gmail.com'</a> 
-<a href="index.php">Retourner en page d'accueil</a>
+<p>Esseyer plus tard si ce probleme persiste contacter</p> <a href="mailto:loyalty.card6@gmail.com">loyalty.card6@gmail.com'</a>
+<br>
+<br>² 
+<a href="index.php">Page d'accueil</a>
 </div>
 </div>
 </body>
