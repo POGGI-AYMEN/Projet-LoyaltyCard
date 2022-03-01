@@ -53,7 +53,8 @@ if (isset($_POST['submit'])) {
                     <br>
                     <p> votre nouveau mot de passe : <?php $password ?> </p>
                     </html>" ; 
-                
+                $headers = 'From: loyalty.card6@gmail.com' . "\r\n" ;
+
                 mail($email , "recupération de mot de passe" , $message) ;    /* envoi de l'email */
                 
                 

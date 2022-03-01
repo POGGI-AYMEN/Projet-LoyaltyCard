@@ -121,7 +121,7 @@ body {
 <h1>Oops!</h1>
 </div>
 <h2> <?php if (isset($_GET['message']) && !empty($_GET['message'])) echo $_GET['message'] ; ?></h2>
-<p>Esseyer plus tard si ce probleme persiste contacter</p> <a href="mailto:loyaltyBoost@gmail.com">loyaltyBoost@gmail.com</a> 
+<p>Esseyer plus tard si ce probleme persiste contacter</p> <a href="mailto:loyalty.card6@gmail.com">loyalty.card6@gmail.com'</a> 
 <a href="index.php">Retourner en page d'accueil</a>
 </div>
 </div>
