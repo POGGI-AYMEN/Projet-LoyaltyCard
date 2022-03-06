@@ -3,7 +3,17 @@
 #include <gtk/gtk.h>
 #include <curl/curl.h>
 #include <string.h>
-#include <mariadb/mariadb.h>
+#include <mariadb/mysql.h>
+
+
+/* fonction d'affichage des erreur mysql */
+
+void finish_with_error(MYSQL *con)
+{
+  fprintf(stderr, "%s\n", mysql_error(con));
+  mysql_close(con);
+  exit(1);
+}
 
 
 /* declaration des variables GTK */
@@ -58,7 +68,7 @@ FILE *yaml ;
 char fileName[255] ;
 int status = 1 ;
 FILE *taskLog ;
-
+char rowsNumber[255] ;
 
 
 
@@ -76,7 +86,7 @@ sprintf(task , "%s" , gtk_entry_get_text(GTK_ENTRY(taskEntry))) ;
 /* verification des erreur possible */
 
 strcat(strcat(strcpy(fileName , "yamlFiles/") ,local) , ".yaml") ;
-yaml = fopen(fileName , "a+") ;                               /* création ou ouverture du fichier yaml selon l'entrepot conserné <nom_de_l'entrepot.yaml> */
+yaml = fopen(fileName , "w") ;                               /* création ou ouverture du fichier yaml selon l'entrepot conserné <nom_de_l'entrepot.yaml> */
 
 if(yaml == NULL) {
                                                                       /*on cas d'echec de l'ouverture du fichier yaml renvoi d'une fentre d'erreur */
@@ -126,6 +136,61 @@ if(yaml == NULL) {
   fputc('\n' , yaml) ;
   free(tmp) ;
 
+
+
+
+
+  MYSQL *con = mysql_init(NULL) ;                         /* inistialisation de la connexion mysql */
+
+  if (con == NULL)
+    {
+        fprintf(stderr, "mysql_init() failed\n");
+        exit(1);
+    }
+
+    if (mysql_real_connect(con, "localhost", "root", "root","PA", 0, NULL, 0) == NULL)
+    {
+        finish_with_error(con);                               /* connexion  à la base de donnée */
+    }
+
+      if (mysql_query(con, "SELECT COUNT(*) FROM Ventes"))              /*on récupere le nombre des colomns de la table vents */
+    {
+        finish_with_error(con);
+    }
+
+     MYSQL_RES *result = mysql_store_result(con);         /* variable pour le stockage des résultats */
+
+    if (result == NULL)
+    {
+        finish_with_error(con);
+    }
+
+    int fildes = mysql_num_fields(result) ;
+
+    MYSQL_ROW row;
+
+    while ((row = mysql_fetch_row(result)))
+    {
+
+    strcpy(rowsNumber , row[0]) ;                    /* on stock le nombre de ligne dans la variable rowsNumber*/
+
+
+    }
+
+    tmp = malloc(255) ;
+    strcat(strcpy(tmp , "  sales: ") , rowsNumber) ;        // tache: task
+    fputs(tmp , yaml) ;
+    fputc('\n' , yaml) ;
+    free(tmp) ;
+
+
+
+
+    mysql_free_result(result);
+    mysql_close(con);                          /* ferméture de la connexion mysql */
+
+
+
   tmp = malloc(255) ;
 
   strcat(strcat(strcpy(tmp , date) , ":  " ),task) ;   /*tmp = dd/mm/yyyy:  task */
@@ -137,12 +202,21 @@ if(yaml == NULL) {
   fclose(taskLog) ;                                    /* ferméture du fichier taslLog */
   free(tmp) ;
 
+  createErrorWindow(&argc , &argv) ;
+
+    gtk_label_set_text(GTK_LABEL(errorLabel) , "                       tache ajouter              ") ;
+    gtk_main() ;
+
+
+
+
 }
 
 }
 
 
 fclose(yaml) ;                          /* ferméture de fichier yaml */
+
 
 
 

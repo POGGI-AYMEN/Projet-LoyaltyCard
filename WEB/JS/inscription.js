@@ -5,11 +5,12 @@ function makeCode(length) {
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
     for ( var i = 0; i < length; i++ ) {
-        result += characters.charAt(Math.floor(Math.random() ; 
+      result += characters.charAt(Math.floor(Math.random() * 
  charactersLength));
    }
    return result;
 }
+
 
 var verifCode = makeCode(5) ;        /* création de code de verifcation de compte*/
 
@@ -119,17 +120,17 @@ next_2.onclick = function() {
 
         /* envoi de l'email de verification */
 
-    var email = document.getElementById('email').value ;
-    Email.send({
-    SecureToken : "b9407a25-0b3c-41f7-8dd8-31b16ced0645 ",
+ 
+Email.send({
+    
+     SecureToken : "b9407a25-0b3c-41f7-8dd8-31b16ced0645 ",
     To : email,
     From : "mmazenezerguine@gmail.com",
     Subject : "code de verification",
     Body : verifCode
 }).then(
-  message => alert("mail has been sent sucessfully") ; 
+  message => alert("mail has been sent sucessfully")
 );
-
 
 
 /* changement de formulaire */
@@ -142,7 +143,7 @@ next_2.onclick = function() {
     form3.style.left = "5%" ;
     form3.style.visibility = "visible" ;
 
-}
+
 
 /****************************** etape 3 ************************/
 
@@ -165,5 +166,6 @@ veriff.onclick = function (){
     verifMessage.innerHTML = "code erroné veuillez entrer le bon code " ;   /* verification des erreur possible*/
   verifMessage.style.color = "red" ;
 
+}
 }
 }

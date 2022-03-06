@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php   
     include "../config/database.php";
 
@@ -7,6 +8,13 @@
     $AdminStatement->execute();
     $Admin = $AdminStatement->fetch();
     ?> 
+=======
+<?php
+session_start() ; 
+if (isset($_SESSION['adminId'])) {
+
+?>
+>>>>>>> 0d491f3ae3fa576ded1011422c7186b406ff9550
 
 <!DOCTYPE html>
 <html lang="en">
@@ -733,3 +741,10 @@
 </body>
 
 </html>
+
+<?php
+
+} else {
+    header('location:../error.php?message=403 Forbidden') ;
+}
+?>
