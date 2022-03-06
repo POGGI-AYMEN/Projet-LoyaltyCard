@@ -1,3 +1,13 @@
+<?php   
+    include "../config/database.php";
+
+
+    $sqlQuery = 'SELECT * FROM Admin';
+    $AdminStatement = $con->prepare($sqlQuery);
+    $AdminStatement->execute();
+    $Admin = $AdminStatement->fetch();
+    ?> 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -298,7 +308,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Tibiche Lyes</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $Admin["nom"]?> <?= $Admin["prenom"]?></span>
                                
                                <!-- GET THE PHP PROFILE USER'S IMAGE-->
                                 <img class="img-profile rounded-circle"
