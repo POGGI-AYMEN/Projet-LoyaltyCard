@@ -1,20 +1,10 @@
-<<<<<<< HEAD
-<?php   
-    include "../config/database.php";
 
-
-    $sqlQuery = 'SELECT * FROM Admin';
-    $AdminStatement = $con->prepare($sqlQuery);
-    $AdminStatement->execute();
-    $Admin = $AdminStatement->fetch();
-    ?> 
-=======
 <?php
 session_start() ; 
 if (isset($_SESSION['adminId'])) {
 
 ?>
->>>>>>> 0d491f3ae3fa576ded1011422c7186b406ff9550
+
 
 <!DOCTYPE html>
 <html lang="en">

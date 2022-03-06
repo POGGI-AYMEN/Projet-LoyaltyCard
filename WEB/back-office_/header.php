@@ -1,12 +1,3 @@
-<?php   
-    include "../config/database.php";
-
-
-    $sqlQuery = 'SELECT * FROM Admin';
-    $AdminStatement = $con->prepare($sqlQuery);
-    $AdminStatement->execute();
-    $Admin = $AdminStatement->fetch();
-    ?> 
 
 <!DOCTYPE html>
 <html lang="en">
