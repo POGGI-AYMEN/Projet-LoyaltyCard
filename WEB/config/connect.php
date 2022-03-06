@@ -34,7 +34,7 @@ if (isset($_POST['connect'])) {
                     header('location:clientProfil.php') ;  /* redirection vers la page de profile du client */
 
                 } elseif($count == 1) {
-                    header('location:adminProfil.php') ;   /* redirection vers la page du profile de l'admin*/
+                    header('location:back-office/index.php') ;   /* redirection vers la page du profile de l'admin*/
 
                 } elseif($count == 2) {
                     header('location:entrepriseProfil.php') ;  /* redirection vers la page du profile de l'entreprise */ 
