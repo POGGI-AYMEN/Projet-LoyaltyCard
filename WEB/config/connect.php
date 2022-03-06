@@ -28,15 +28,17 @@ if (isset($_POST['connect'])) {
             $result = $req->fetch(PDO::FETCH_ASSOC) ; 
 
             if (!empty($result)) {
-                $_SESSION['id'] = $result['id'] ;  /* création d'une session avec l'id de l'utilisateur */
 
                 if($count == 0) {
+                    $_SESSION['clientId'] = $result['id'] ; 
                     header('location:clientProfil.php') ;  /* redirection vers la page de profile du client */
 
                 } elseif($count == 1) {
-                    header('location:back-office/index.php') ;   /* redirection vers la page du profile de l'admin*/
+                    $_SESSION['adminId'] = $result['id'] ; 
+                    header('location:back-office_/index.php') ;   /* redirection vers la page du profile de l'admin*/
 
                 } elseif($count == 2) {
+                    $_SESSION['entrepriseID'] = $result['id'] ; 
                     header('location:entrepriseProfil.php') ;  /* redirection vers la page du profile de l'entreprise */ 
 
                 }

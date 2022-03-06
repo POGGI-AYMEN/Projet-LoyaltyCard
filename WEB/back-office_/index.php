@@ -1,4 +1,8 @@
+<?php
+session_start() ; 
+if (isset($_SESSION['adminId'])) {
 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -725,3 +729,10 @@
 </body>
 
 </html>
+
+<?php
+
+} else {
+    header('location:../error.php?message=403 Forbidden') ;
+}
+?>
