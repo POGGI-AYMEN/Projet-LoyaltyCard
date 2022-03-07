@@ -21,8 +21,8 @@
                     <a class="navbar-brand" href="#">LOYALTYBOOST</a>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="nav navbar-nav">
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Contact</a></li>
-                            <li class="nav-item dropdown"><a class=" nav-link"  aria-expanded="false" href="#">Services</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="#A_propos">A propos</a></li>
+                            <li class="nav-item dropdown"><a class=" nav-link" aria-expanded="false" href="#">Services</a></li>
                         </ul>
                         <span class="navbar-text"> 
                             <a class="login" href="connexion.php">Log In</a>
@@ -54,17 +54,22 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam adipisci voluptatem, sequi ratione consequuntur dolor alias minus? Quod beatae dolore officia, consequuntur quasi blanditiis quos repellat rerum non nam modi!</p>
         </div>
         <div class="rejoindre ">
+            <div class="entreprise_part">
+                <h1>Entreprise</h1>
+                <div class="image_entreprise btn">
+                    <img src="images/undraw_business.svg" alt="">
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus quisquam, vitae ipsum possimus iure dolore magnam molestias beatae tempore expedita blanditiis ab ut illo voluptas repudiandae. At sed nulla minima!</p>
+                <button class="btn_stndr"><a href="inscription.php">Hover me!</a></button>           
+            </div>
             <div class="client_part">
                 <h1>Client</h1>
-                <div class="image_client">
-                    <img src="images/" alt="">
+                <div class="image_client btn">
+                    <img src="images/undraw_client.svg" alt="">
                 </div>
-                <p>asdfasdf</p>
-                <div class="btn"></div>
-            </div>
-            <div class="entreprise_part">
-
-            </div>
+                <p>Lorem ipsum dolor sit amet ,  tempora ducimus reprehenderit non voluptatibus aliquam consequatur earum minima eveniet natus eum aut, placeat possimus quae aperiam repudiandae tempore.</p>
+                <button class="btn_stndr"><a href="inscription.php">Hover me!</a></button>           
+             </div>
         </div>
     
     

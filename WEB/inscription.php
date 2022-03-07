@@ -7,11 +7,10 @@ include "config/addClient.php" ;
  <html lang="fr" dir="ltr">
    <head>
      <meta charset="utf-8">
-<<<<<<< HEAD:WEB/inscription.php
+
      <link rel="stylesheet" href="css/inscription.css">
-=======
-     <link rel="stylesheet" href="css/inscreption.css">
->>>>>>> 0d491f3ae3fa576ded1011422c7186b406ff9550:WEB/inscreption.php
+
+
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
      <title>Inscription</title>
