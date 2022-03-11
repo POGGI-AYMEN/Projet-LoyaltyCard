@@ -1,0 +1,18 @@
+- date: 21/03/2022
+  local: site1
+  task: newtask1
+  sales:
+    - articleCode: A2
+      articleName: TV_Sammsung
+      quantity: 50
+    - articleCode: B5C
+      articleName: S20
+      quantity: 102
+    - articleCode: C25
+      articleName: acer
+      quantity: 5
+    - articleCode: C22
+      articleName: S_Note_20
+      quantity: 80
+  
+
