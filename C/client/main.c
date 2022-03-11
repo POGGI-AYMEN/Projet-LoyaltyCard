@@ -193,25 +193,54 @@ if(yaml == NULL) {
      fildes = mysql_num_fields(result) ;
      int rows = 0 ; 
      char sql[fildes][255] ;
+     char sqlData[rowsNumber][fildes][255] ; 
      
      int i;
 
     while ((row = mysql_fetch_row(result)))
     {
 
-      for(i = 0 ; i< fildes ; i++) {
-       
-       strcpy(sql[i] , row[i]) ;
+    for (int i = 0 ; i< fildes ; i++) {
+      strcpy(sqlData[rows][i] , row[i]) ; 
+    } 
+   rows ++ ;
+   }
+  
+  tmp = malloc(255) ;
+  strcpy(tmp , "  sales: ")  ;        // tache: task
+  fputs(tmp , yaml) ;
+  fputc('\n' , yaml) ;
+  free(tmp) ;
+
+  for (int k = 0 ; k < rowsNumber ; k++) {
+
+      for (int l = 0 ; l< 3 ; l++ )
     
-
-      }                  
-
-    rows ++ ;
+    if (l == 0 ) {
+       tmp = malloc(255) ;
+  strcat(strcpy(tmp , "   - articleCode: ") , sqlData[l][k]) ;        // tache: task
+  fputs(tmp , yaml) ;
+  fputc('\n' , yaml) ;
+  free(tmp) ;
     }
+
+    else if(l == 1){
+       tmp = malloc(255) ;
+  strcat(strcpy(tmp , "     articleName: ") , sqlData[l][k]) ;        // tache: task
+  fputs(tmp , yaml) ;
+  fputc('\n' , yaml) ;
+  free(tmp) ;
+    } else if(l == 2){
+        tmp = malloc(255) ;
+  strcat(strcpy(tmp , "     quantity: ") , sqlData[l][k]) ;        // tache: task
+  fputs(tmp , yaml) ;
+  fputc('\n' , yaml) ;
+  free(tmp) ;
+    }
+
+      }
     
-  for (int i = 0 ; i < rows ; i ++) {
-    printf("%s\n",sql[i] );
-  }
+ 
 
     mysql_free_result(result);
     mysql_close(con);                          /* ferméture de la connexion mysql */
