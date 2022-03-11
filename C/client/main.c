@@ -68,7 +68,7 @@ FILE *yaml ;
 char fileName[255] ;
 int status = 1 ;
 FILE *taskLog ;
-char rowsNumber[255] ;
+int rowsNumber ;
 
 
 
@@ -172,19 +172,46 @@ if(yaml == NULL) {
     while ((row = mysql_fetch_row(result)))
     {
 
-    strcpy(rowsNumber , row[0]) ;                    /* on stock le nombre de ligne dans la variable rowsNumber*/
+  rowsNumber = atoi(row[0]) ;                  /* on stock le nombre de ligne dans la variable rowsNumber*/
 
 
     }
 
-    tmp = malloc(255) ;
-    strcat(strcpy(tmp , "  sales: ") , rowsNumber) ;        // tache: task
-    fputs(tmp , yaml) ;
-    fputc('\n' , yaml) ;
-    free(tmp) ;
 
+      if (mysql_query(con, "SELECT * FROM Ventes"))              /*on récupere le nombre des colomns de la table vents */
+    {
+        finish_with_error(con);
+    }
 
+     result = mysql_store_result(con);         /* variable pour le stockage des résultats */
 
+    if (result == NULL)
+    {
+        finish_with_error(con);
+    }
+
+     fildes = mysql_num_fields(result) ;
+     int rows = 0 ; 
+     char sql[fildes][255] ;
+     
+     int i;
+
+    while ((row = mysql_fetch_row(result)))
+    {
+
+      for(i = 0 ; i< fildes ; i++) {
+       
+       strcpy(sql[i] , row[i]) ;
+    
+
+      }                  
+
+    rows ++ ;
+    }
+    
+  for (int i = 0 ; i < rows ; i ++) {
+    printf("%s\n",sql[i] );
+  }
 
     mysql_free_result(result);
     mysql_close(con);                          /* ferméture de la connexion mysql */
