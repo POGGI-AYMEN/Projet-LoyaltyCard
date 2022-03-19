@@ -4,47 +4,7 @@
 #include <curl/curl.h>
 #include <string.h>
 #include <mariadb/mysql.h>
-#include <time.h>
 
-
-
-char *getFileName() {
-char *fileName = malloc(20) ;
-int day , month , year ;
-time_t now ;
-
-
-time(&now);
-struct tm *local = localtime(&now);
-
-day = local->tm_mday;
-month = local->tm_mon + 1;
-year = local->tm_year + 1900;
-
-sprintf(fileName , "%d-%d-%d.xlsx" , day , month , year) ;
-
-  return fileName ;
-}
-
-
-
-/*fonction d'ecriture de log des erreur de l'application */
-void errorLogWritter(char *errorText){
-
-FILE *file = fopen("config/log.txt" ,"a+" ) ;
-
-if (file == NULL){
-  return EXIT_FAILURE ;
-  printf("%s\n","why !!! " );
-} else {
-
-  fputs(errorText ,file ) ;
-  fputc('\n' , file) ;
-  printf("%s\n","fuck" );
-}
-
-fclose(file) ;
-}
 
 /* fonction d'affichage des erreur mysql */
 
@@ -134,9 +94,6 @@ if(yaml == NULL) {
   gtk_label_set_text(GTK_LABEL(errorLabel) , " erruer d'ouverture du fichier yaml !! ") ;
 
   gtk_main() ;
-  char error[128] = "impossible d'ecrire dans le fichier yaml " ;
-
-  errorLogWritter(error) ;
 
 } else {
 
@@ -187,45 +144,25 @@ if(yaml == NULL) {
 
   if (con == NULL)
     {
-      char error[128] = "impossible d'initaialiser la connexion MySql" ;
-
-      errorLogWritter(error) ;
         fprintf(stderr, "mysql_init() failed\n");
         exit(1);
-
-
     }
 
     if (mysql_real_connect(con, "localhost", "root", "root","PA", 0, NULL, 0) == NULL)
     {
-      char *error = "impossible de se connecter a la base de donnée" ;
-
-      errorLogWritter(error) ;
-
         finish_with_error(con);                               /* connexion  à la base de donnée */
-
-
-
     }
 
       if (mysql_query(con, "SELECT COUNT(*) FROM Ventes"))              /*on récupere le nombre des colomns de la table vents */
     {
-      char error[128] = "impossible d'executer la query count Mysql" ;
-
-      errorLogWritter(error) ;
         finish_with_error(con);
-
     }
 
      MYSQL_RES *result = mysql_store_result(con);         /* variable pour le stockage des résultats */
 
     if (result == NULL)
     {
-      char error[128] = "erreur d'execution mysql" ;
-
-      errorLogWritter(error) ;
         finish_with_error(con);
-
     }
 
     int fildes = mysql_num_fields(result) ;
@@ -239,18 +176,14 @@ if(yaml == NULL) {
 
 
     }
+
+
     char sqlQuery[255] ;
 
     strcat(strcat(strcat(strcat(strcpy(sqlQuery , "SELECT * FROM Ventes WHERE date = '") , date) ,"' AND entrepots ='"),local),"'");
 
-      if (mysql_query(con, sqlQuery))              /*on récupere le nombre des colomns de la table vents */
-    {
-      char error[128] = "impossible d'éxecuter le query select mysql" ;
-
-      errorLogWritter(error) ;
+      if (mysql_query(con, sqlQuery))      {
         finish_with_error(con);
-
-
     }
 
      result = mysql_store_result(con);         /* variable pour le stockage des résultats */
@@ -259,13 +192,12 @@ if(yaml == NULL) {
     {
         finish_with_error(con);
     }
+    fildes = mysql_num_fields(result) ;
+    int rows = 0 ;
+    char sql[fildes][255] ;
+    char sqlData[rowsNumber][fildes][255] ;
 
-     fildes = mysql_num_fields(result) ;
-     int rows = 0 ;
-     char sql[fildes][255] ;
-     char sqlData[rowsNumber][fildes][255] ;
-
-     int i;
+    int i;
 
     while ((row = mysql_fetch_row(result)))
     {
@@ -275,55 +207,48 @@ if(yaml == NULL) {
     }
    rows ++ ;
    }
+   if (rows != 0) {
 
-  if (rows != 0) {
-
-  tmp = malloc(255) ;
-  strcpy(tmp , "  sales: ")  ;        // tache: task
-  fputs(tmp , yaml) ;
-  fputc('\n' , yaml) ;
-  free(tmp) ;
-
-  for (int k = 0 ; k < rows ; k++) {
-
-  tmp = malloc(255) ;
-  strcat(strcpy(tmp , "   - articleCode: ") , sqlData[k][0]) ;        // tache: task
-  fputs(tmp , yaml) ;
-  fputc('\n' , yaml) ;
-  free(tmp) ;
-
-  tmp = malloc(255) ;
-  strcat(strcpy(tmp , "     articleName: ") , sqlData[k][1]) ;        // tache: task
-  fputs(tmp , yaml) ;
-  fputc('\n' , yaml) ;
-  free(tmp) ;
-
-  tmp = malloc(255) ;
-  strcat(strcpy(tmp , "     quantity: ") , sqlData[k][2]) ;        // tache: task
-  fputs(tmp , yaml) ;
-  fputc('\n' , yaml) ;
-  free(tmp) ;
-
-
-
-
-
-
-
-  }
-
-      }else
-  {
    tmp = malloc(255) ;
-  strcpy(tmp , "  sales: no sales today")  ;        // tache: task
-  fputs(tmp , yaml) ;
-  fputc('\n' , yaml) ;
-  free(tmp) ;
-  }
+   strcpy(tmp , "  sales: ")  ;        // tache: task
+   fputs(tmp , yaml) ;
+   fputc('\n' , yaml) ;
+   free(tmp) ;
+
+   for (int k = 0 ; k < rows ; k++) {
+
+   tmp = malloc(255) ;
+   strcat(strcpy(tmp , "   - articleCode: ") , sqlData[k][0]) ;        // tache: task
+   fputs(tmp , yaml) ;
+   fputc('\n' , yaml) ;
+   free(tmp) ;
+
+   tmp = malloc(255) ;
+   strcat(strcpy(tmp , "     articleName: ") , sqlData[k][1]) ;        // tache: task
+   fputs(tmp , yaml) ;
+   fputc('\n' , yaml) ;
+   free(tmp) ;
+
+   tmp = malloc(255) ;
+   strcat(strcpy(tmp , "     quantity: ") , sqlData[k][2]) ;        // tache: task
+   fputs(tmp , yaml) ;
+   fputc('\n' , yaml) ;
+   free(tmp) ;
+
+   }
+
+       }else
+   {
+    tmp = malloc(255) ;
+   strcpy(tmp , "  sales: no sales today")  ;        // tache: task
+   fputs(tmp , yaml) ;
+   fputc('\n' , yaml) ;
+   free(tmp) ;
+   }
 
 
-    mysql_free_result(result);
-    mysql_close(con);                          /* ferméture de la connexion mysql */
+     mysql_free_result(result);
+     mysql_close(con);                          /* ferméture de la connexion mysql */
 
 
 
@@ -397,7 +322,7 @@ void on_sendButton2_clicked(int argc , char **argv) {
   sprintf(local , "%s" , gtk_entry_get_text(GTK_ENTRY(localEntry2))) ;                        /* récupération de la valeur de l'entré gtk */
 
   strcat(strcat(strcpy(filePath , "yamlFiles/"),local),".yaml");
-  strcat(strcpy(url , "ftp://Lyes:plata@172.16.224.137/") , filePath) ;
+  strcat(strcpy(url , "ftp://mazene:1234@172.16.57.133/home/mazene/") , filePath) ;
 
 
   struct curl_slist *headerlist = NULL ;
@@ -431,12 +356,10 @@ void on_sendButton2_clicked(int argc , char **argv) {
     curl_easy_setopt(curl, CURLOPT_READDATA, file);
     res = curl_easy_perform(curl);                                       /* on execute la commande curl */
 
-    if(res != CURLE_OK){
-      fprintf(stderr, "curl_easy_perform() failed: %s\n",curl_easy_strerror(res));
-      char error[128] = "impossible d'envoyer le fichier yaml via ftp" ;
+    if(res != CURLE_OK)
+      fprintf(stderr, "curl_easy_perform() failed: %s\n",               /* verification d'erreur */
+              curl_easy_strerror(res));
 
-      errorLogWritter(error) ;
-}
 
     curl_slist_free_all(headerlist);                                       /*free de la liste des headers */
 
@@ -468,12 +391,7 @@ void on_showButton_clicked() {
   CURL *curl;
   FILE *file;
   CURLcode res;
-  char *fileName = getFileName() ;
-  char url[129] = "172.168.20.1/home/mazene/yamlFiles/";
-
-  strcpy(url , fileName) ;
-
-  free(fileName) ;
+  char url[] = "172.16.57.128/home/mazene/home.xls" ;
 
 
      curl = curl_easy_init();         /* initialisation de curl*/
@@ -494,9 +412,6 @@ void on_showButton_clicked() {
 
          fprintf(stderr, "curl_easy_perform() failed: %s\n",   /* verification erreur */
               curl_easy_strerror(res));
-              char error[128] = "impossible de télécharger le fichier excel" ;
-
-              errorLogWritter(error) ;
 
      }
 
