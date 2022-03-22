@@ -93,7 +93,7 @@
             </div>      
         </div>
      
-        <div class="rejoindre">
+        <div id="clienetOrEntreprise" class="rejoindre">
             <div class="entreprise_part">
                 <h1>Entreprise</h1>
                 <div class="image_entreprise btn">

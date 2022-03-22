@@ -10,13 +10,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="css/homePage.css">
+    <link rel="stylesheet" href="css/Articles.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/Contact_page.css">
     <title>Header</title>
 </head>
 <body>
 <nav id="navbar-example" class="navbar ">
-        <span><a href=""></a></span>
+        <span><a href="homePage.php"> <img src="images/logo.png" alt="Logo" height="50px" width="70px"></a></span>
         <ul class="nav nav-pills">
             <li class="nav-item">
                 <a class="nav-link link-dark lead" href="#A_propos">A propos</a>
@@ -31,3 +32,4 @@
 
         </ul>
     </nav>
+

@@ -22,5 +22,4 @@ while ($result = $query->fetch(PDO::FETCH_ASSOC)){
 }
 
 }
-
-  ?>
+?>
