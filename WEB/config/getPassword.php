@@ -87,7 +87,7 @@ if (isset($_POST['submit'])) {
  <html lang="fr" dir="ltr">
    <head>
      <meta charset="utf-8">
-     <link rel="stylesheet" href="../style/inscreption.css">
+     <link rel="stylesheet" href="../css/inscription.css">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
      <title>Compte créer</title>

@@ -21,19 +21,9 @@
                 $error_mail =  "Votre mail n'est pas envoyé! veillez essayer ultérieurement";}
        }        
    }
+   require("header.php");
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>    
-    <link rel="stylesheet" href="css/Contact_page.css">
-    <title>Contact</title>
-</head>
-<body>
+
     <div class=" register-form">
      
                 <div class="note">
@@ -60,9 +50,6 @@
                 
 
                 <form action="#" method="post" class="form">
-             
-   
-                
                         <div class="container form-content">  
                             <div class="row">
                                 <div class="col-md-6">
