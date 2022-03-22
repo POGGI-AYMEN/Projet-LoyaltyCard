@@ -1,0 +1,12 @@
+- date: 21/03/2022
+  local: site1
+  task: newtask1
+  sales:
+    - articleCode: A2
+      articleName: Appel_Watch
+      quantity: 20
+    - articleCode: DD2
+      articleName: mackBook
+      quantity: 102
+ 
+

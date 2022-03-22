@@ -1,0 +1,14 @@
+- date: 21/03/2022
+  local: site1
+  task: newtask1
+  sales:
+    - articleCode: A22
+      articleName: TV
+      quantity: 200
+    - articleCode: B5C
+      articleName: S20
+      quantity: 102
+    - articleCode: C05
+      articleName: Z_flipe_3
+      quantity: 92
+

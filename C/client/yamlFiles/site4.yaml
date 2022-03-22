@@ -1,0 +1,10 @@
+- date: 11/03/2022
+  entrepot: site4
+  tache: azds
+  sales: 
+   - articleCode: C15
+     articleName: S21
+     quantity: 12
+   - articleCode: C2
+     articleName: z_flip4
+     quantity: 12

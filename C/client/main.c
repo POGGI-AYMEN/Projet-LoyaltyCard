@@ -68,7 +68,7 @@ FILE *yaml ;
 char fileName[255] ;
 int status = 1 ;
 FILE *taskLog ;
-char rowsNumber[255] ;
+int rowsNumber ;
 
 
 
@@ -172,22 +172,83 @@ if(yaml == NULL) {
     while ((row = mysql_fetch_row(result)))
     {
 
-    strcpy(rowsNumber , row[0]) ;                    /* on stock le nombre de ligne dans la variable rowsNumber*/
+  rowsNumber = atoi(row[0]) ;                  /* on stock le nombre de ligne dans la variable rowsNumber*/
 
 
     }
 
+
+    char sqlQuery[255] ;
+
+    strcat(strcat(strcat(strcat(strcpy(sqlQuery , "SELECT * FROM Ventes WHERE date = '") , date) ,"' AND entrepots ='"),local),"'");
+
+      if (mysql_query(con, sqlQuery))      {
+        finish_with_error(con);
+    }
+
+     result = mysql_store_result(con);         /* variable pour le stockage des résultats */
+
+    if (result == NULL)
+    {
+        finish_with_error(con);
+    }
+    fildes = mysql_num_fields(result) ;
+    int rows = 0 ;
+    char sql[fildes][255] ;
+    char sqlData[rowsNumber][fildes][255] ;
+
+    int i;
+
+    while ((row = mysql_fetch_row(result)))
+    {
+
+    for (int i = 0 ; i< fildes ; i++) {
+      strcpy(sqlData[rows][i] , row[i]) ;
+    }
+   rows ++ ;
+   }
+   if (rows != 0) {
+
+   tmp = malloc(255) ;
+   strcpy(tmp , "  sales: ")  ;        // tache: task
+   fputs(tmp , yaml) ;
+   fputc('\n' , yaml) ;
+   free(tmp) ;
+
+   for (int k = 0 ; k < rows ; k++) {
+
+   tmp = malloc(255) ;
+   strcat(strcpy(tmp , "   - articleCode: ") , sqlData[k][0]) ;        // tache: task
+   fputs(tmp , yaml) ;
+   fputc('\n' , yaml) ;
+   free(tmp) ;
+
+   tmp = malloc(255) ;
+   strcat(strcpy(tmp , "     articleName: ") , sqlData[k][1]) ;        // tache: task
+   fputs(tmp , yaml) ;
+   fputc('\n' , yaml) ;
+   free(tmp) ;
+
+   tmp = malloc(255) ;
+   strcat(strcpy(tmp , "     quantity: ") , sqlData[k][2]) ;        // tache: task
+   fputs(tmp , yaml) ;
+   fputc('\n' , yaml) ;
+   free(tmp) ;
+
+   }
+
+       }else
+   {
     tmp = malloc(255) ;
-    strcat(strcpy(tmp , "  sales: ") , rowsNumber) ;        // tache: task
-    fputs(tmp , yaml) ;
-    fputc('\n' , yaml) ;
-    free(tmp) ;
+   strcpy(tmp , "  sales: no sales today")  ;        // tache: task
+   fputs(tmp , yaml) ;
+   fputc('\n' , yaml) ;
+   free(tmp) ;
+   }
 
 
-
-
-    mysql_free_result(result);
-    mysql_close(con);                          /* ferméture de la connexion mysql */
+     mysql_free_result(result);
+     mysql_close(con);                          /* ferméture de la connexion mysql */
 
 
 
@@ -261,7 +322,7 @@ void on_sendButton2_clicked(int argc , char **argv) {
   sprintf(local , "%s" , gtk_entry_get_text(GTK_ENTRY(localEntry2))) ;                        /* récupération de la valeur de l'entré gtk */
 
   strcat(strcat(strcpy(filePath , "yamlFiles/"),local),".yaml");
-  strcat(strcpy(url , "ftp://Lyes:plata@172.16.224.137/") , filePath) ;
+  strcat(strcpy(url , "ftp://mazene:1234@172.16.57.133/home/mazene/") , filePath) ;
 
 
   struct curl_slist *headerlist = NULL ;
