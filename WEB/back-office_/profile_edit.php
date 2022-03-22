@@ -1,63 +1,7 @@
 
 <?php 
+session_start() ; 
 include "../config/database.php";
-
-
-$sqlQuery = 'SELECT * FROM Admin';
-$AdminStatement = $con->prepare($sqlQuery);
-$AdminStatement->execute();
-$Admin = $AdminStatement->fetch();
-
-$firstname = $Admin["prenom"];
-$name = $Admin["nom"];
-$email = $Admin["email"];
-$newPassword = $Admin["mdp"];
-$confirmPassword = $Admin["mdp"];
-$ancientPassword = $Admin["mdp"];
-
-
-
-if(!isset($_POST['submit']) and $_SERVER["REQUEST_METHOD"] == "POST"){
-    if(!isempty($_POST['ancient_password'])) {
-        if(($_POST['ancient_password']) == "lyes" ) {
-            if(!empty($_POST['first_name'])){
-                $firstname = $_POST['first_name'];
-            }else{ $firstname = $firstname;}
-
-            if(!empty($_POST['name'])){
-                $name = $_POST['name'];
-            }else{ $name =$name;}
-
-            if(!empty($_POST['email'])){
-                $email = $_POST['email'];
-            }else{ $email = $email;}
-
-            if(!empty($_POST['new_password'])){
-                if($_POST['new_password'] == $_POST['confirm_password']){
-                    $ancientPassword = $_POST['new_password'];
-
-                }else{$error = "les mots de passe ne sont pas identiques ";}
-
-            }else{ $ancientPassword = $ancientPassword;}
-
-        }else{  $error = "Le mot de passe est faux ! Veuille reesayer ";}
-
-    }else{
-        $error = "Veuille entrer l'ancien mot de passe";
-    }
-    
-}
-try {
-    $sql = "UPDATE Admin SET nom=?, prenom=?, email=?, mdp=? ";
-    $stmt= $con->prepare($sql);
-    $stmt->execute([$name, $firstname, $email, $newPassword]);
-    return true;    
-        } catch(PDOException $e) {
-            $e->getMessage();
-        }
-
-
-
 ?>
 <?php require('header.php')?>
               
