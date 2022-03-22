@@ -1,6 +1,15 @@
 <?php
-session_start() ; 
+session_start() ;
+include "../config/database.php" ;  
 if (isset($_SESSION['adminId'])) {
+    $id = $_SESSION['adminId'] ; 
+
+    $sql = "SELECT * FROM Admin WHERE id = ?" ; 
+    $query = $con->prepare($sql) ; 
+
+    $query->execute([$id]) ; 
+
+    $Admin = $query->fetch(PDO::FETCH_ASSOC) ; 
 
 ?>
 
@@ -715,7 +724,7 @@ if (isset($_SESSION['adminId'])) {
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="../config/deconnexion.php">Logout</a>
                 </div>
             </div>
         </div>
