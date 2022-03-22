@@ -17,10 +17,10 @@ include "config/connect.php" ;
 
 <form method="post">
      <div class="connexion-container" id="form-1">
-    
+
          <h3>Se connecter</h3>
          <br>
-         <p id="error-1"></p>
+         <p id="error-1"><?php if(!empty($error)){ echo $error ; } ?></p>
          <input type="email" name="email" placeholder="Adresse email">
          <br>
          <input type="password" name="password" placeholder="Mot de passe">
