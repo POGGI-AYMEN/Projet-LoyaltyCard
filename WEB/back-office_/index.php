@@ -1,10 +1,8 @@
-
 <?php
 session_start() ; 
 if (isset($_SESSION['adminId'])) {
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -104,6 +102,20 @@ if (isset($_SESSION['adminId'])) {
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+
+            <!-- Nav Item - Gestion stock -->
+            <li class="nav-item">
+                <a class="nav-link" href="stockHandling.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Gestion stock</span></a>
+            </li>
+
+            <!-- Nav Item - Repots Excel -->
+            <li class="nav-item">
+                <a class="nav-link" href="excelReports.php">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Repots Excel</span></a>
+            </li>
             
             <!-- Nav Item - Tables -->
             <li class="nav-item">
@@ -230,7 +242,7 @@ if (isset($_SESSION['adminId'])) {
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                             </div> -->
-                        </li>
+                       <!-- </li> -->
 
                         <!-- Nav Item - Messages -->
                          <!-- 

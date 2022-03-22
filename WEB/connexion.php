@@ -8,7 +8,7 @@ include "config/connect.php" ;
  <html lang="fr" dir="ltr">
    <head>
      <meta charset="utf-8">
-     <link rel="stylesheet" href="css/inscreption.css">
+     <link rel="stylesheet" href="css/inscription.css">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
      <title>Inscription</title>
@@ -26,8 +26,8 @@ include "config/connect.php" ;
          <input type="password" name="password" placeholder="Mot de passe">
          <br><br>
          <div class="btn-box">
-<input type="submit" name="connect" value="Se connecter" class="btn" >         </div>
-  <a href="inscreption.php">Vous n'avez pas un compte s'inscrir</a>
+<input type="submit" name="connect" value="Se connecter" class="btn" ></div>
+  <a href="inscription.php">Vous n'avez pas un compte s'inscrire</a>
   <br>
   <a href="config/getPassword.php">Mot de passe oublié</a>
 </div>
