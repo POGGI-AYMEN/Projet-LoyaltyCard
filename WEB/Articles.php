@@ -16,8 +16,11 @@
                     <div class="card-text">
                         Audi Q8 is a full-size luxury crossover SUV coupé made by Audi that was launched in 2018.
                     </div>
-                    <div class="card-text">
-                        $67,400
+                    <div class="card-text d-flex flex-row">
+                        <div class="p-2">$67,400</div>
+                       <div class="p-2 ml-auto hey"><a href=""><ion-icon name="cart-outline" size="large" ></ion-icon></a></div>
+                       
+                        
                     </div>
                     <a href="#" class="card-button"> Purchase</a>
                 </div>
