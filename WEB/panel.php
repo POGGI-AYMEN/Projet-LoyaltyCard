@@ -3,6 +3,11 @@ session_start() ;
 
 include 'config/database.php' ; 
 
+if (isset($_GET['error'])) 
+{
+    echo $_GET['error'] ; 
+}
+
 if (isset($_SESSION['clientId'])) 
 {
     $clientId = $_SESSION['clientId'] ; 
@@ -23,7 +28,15 @@ if (isset($_SESSION['clientId']))
         <p>Prix :<?php echo $result['prix']  ?></p>
         <p>Quantité : <?php echo $result['quantité']  ?></p>
 
-        <p id="price"> totale : <?php echo $total   ?> </p>
+        <p class="price"><?php echo $total   ?></p>
+        
+        <a href="config/incrementArticle.php?article=<?php echo $result['article']  ?>&&quantity=<?php echo $result['quantité'] ?>" >ajouter</a>
+        <br>
+        <a href="config/decrementArticle.php?article=<?php echo $result['article']  ?>&&quantity=<?php echo $result['quantité'] ?>" >retirer</a>
+
+        
+
+
 
 
     </div>
@@ -39,15 +52,12 @@ else
 }
 
 ?>
-<p id="totalSum">somme total : </p>
-
-<form method="post">
-<input type="submit" name="paye" placeholder="payer">
-</form>
+<p>Somme total : </p>
+<p id="totalSum"></p>
 
 
-<script>
+<button type="button" id="pay">Payer</button>
 
-    sum = document.getElementById("price").innerHTML ; 
-    console.log(sum)
-</script>
+
+
+<script src="JS/cart.js"></script>

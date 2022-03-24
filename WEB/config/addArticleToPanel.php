@@ -5,7 +5,7 @@ include 'database.php' ;
 
 $clientId = $_SESSION['clientId'] ; 
 $articleCode = $_GET['codeArticle'] ; 
-$quantity = $_GET['quantity'] ; 
+$quantity = 1 ; 
 
 $sql = "SELECT * FROM Article WHERE codeArticle = ?"  ; 
 
@@ -34,8 +34,8 @@ $existArticle = $exist['article'] ;
 
 if (!empty($existArticle))         // si oui in incrémente quantité
 {
-  $updateQuery = $con->prepare("UPDATE Panier SET quantité = quantité + 1 WHERE article = ?") ; 
-  $updateQuery->execute([$existArticle]) ; 
+    header('location:../articleLoyaltyCard.php?error=article exist deja dans le panier') ; 
+    die() ; 
 }
 }
 else          // sinon on l'ajoute dans le panier
@@ -53,6 +53,5 @@ $insertQuery->execute([
 
 }
 
-
-
+header('location:../articleLoyaltyCard.php') ; 
 
