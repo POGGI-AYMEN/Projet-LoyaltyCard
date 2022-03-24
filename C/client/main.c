@@ -322,7 +322,7 @@ void on_sendButton2_clicked(int argc , char **argv) {
   sprintf(local , "%s" , gtk_entry_get_text(GTK_ENTRY(localEntry2))) ;                        /* récupération de la valeur de l'entré gtk */
 
   strcat(strcat(strcpy(filePath , "yamlFiles/"),local),".yaml");
-  strcat(strcpy(url , "ftp://mazene:1234@172.16.57.133/home/mazene/") , filePath) ;
+  strcat(strcpy(url , "ftp://mazene:1234@172.16.57.128/home/mazene/") , filePath) ;
 
 
   struct curl_slist *headerlist = NULL ;
