@@ -5,9 +5,9 @@ include 'database.php' ;
 
 $clientId = $_SESSION['clientId'] ; 
 $articleCode = $_GET['codeArticle'] ; 
-$quantity = 1 ; 
+$quantity = 1 ;       // on met la quantité des article ajouter dans le panier a 1 par defaut // 
 
-$sql = "SELECT * FROM Article WHERE codeArticle = ?"  ; 
+$sql = "SELECT * FROM Article WHERE codeArticle = ?"  ;  // on récuper l'article passer on get de la bdd 
 
 $query = $con->prepare($sql) ; 
 
@@ -20,7 +20,7 @@ $saler = $result['vendeur'] ;
 $price = $result['prix'] ; 
 $category = $result['catégorie'] ; 
 
-$sql3 = "SELECT * FROM Panier WHERE article = ?" ; 
+$sql3 = "SELECT * FROM Panier WHERE article = ?" ;  // on verife si l'article est déja dans le panier
 
 $existQuery = $con->prepare($sql3) ; 
 
@@ -28,11 +28,11 @@ $existQuery->execute([$articleName]) ;
 
 $exist = $existQuery->fetch(PDO::FETCH_ASSOC) ; 
 
-if (!empty($exist))   // verification si l'article est déja dans le panier
+if (!empty($exist))   // si le produit exist déja on affiche un message d'erruer 
 {
 $existArticle = $exist['article'] ; 
 
-if (!empty($existArticle))         // si oui in incrémente quantité
+if (!empty($existArticle))        
 {
     header('location:../articleLoyaltyCard.php?error=article exist deja dans le panier') ; 
     die() ; 
@@ -53,5 +53,5 @@ $insertQuery->execute([
 
 }
 
-header('location:../articleLoyaltyCard.php') ; 
+header('location:../articleLoyaltyCard.php') ;  // on redirige vers la page des article
 

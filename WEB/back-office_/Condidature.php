@@ -15,7 +15,22 @@ if (isset($_SESSION['adminId'])) {
 
 <!-- Page Heading -->
 <h1 class="h3 mb-2 text-gray-800">Candidatures</h1>
+<style>
 
+#add{
+    color:blue;
+    text-decoration:none;
+    padding:5px;
+    
+}
+#sup{
+    color:red;
+    text-decoration:none;
+    padding:5px;
+
+}
+
+</style>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -27,23 +42,43 @@ if (isset($_SESSION['adminId'])) {
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Entreprise</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Ville</th>
+                        <th>Sécteur</th>
+                        <th>chiffre d'affire</th>
+                        <th>Cataloge</th>
+                        <th>Actions</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
+                    <?php 
+    
+                    $selectQuery = $con->prepare("SELECT * FROM Candidature") ; 
+
+                    $selectQuery->execute() ; 
+
+                    while($result = $selectQuery->fetch(PDO::FETCH_ASSOC))
+                    {
+                    ?>
                     <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
+                        <td><?php echo $result['entreprise']  ?></td>
+                        <td><?php echo $result['email']  ?></td>
+                        <td><?php echo $result['telephone']  ?></td>
+                        <td><?php echo $result['ville']  ?></td>
+                        <td><?php echo $result['secteur']  ?></td>
+                        <td><?php echo $result['chiffre_affaire']  ?></td>
+                        <td><?php echo $result['catalog']  ?></td>
+                        <td><a id="add" href="#">Ajouter</a>   <a id="sup" href="#" >Supprimer</a></td>
+
                     </tr>
+                    <?php
+                    
+                    }
+                    
+                    ?>
                     
                 </tbody>
             </table>

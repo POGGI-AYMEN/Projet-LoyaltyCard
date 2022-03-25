@@ -11,6 +11,22 @@ if (isset($_SESSION['adminId'])) {
 
     $Admin = $query->fetch(PDO::FETCH_ASSOC) ; 
 
+    $clientQuery = $con->prepare("SELECT * FROM Clients") ; 
+    $clientQuery->execute() ; 
+    $clients = $clientQuery->rowCount() ; 
+
+    $companyQuery = $con->prepare("SELECT * FROM Entreprise") ; 
+    $companyQuery->execute() ; 
+    $company = $companyQuery->rowCount() ; 
+
+    $saleQuery = $con->prepare("SELECT * FROM Ventes") ; 
+    $saleQuery->execute() ; 
+    $sales = $saleQuery->rowCount() ; 
+
+    $candidateQuery = $con->prepare("SELECT * FROM Candidature") ; 
+    $candidateQuery->execute() ; 
+    $candidate = $candidateQuery->rowCount() ; 
+
 ?>
 
 <!DOCTYPE html>
@@ -358,7 +374,7 @@ if (isset($_SESSION['adminId'])) {
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             Clients</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">43</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $clients  ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -376,7 +392,7 @@ if (isset($_SESSION['adminId'])) {
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Articles vendus</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">60</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $sales;  ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -394,7 +410,7 @@ if (isset($_SESSION['adminId'])) {
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Entreprises partenaires
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">60</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php  echo $company  ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -412,7 +428,7 @@ if (isset($_SESSION['adminId'])) {
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                             Condidatures</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $candidate ;  ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
