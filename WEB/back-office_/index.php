@@ -126,12 +126,7 @@ if (isset($_SESSION['adminId'])) {
                     <span>Repots Excel</span></a>
             </li>
             
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -428,9 +423,9 @@ if (isset($_SESSION['adminId'])) {
                         </div>
                     </div>
 
-           
+                </div>
 
-           
+            </div>
 
         </div>
         <!-- End of Content Wrapper -->
@@ -456,44 +451,18 @@ if (isset($_SESSION['adminId'])) {
                 </div>
                 <div class="modal-body">Sélectionnez deconnexion si vous voulez terminer la session</div>
                 <div class="modal-footer">
-<<<<<<< HEAD
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="../config/deconnexion.php">Logout</a>
-=======
+
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-                    <a class="btn btn-primary" href="login.html">Déconnexion</a>
->>>>>>> b0f2a9f9b6ca6106c0a667474ff64c536f8a44ad
+                    <a class="btn btn-primary" href="../config/deconnexion.php">Déconnexion</a>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- Page level plugins -->
-    <script src="vendor/chart.js/Chart.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="js/demo/chart-pie-demo.js"></script>
-
-    <script src="https://kit.fontawesome.com/9c81af029a.js" crossorigin="anonymous"></script>
-
-</body>
-
-</html>
-
-<?php
-
+    <?php
 } else {
     header('location:../error.php?message=403 Forbidden') ;
 }
-?>
+ require('footer.php')?>

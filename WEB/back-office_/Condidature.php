@@ -7,7 +7,7 @@ if (isset($_SESSION['adminId'])) {
     $query = $con->prepare($sql) ; 
     $query->execute([$id]) ; 
     $Admin = $query->fetch(PDO::FETCH_ASSOC) ; 
-    require("headr.php");
+    require("header.php");
     ?>
 
 

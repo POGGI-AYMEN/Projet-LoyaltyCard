@@ -143,7 +143,5 @@ if (isset($_POST['panel']))
   }
 }
 ?>
-
-
 <?php require("footer.php") ?>
 
