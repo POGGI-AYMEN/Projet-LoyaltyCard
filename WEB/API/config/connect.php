@@ -35,7 +35,7 @@ if (isset($_POST['connect'])) {
 
                 } elseif($count == 1) {
                     $_SESSION['adminId'] = $result['id'] ; 
-                    header('location:back-office_/index.php') ;   /* redirection vers la page du profile de l'admin*/
+                    header('location:../back-office_/index.php') ;   /* redirection vers la page du profile de l'admin*/
 
                 } elseif($count == 2) {
                     $_SESSION['entrepriseID'] = $result['id'] ; 

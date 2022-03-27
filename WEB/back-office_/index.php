@@ -1,6 +1,8 @@
 <?php
+session_start() ;
 
-
+if (isset($_SESSION['adminId']))
+{
 ?>
 
 <!DOCTYPE html>
@@ -348,7 +350,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             Clients</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $clients  ?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $clientCount ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -453,6 +455,6 @@
 
     <?php
 } else {
-    header('location:../error.php?message=403 Forbidden') ;
+    header('location:../view/error.php?message=403 Forbidden') ;
 }
  require('footer.php')?>

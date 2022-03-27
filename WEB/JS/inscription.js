@@ -75,7 +75,7 @@ next_1.onclick = function() {
 
         $.ajax({                             /* verification de l'addresse email par une requete ajax en jQuery */
             type: "GET" ,
-            url: "config/verifEmail.php?email=" + email ,
+            url: "../API/config/verifEmail.php?email=" + email ,
             success: function(data) {
             
                 

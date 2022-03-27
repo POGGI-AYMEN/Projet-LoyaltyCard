@@ -31,7 +31,7 @@
             </li>
             -->
             <li>
-                <a class="btn btn-dark lead btn_con" href="connexion.php" role="button">Se connecter</a>
+                <a class="btn btn-dark lead btn_con" href="view/connexion.php" role="button">Se connecter</a>
             </li>   
             
 
@@ -108,11 +108,11 @@
                     <img src="images/undraw_client.svg" alt="">
                 </div>
                 <p>Lorem ipsum dolor sit amet ,  tempora ducimus reprehenderit non voluptatibus aliquam consequatur earum minima eveniet natus eum aut, placeat possimus quae aperiam repudiandae tempore.</p>
-                <button class="btn_stndr"><a href="inscription.php">Hover me!</a></button>           
+                <button class="btn_stndr"><a href="view/inscription.php">Hover me!</a></button>           
              </div>
         </div>
 
         <script src="JS/scrollSpy.js" ></script>
 
         
-        <?php  require "footer.php"; ?>
+        <?php  include "view/footer.php"; ?>

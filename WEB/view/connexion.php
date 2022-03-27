@@ -1,14 +1,13 @@
 <?php
 session_start() ;
-include "config/connect.php" ;
-
+include "../API/config/connect.php" ;
  ?>
 
  <!DOCTYPE html>
  <html lang="fr" dir="ltr">
    <head>
      <meta charset="utf-8">
-     <link rel="stylesheet" href="css/inscription.css">
+     <link rel="stylesheet" href="../css/inscription.css">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
      <title>Inscription</title>

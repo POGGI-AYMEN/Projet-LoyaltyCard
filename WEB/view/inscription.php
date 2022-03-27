@@ -1,5 +1,4 @@
 <?php
-include "config/addClient.php" ;
 
  ?>
 
@@ -8,7 +7,7 @@ include "config/addClient.php" ;
    <head>
      <meta charset="utf-8">
 
-     <link rel="stylesheet" href="css/inscription.css">
+     <link rel="stylesheet" href="../css/inscription.css">
 
 
      <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -80,7 +79,7 @@ include "config/addClient.php" ;
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="./JS/inscription.js"></script>
+    <script src="../JS/inscription.js"></script>
 
    </body>
 
