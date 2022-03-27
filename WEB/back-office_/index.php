@@ -1,31 +1,5 @@
 <?php
-session_start() ;
-include "../config/database.php" ;  
-if (isset($_SESSION['adminId'])) {
-    $id = $_SESSION['adminId'] ; 
 
-    $sql = "SELECT * FROM Admin WHERE id = ?" ; 
-    $query = $con->prepare($sql) ; 
-
-    $query->execute([$id]) ; 
-
-    $Admin = $query->fetch(PDO::FETCH_ASSOC) ; 
-
-    $clientQuery = $con->prepare("SELECT * FROM Clients") ; 
-    $clientQuery->execute() ; 
-    $clients = $clientQuery->rowCount() ; 
-
-    $companyQuery = $con->prepare("SELECT * FROM Entreprise") ; 
-    $companyQuery->execute() ; 
-    $company = $companyQuery->rowCount() ; 
-
-    $saleQuery = $con->prepare("SELECT * FROM Ventes") ; 
-    $saleQuery->execute() ; 
-    $sales = $saleQuery->rowCount() ; 
-
-    $candidateQuery = $con->prepare("SELECT * FROM Candidature") ; 
-    $candidateQuery->execute() ; 
-    $candidate = $candidateQuery->rowCount() ; 
 
 ?>
 

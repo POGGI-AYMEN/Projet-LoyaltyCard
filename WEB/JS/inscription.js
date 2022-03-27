@@ -11,6 +11,15 @@ function makeCode(length) {
    return result;
 }
 
+function IsJsonString(str) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}
+
 
 var verifCode = makeCode(5) ;        /* création de code de verifcation de compte*/
 
@@ -68,18 +77,21 @@ next_1.onclick = function() {
             type: "GET" ,
             url: "config/verifEmail.php?email=" + email ,
             success: function(data) {
-                console.log(data);
-          if (data) {
-          error_1.innerHTML = "cette addresse email est déja utilisé" ;
-          return false ;
+            
+                
+          if (IsJsonString(data)) {
+           
+            error_1.innerHTML = "cette addresse email est déja utilisé" ;
+            return false ;
             } else {
-            var form1 = document.getElementById('form-1') ;            /* changement de formulaire si aprés tous les verification */
-            var form2 = document.getElementById('form-2') ;
-
-            form1.style.left = "-650px" ;
-            form2.style.left = "5%" ;
-            form1.style.visibility = "hidden" ;
-            form2.style.visibility = "visible" ;
+           
+                var form1 = document.getElementById('form-1') ;            /* changement de formulaire si aprés tous les verification */
+                var form2 = document.getElementById('form-2') ;
+    
+                form1.style.left = "-650px" ;
+                form2.style.left = "5%" ;
+                form1.style.visibility = "hidden" ;
+                form2.style.visibility = "visible" ;
                 }
 }
 
@@ -119,7 +131,7 @@ next_2.onclick = function() {
 
 
         /* envoi de l'email de verification */
-
+    console.log(verifCode) ;
  
 Email.send({
     
