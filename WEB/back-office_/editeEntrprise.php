@@ -1,43 +1,10 @@
 <?php 
-session_start() ;
-include "../config/database.php" ; 
-if (isset($_POST['submit'])){
+include "../controllers/entreprise.php" ;
+include "../controllers/admin.php" ; 
 
 
-    $email = $_POST['email'] ; 
-    $num = $_POST['num'] ; 
-    $gérant = $_POST['gérant'] ; 
-    $chiffre_daffaire = $_POST['chif_affaire'] ; 
-    $contrat = $_POST['contrat'] ; 
-    $date_de_payement = $_POST['date'] ; 
-    if (!filter_var($email , FILTER_VALIDATE_EMAIL)) {
-      $error = "adresse email non valide" ; 
-    }
-
-    $sql_ = "UPDATE Entreprise SET email = ? , gérant = ? , numéro_tel = ? , chiffre_daffaire = ? , contrat = ? , date_de_payement = ?" ; 
-
-    $requette = $con->prepare($sql_) ; 
-    
-    $requette->execute([$email , $gérant , $num , $chiffre_daffaire , $contrat , $date_de_payement]) ;
-  
-  } else {
-    $error = "Veuillez remplir un champ de saise au minimum" ; 
-  }
+include "header.php" ;
 ?>
-   <?php if (isset($_SESSION['adminId'])) { 
-      if (isset($_GET['id']) && !empty($_GET['id'])) {
-        $id  = $_GET['id'] ; 
-      } else {
-        header('location:../error.php?message=Erruer 404 not found') ; 
-      }
-
-      $sql = "SELECT * FROM Entreprise WHERE id = ? "  ; 
-      $req = $con->prepare($sql);
-      $req->execute([$id]) ; 
-
-      $result = $req->fetch(PDO::FETCH_ASSOC) ; 
-      include "header.php" ;
-      ?>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -49,6 +16,7 @@ if (isset($_POST['submit'])){
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                      <form method="post">
                         <th>Information</th>
                         <th>Update</th>
                        
@@ -60,7 +28,7 @@ if (isset($_POST['submit'])){
                       Email
                     </td>
                     <td>
-                       <input type="text" name="email" value=<?php echo $result['email']; ?>>
+                       <input type="text" name="email" value=<?php echo $company['email']; ?>>
                     </td> 
                   </tr>
 
@@ -69,7 +37,7 @@ if (isset($_POST['submit'])){
                        Numéro de téléphone
                     </td>
                     <td>
-                      <input type="text" name="num" value=<?php echo $result['numéro_tel']; ?>>
+                      <input type="text" name="num" value=<?php echo $company['numéro_tel']; ?>>
                     </td> 
                   </tr>
 
@@ -78,40 +46,40 @@ if (isset($_POST['submit'])){
                       Gérant
                     </td>
                     <td>
-                      <input type="text" name="gérant" value=<?php echo $result['gérant']; ?>>
+                      <input type="text" name="gérant" value=<?php echo $company['gérant']; ?>>
                     </td> 
                   </tr>
 
                   <tr>
                     <td>Chiffre d'affaire</td>
                     <td>
-                      <input type="text" name="chif_affaire" value=<?php echo $result['chiffre_daffaire']; ?>>
+                      <input type="text" name="chif_affaire" value=<?php echo $company['chiffre_daffaire']; ?>>
                     </td> 
                   </tr>
 
                   <tr>
                     <td>Durée de contrat</td>
                     <td>
-                      <input type="text" name="contrat" value=<?php echo $result['contrat']; ?>>
+                      <input type="text" name="contrat" value=<?php echo $company['contrat']; ?>>
                     </td> 
                   </tr>
 
                   <tr>
                     <td>Date du dernier payement</td>
                     <td>
-                      <input type="text" name="date" value=<?php echo $result['date_de_payement']; ?>>
+                      <input type="text" name="date" value=<?php echo $company['date_de_payement']; ?>>
                     </td> 
                   </tr>      
                 </tbody>
             </table>
-            <input id="editB" type="submit" class="btn btn-secondary" name="submit" value="Enregistrer">
+            <input id="editB" type="submit" class="btn btn-secondary" name="updateEntreprise" value="Enregistrer">
         </div>
     </div>
+</form>
 </div>
 
 
   
-  <?php }else header('location:../error.php?message=403 Forbidden') ;
-
+<?php
 require("footer.php");
 ?>

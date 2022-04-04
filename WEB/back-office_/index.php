@@ -1,8 +1,18 @@
 <?php
-session_start() ;
+  session_start() ; 
 
-if (isset($_SESSION['adminId']))
-{
+  include '../controllers/admin.php' ; 
+  include "../models/entrepriseModel.php" ; 
+  include "../models/ventesModel.php" ; 
+  include "../models/candidaturModel.php" ;
+  include "../models/clientModel.php" ;
+
+  $companyCount = EntrepriseModel::count() ; 
+  $candidateCount = CandidatureModel::count() ;
+  $clientCount = ClientModel::count() ; 
+  $salesCount = VentesModel::count() ;  
+
+
 ?>
 
 <!DOCTYPE html>
@@ -368,7 +378,7 @@ if (isset($_SESSION['adminId']))
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Articles vendus</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $sales;  ?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $salesCount;  ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -386,7 +396,7 @@ if (isset($_SESSION['adminId']))
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Entreprises partenaires
                                             </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php  echo $company  ?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php  echo $companyCount  ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -404,7 +414,7 @@ if (isset($_SESSION['adminId']))
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                             Condidatures</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $candidate ;  ?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $candidateCount ;  ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -454,7 +464,5 @@ if (isset($_SESSION['adminId']))
 
 
     <?php
-} else {
-    header('location:../view/error.php?message=403 Forbidden') ;
-}
+
  require('footer.php')?>

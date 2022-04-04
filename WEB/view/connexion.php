@@ -1,6 +1,6 @@
 <?php
 session_start() ;
-include "../API/config/connect.php" ;
+include "../config/connect.php" ;
  ?>
 
  <!DOCTYPE html>

@@ -1,12 +1,8 @@
 <?php
-session_start() ;
-include "../config/database.php" ;  
-if (isset($_SESSION['adminId'])) {
-    $id = $_SESSION['adminId'] ; 
-    $sql = "SELECT * FROM Admin WHERE id = ?" ; 
-    $query = $con->prepare($sql) ; 
-    $query->execute([$id]) ; 
-    $Admin = $query->fetch(PDO::FETCH_ASSOC) ; 
+$i = 0 ;
+include "../controllers/entreprise.php" ;
+include "../controllers/admin.php" ; 
+
     require("header.php");
     ?>
 
@@ -14,10 +10,8 @@ if (isset($_SESSION['adminId'])) {
 	<h1 class="h3 mb-2 text-gray-800">Entreprise</h1>
    	<div class="container">
    		<?php 
-			$sql_ = "SELECT * FROM Entreprise" ; 
-			$requette = $con->prepare($sql_) ; 
-			$requette->execute() ; 
-			while ($resultat = $requette->fetch(PDO::FETCH_ASSOC)) {	
+           
+			foreach($companys as $company) {
 		?>
 
 		
@@ -40,16 +34,16 @@ if (isset($_SESSION['adminId'])) {
                 <tbody>
                     <tr>
                         <td>
-							<a href="infoEntreprise.php?id=<?php echo $result['id']; ?>"><?php echo $resultat['id']. "  ".$resultat['nom']; ?></a>
+							<a href="infoEntreprise.php?id=<?php echo $companys[$i]['id']; ?>"><?php echo $companys[$i]['id']. "  ".$companys[$i]['nom']; ?></a>
 						</td>
                         <td>
-							<a id="delete" href="deleteEntreprise.php?id=<?php echo $resultat['id']; ?>">Supprimer</a>
+							<a id="delete" href="../controllers/entreprise.php?removeCompany=<?php echo $companys[$i]['id']; ?>">Supprimer</a>
 						</td>
                         <td>
-							<a id="edit" href="editeEntrprise.php?id=<?php echo $resultat['id']; ?>">Modifier</a>
+							<a id="edit" href="editeEntrprise.php?editEmail=<?php echo $companys[$i]['email']; ?>">Modifier</a>
 						</td>
                         <td>
-							<a id="contact" href="messageEntreprise.php?id=<?php echo $resultat['id']; ?>">Contact</a>
+							<a id="contact" href="messageEntreprise.php?id=<?php echo $companys[$i]['id']; ?>">Contact</a>
 						</td>
                     </tr>
                     
@@ -58,7 +52,8 @@ if (isset($_SESSION['adminId'])) {
         </div>
     </div>
 </div>
-		<?php } ?>
+		<?php }
+        $i++ ?>
 
 	</div>
 			</div>
@@ -67,7 +62,7 @@ if (isset($_SESSION['adminId'])) {
 
   
 
-<?php }else header('location:../error.php?message=403 Forbidden') ;
+<?php
 
 require("footer.php");
 ?>

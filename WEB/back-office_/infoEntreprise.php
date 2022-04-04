@@ -1,30 +1,6 @@
 <?php 
 session_start() ;
-
-function paymentAmount($turnover) {           /* fonction de calcule du cotisation a payer par les entreprise selon le chiffre */
-                                                                    /* d'affaire de chaque année*/
-  if ($turnover < 200000) {
-    return "Gratuit" ; 
-  }
-  elseif ($turnover > 200000 && $turnover < 800000 ) {
-    $amountToPay = ($turnover * 8 ) / 100 ; 
-
-  } 
-  elseif($turnover  > 800000 && $turnover < 1500000) {
-    $amountToPay = ($turnover * 6) /100 ; 
-  } 
-  elseif($turnover > 150000 && $turnover < 3000000) {
-    $amountToPay = ($turnover * 4 ) / 100 ; 
-  } 
-  elseif($turnover >= 3000000) {
-    $amountToPay = ($turnover * 3) / 100 ; 
-  }
-
-  return $amountToPay . " " ."€" ; 
-}
-
- ?>
-
+?>
 
 <!DOCTYPE html>
  <html lang="fr" dir="ltr">

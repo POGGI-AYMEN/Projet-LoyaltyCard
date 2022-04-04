@@ -1,4 +1,5 @@
 <?php
+include '../controllers/client.php' ; 
 
  ?>
 
@@ -69,7 +70,7 @@
 
          <div class="btn-box">
              <button type="button" name="button" id="verif" class="btn">Verifier</button>
-           <input type="submit" name="sub" value="S'inscrire" class="btn" id="sub">
+           <input type="submit" name="inscription" value="S'inscrire" class="btn" id="sub">
          </div>
 
          <p id="verifMessage"></p>

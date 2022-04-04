@@ -1,13 +1,9 @@
 <?php
-session_start() ;
-include "../config/database.php" ;  
-if (isset($_SESSION['adminId'])) {
-    $id = $_SESSION['adminId'] ; 
-    $sql = "SELECT * FROM Admin WHERE id = ?" ; 
-    $query = $con->prepare($sql) ; 
-    $query->execute([$id]) ; 
-    $Admin = $query->fetch(PDO::FETCH_ASSOC) ; 
-    require("header.php");
+include "../controllers/candidatur.php" ; 
+include "../controllers/admin.php" ; 
+require "header.php" ; 
+$i = 0;
+
     ?>
 
 
@@ -54,33 +50,32 @@ if (isset($_SESSION['adminId'])) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
-    
-                    $selectQuery = $con->prepare("SELECT * FROM Candidature") ; 
+                   <?php foreach($candidat as $candidats){
+                   ?>
 
-                    $selectQuery->execute() ; 
-
-                    while($result = $selectQuery->fetch(PDO::FETCH_ASSOC))
-                    {
-                    ?>
+                   
                     <tr>
-                        <td><?php echo $result['entreprise']  ?></td>
-                        <td><?php echo $result['email']  ?></td>
-                        <td><?php echo $result['telephone']  ?></td>
-                        <td><?php echo $result['ville']  ?></td>
-                        <td><?php echo $result['secteur']  ?></td>
-                        <td><?php echo $result['chiffre_affaire']  ?></td>
-                        <td><?php echo $result['catalog']  ?></td>
-                        <td><a id="add" href="#">Ajouter</a>   <a id="sup" href="#" >Supprimer</a></td>
+                        
+                        <td><?php echo $candidat[$i]['nom']  ?></td>
+                        
+                        <td><?php echo $candidat[$i]['email']  ?></td>
+                        <td><?php echo $candidat[$i]['numéro_tel']  ?></td>
+                        <td><?php echo $candidat[$i]['ville']  ?></td>
+                        <td><?php echo $candidat[$i]['activité']  ?></td>
+                        <td><?php echo $candidat[$i]['chiffre_daffaire']  ?></td>
+                        <td><?php echo $candidat[$i]['catalog']  ?></td>
+                        <td><a id="add" href="../controllers/candidatur.php?addEntreprise=<?php echo $candidat[$i]['email'] ;?>">Ajouter</a>   <a id="sup" href="../controllers/candidatur.php?deleteEntreprise=<?php echo $candidat[$i]['email']?>">Supprimer</a></td>
+                
 
                     </tr>
+                   
+                   
                     <?php
-                    
-                    }
-                    
+                    $i++ ;
+                   }
                     ?>
-                    
                 </tbody>
+               
             </table>
         </div>
     </div>
@@ -91,6 +86,6 @@ if (isset($_SESSION['adminId'])) {
 
 
 <?php 
-}else header('location:../error.php?message=403 Forbidden') ;
+
 require("footer.php");
 ?>
