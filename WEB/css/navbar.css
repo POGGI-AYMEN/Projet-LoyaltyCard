@@ -1,0 +1,33 @@
+.container_{
+    width: 100%;
+    background-color: #ddd;
+}
+.nav-link{
+    font-size: 17px;
+
+  }
+span a {
+    text-decoration: none;
+    font-family: 'Nunito', sans-serif ;
+    font-size: 25px;
+}
+a:hover{
+  color: white;    
+  transition: .2s;
+ 
+}
+
+  .navbar {
+    width: 90%;
+      height: 80px !important; 
+      margin:auto;
+     
+
+  }
+    
+  .btn_con{
+    margin-right: 10px;
+    background-color: #6E46F7;
+    border: #6E46F7;
+    border-radius: 20px;
+  }
