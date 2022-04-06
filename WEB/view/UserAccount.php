@@ -1,3 +1,12 @@
+<?php 
+include "../controllers/client.php" ; 
+include "../models/ventesModel.php" ; 
+
+$articlesCount = VentesModel::selectWhereCount("email" , $user['email']) ; 
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -54,7 +63,7 @@
 										<div class="col mr-2">
 											<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
 											Articles achetés</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">4</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $articlesCount;  ?></div>
 										</div>
 										<div class="col-auto">
 										<i class="fa-solid fa-cart-arrow-down"></i>
@@ -85,4 +94,8 @@
 		</div>
 </div>
 
+<<<<<<< HEAD:WEB/view/UserAccount.php
 <?php require("footer.php"); ?>
+=======
+    <?php require("footer.php"); ?>
+>>>>>>> 818cffd048ec960ed032720ea8baaeefce851685:WEB/view/User/UserAccount.php

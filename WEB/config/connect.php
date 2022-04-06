@@ -31,7 +31,7 @@ if (isset($_POST['connect'])) {
 
                 if($count == 0) {
                     $_SESSION['clientId'] = $result['id'] ; 
-                    header('location:clientProfil.php') ;  /* redirection vers la page de profile du client */
+                    header('location:../view/UserAccount.php') ;  /* redirection vers la page de profile du client */
 
                 } elseif($count == 1) {
                     $_SESSION['adminId'] = $result['id'] ; 
