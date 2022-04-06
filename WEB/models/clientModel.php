@@ -62,4 +62,16 @@
             
             return $clientCount ; 
         }
+
+        public function updateWhere($set , $setValue , $where , $whereValue)  
+        {
+            include "../config/database.php" ; 
+
+            $updateQuery = $con->prepare("UPDATE Clients SET ".$set."= ? WHERE ".$where." = ?") ; 
+
+            $updateQuery->execute([
+                $setValue ,
+                $whereValue 
+            ]) ; 
+        }
     }

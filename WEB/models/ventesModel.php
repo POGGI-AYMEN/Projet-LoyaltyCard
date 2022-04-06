@@ -15,6 +15,18 @@ class VentesModel
         return $count ; 
     }
 
+    public function selectWhereCount($where , $value) 
+    {
+        include "../config/database.php" ; 
+
+        $selectQuery = $con->prepare("SELECT * FROM Ventes WHERE ".$where." = ?") ; 
+
+        $selectQuery->execute([$value]) ; 
+
+        $count = $selectQuery->rowCount() ; 
+
+        return $count ; 
+    }
     
 
 
