@@ -19,7 +19,9 @@ include "../controllers/client.php" ;
 
    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/UserAccount.css">
-    <link rel="stylesheet" href=".../css/user_footer.css"> 
+    <link rel="stylesheet" href="../css/user_footer.css"> 
+
+
     <title>Historique des achats </title>
 </head>
 <body>

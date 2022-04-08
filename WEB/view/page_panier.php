@@ -13,9 +13,9 @@
 
     <link rel="stylesheet" href="../../back-office_/css/sb-admin-2.css">
 
-   <link rel="stylesheet" href="../../css/navbar.css">
-    <link rel="stylesheet" href="../../css/page_panier.css">
-    <link rel="stylesheet" href="../../css/footer.css"> 
+   <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/page_panier.css">
+    <link rel="stylesheet" href="../css/footer.css"> 
    <!-- <link rel="stylesheet" href="../css/UserAccount.css"> -->
   <!--  <link rel="stylesheet" href="../css/Articles.css"> -->
     <!-- <link rel="stylesheet" href="../css/Contact_page.css"> -->
@@ -78,10 +78,10 @@
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                 <div class="col">PRIX TOTAL</div>
                 <div class="col text-right">&euro; 137.00</div>
-            </div> <button class="btn">PAYER</button>
+            </div> <a href="payement-page.php"><button class="btn">PAYER</button></a>
         </div>
     </div>
 </div>
 
-<?php require("../footer.php"); ?>
+<?php require("footer.php"); ?>
 

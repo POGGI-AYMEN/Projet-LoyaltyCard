@@ -94,4 +94,8 @@ $articlesCount = VentesModel::selectWhereCount("email" , $user['email']) ;
 		</div>
 </div>
 
+<<<<<<< HEAD:WEB/view/UserAccount.php
+<?php require("footer.php"); ?>
+=======
     <?php require("footer.php"); ?>
+>>>>>>> 818cffd048ec960ed032720ea8baaeefce851685:WEB/view/User/UserAccount.php
