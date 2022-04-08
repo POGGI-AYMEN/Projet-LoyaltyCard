@@ -18,7 +18,7 @@ if ($check != 0)
         $user = ClientModel::selectWhere("id" , $id) ;                // recupération des infor de client //
 
         
-        $points = CartModel::selectPointsWhere("email" ,$user['email']) ;   // on selectionne les point de l'utilisateur
+        $points = CarteModel::selectPointsWhere("email" ,$user['email']) ;   // on selectionne les point de l'utilisateur
     } 
 
     else 
@@ -64,6 +64,7 @@ if (isset($_POST['inscription']))
      //header('location:accountCreated.php?name='.$client['lastName']." ".$client['name']) ;
 
 }
+
 
 // le nombre des client 
 
