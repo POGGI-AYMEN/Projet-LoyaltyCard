@@ -23,7 +23,7 @@
                  <a class="nav-link link-dark lead" href="#clienetOrEntreprise">Nous rejoindre</a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link link-dark lead" href="Contact_Page.php">Contact</a>
+                <a class="nav-link link-dark lead" href="view/Contact_page.php">Contact</a>
             </li>
             <!--
             <li class="nav-item ">

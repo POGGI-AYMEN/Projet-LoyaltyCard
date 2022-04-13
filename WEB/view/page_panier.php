@@ -1,3 +1,10 @@
+<?php  
+include "../controllers/panier.php" ;
+
+$i = 0  ; 
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -35,33 +42,35 @@
                     </div>
                    
                 </div>
+                <?php if (isset($_GET['error'])) 
+                {
+                    echo $_GET['error'] ;
+                } ?>
             </div>
+            <?php 
+            foreach($myPanel as $panel) 
+            {
+            ?>
             <div class="row border-top border-bottom">
                 <div class="row main align-items-center">
                     <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
                     <div class="col">
-                        <div class="row text-muted">Shirt</div>
-                        <div class="row">Cotton T-shirt</div>
+                        <div class="row text-muted"><?php echo $myPanel[$i]['catégorie'] ; ?></div>
+                        <div class="row"><?php echo $myPanel[$i]['article'] ;  ?></div>
                     </div>
-                    <div class="col"><a href="#" class="border">1</a></div>
-                    <div class="col">&euro; 44.00 </div>
+                    <div class="col"><p class="articles"><?php echo $myPanel[$i]['quantité'] ;  ?></p></div>
+                    <div class="col"><a href="../controllers/panier.php?incArticle=<?php echo $myPanel[$i]['article'] ?>" class="border">+</a></div>
+                    <div class="col"><a href="../controllers/panier.php?decArticle=<?php echo $myPanel[$i]['article'] ?>" class="border">-</a></div>
+
+                    <div class="col"><p class="price"> <?php echo $myPanel[$i]['prix'] * $myPanel[$i]['quantité']; ?></p> </div>
                     <div class="col close"><a href="">&#10005;</a></div>
                 </div>
             </div>
-            <div class="row">
-                <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"></div>
-                    <div class="col">
-                        <div class="row text-muted">Shirt</div>
-                        <div class="row">Cotton T-shirt</div>
-                    </div>
-                    <div class="col"> <a href="#" class="border">1</a> </div>
-                    <div class="col">&euro; 44.00 </div>
-                    <div class="col close"><a href="">&#10005;</a></div>
-                </div>
-            </div>
-            <div class="row border-top border-bottom"></div>
-               
+            
+               <?php 
+            $i++ ;
+            }
+               ?>
             
             <div class="back-to-shop"><a href="UserAccount.php">&leftarrow;</a><span class="text-muted">RETOUR AU PROFIL</span></div>
         </div>
@@ -72,16 +81,18 @@
             <hr>
             <div class="row">
                 <div class="col" style="padding-left:0;">NOMBRE D'ARTICLES</div>
-                <div class="col text-right"> 2</div>
+                <div id="articleNumber" class="col text-right"> </div>
             </div>
            <br>
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                 <div class="col">PRIX TOTAL</div>
-                <div class="col text-right">&euro; 137.00</div>
+                <div id="totalSum" class="col text-right"></div>
             </div> <a href="payement-page.php"><button class="btn">PAYER</button></a>
         </div>
     </div>
 </div>
+
+<script src="../JS/cart.js"></script>
 
 <?php require("footer.php"); ?>
 

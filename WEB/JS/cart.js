@@ -4,16 +4,31 @@
 
 var prices = document.getElementsByClassName('price') ;   // on récuper les prix de tous les article
 
+var articls = document.getElementsByClassName("articles") ; 
+
 var sum = 0 ; 
 
 for (let i = 0 ; i < prices.length ; i++) 
 {
-    var price = Number(prices[i].innerHTML) ;   // on additione tous les somme 
-    sum = price + sum ;   
+  
+    var price = parseInt(prices[i].innerHTML , 10) ; 
 
+    sum = sum + price ; 
+
+    console.log(price);
+
+    
 }
- document.getElementById('totalSum').innerHTML = String(sum) ; // on transforme le résultat en string pour qu'on puisse l'afficher a la page en HTML 
+var articleSum = 0
+for (let j = 0 ; j < articls.length ; j++ ) 
+{
+   var article = parseInt(articls[j].innerHTML , 10) ; 
+   
+   articleSum = articleSum + article ; 
+}
 
+ document.getElementById('totalSum').innerHTML = String(sum) ; // on transforme le résultat en string pour qu'on puisse l'afficher a la page en HTML 
+document.getElementById('articleNumber').innerHTML = String(articleSum) ;
 var checkout =  document.getElementById('pay') ; 
 
 checkout.onclick = function()
