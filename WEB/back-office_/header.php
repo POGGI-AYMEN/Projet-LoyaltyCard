@@ -20,6 +20,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="stockHandling.css">
     <link href="css/sb-admin-2.css" rel="stylesheet">
 
 </head>

@@ -16,6 +16,8 @@ if ($check != 0)
         $id = $_SESSION['clientId'] ; 
 
         $user = ClientModel::selectWhere("id" , $id) ;                // recupération des infor de client //
+        
+        $info_clients = ClientModel::selectAll();
 
         
         $points = CarteModel::selectPointsWhere("num_carte" ,$user['num_carte']) ;   // on selectionne les point de l'utilisateur

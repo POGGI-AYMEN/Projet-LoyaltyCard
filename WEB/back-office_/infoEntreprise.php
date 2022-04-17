@@ -35,47 +35,106 @@ session_start() ;
       
       ?>
 
-   		</main>
-      <h1 id="title"><?php echo  $result['nom'] ; ?></h1>
-<div class="infoContainer">
-        <div class="info">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Information de l'entreprise <strong><?php echo  $result['nom'] ; ?></strong></h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                      
+                        <th>Nom</th>
+                        <th>Information</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                    ID
+                    </td>
+                    <td>
+                    <p><?php echo $result['id']; ?></p>
+                    </td> 
+                  </tr>
 
-          <div class="row-1">
-              <h6>ID: </h6> <p><?php echo $result['id']; ?></p>
-              <h6>NOM: </h6>  <p><?php echo $result['nom']; ?></p>
-              <h6>Gérant: </h6>  <p><?php echo $result['gérant']; ?></p>
-              <h6>DATE DE CREATION: </h6>  <p><?php echo $result['date_de_création']; ?></p>
-              <h6>SIEGE SOCIALE: </h6>  <p><?php echo $result['adresse']; ?></p>
-          </div>
+                  <tr>
+                    <td>
+                    NOM
+                    </td>
+                    <td>
+                    <p><?php echo $result['nom']; ?></p>
+                    </td> 
+                  </tr>
+                  <tr>
+                    <td>EMAIL</td>
+                    <td> <p><?php echo $result['email']; ?></p> </td> 
+                  </tr> 
+                  <tr>
+                    <td>TELEPHONE</td>
+                    <td> <p><?php echo $result['numéro_tel']; ?></p> </td> 
+                  </tr> 
 
-          <div class="row-2">
-            <h6>SECTEUR D'ACTIVITE: </h6>  <p><?php echo $result['activité']; ?></p>
-            <h6>SEIRET: </h6>  <p><?php echo $result['siret']; ?></p>
-            <h6>EMAIL: </h6>  <p><?php echo $result['email']; ?></p>
-            <h6>TELEPHONE: </h6>  <p><?php echo $result['numéro_tel']; ?></p>
+                  <tr>
+                    <td>
+                    GÉRANT
+                    </td>
+                    <td>
+                    <p><?php echo $result['gérant']; ?></p>
+                    </td> 
+                  </tr>
 
+                  <tr>
+                    <td>DATE DE CREATION</td>
+                    <td>
+                    <p><?php echo $result['date_de_création']; ?></p>
+                    </td> 
+                  </tr>
 
+                  <tr>
+                    <td>SIEGE SOCIALE</td>
+                    <td>
+                    <p><?php echo $result['adresse']; ?></p>
+                    </td> 
+                  </tr>
 
-          </div>
+                  <tr>
+                    <td>SECTEUR D'ACTIVITE</td>
+                    <td> <p> <?php echo $result['activité']; ?> </p> </td> 
+                  </tr>  
+                  <tr>
+                    <td>SIRET</td>
+                    <td> <p><?php echo $result['siret']; ?></p> </td> 
+                  </tr> 
+                   
+                  <tr>
+                    <td>chiffre d'affaire de l'année <?php echo date("Y"); ?></td>
+                    <td>  <p><?php echo $result['chiffre_daffaire']." "."€"; ?> </td> 
+                  </tr>  
+                  <tr>
+                    <td>duré du contrat</td>
+                    <td>  <p><?php echo $result['contrat']?> </td> 
+                  </tr> 
+                  <tr>
+                    <td>Montant a payer pour l'année <?php echo date("Y"); ?></td>
+                    <td>  <?php echo paymentAmount($result['chiffre_daffaire']); ?> </td> 
+                  </tr> 
+                  <tr>
+                    <td>date du dernier payement <?php echo date("Y"); ?></td>
+                    <td>  <p><?php echo $result['date_de_payement']?></p> </td> 
+                  </tr> 
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+  </div>
 
-</div>
-<hr> <h2 style="text-align: center;">Gestion</h2>
-<h6>chiffre d'affaire de l'année <?php echo date("Y"); ?>  :</h6> <p><?php echo $result['chiffre_daffaire']." "."€"; ?></p>
-<h6>duré du contrat : </h6> <p><?php echo $result['contrat']?></p>
-<h6>Montant a payer pour l'année  <?php echo date("Y"); ?> </h6> <?php echo paymentAmount($result['chiffre_daffaire']); ?>
-<h6>date du dernier payement : </h6> <p><?php echo $result['date_de_payement']?></p>
-        
-
-
-        </div>  
-
-
-        </main>
-   		
-
-   </body>
- <?php }else { header('location:../error.php?message=403 Forbbiden') ;} ?>
-   </html>
+<?php }else { header('location:../error.php?message=403 Forbbiden') ;} ?>
+  
+ <?php require("footer.php"); ?>
 
 
 
