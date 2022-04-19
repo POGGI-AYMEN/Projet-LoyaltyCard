@@ -124,7 +124,7 @@ body {
 <p>Esseyer plus tard si ce probleme persiste contacter</p> <a href="mailto:loyalty.card6@gmail.com">loyalty.card6@gmail.com'</a>
 <br>
 <br>² 
-<a href="index.php">Page d'accueil</a>
+<a href="../index.php">Page d'accueil</a>
 </div>
 </div>
 </body>

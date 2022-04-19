@@ -1,5 +1,5 @@
 <?php 
-include "../controllers/entreprise.php" ;
+include "../controllers/client.php" ;
 include "../controllers/admin.php" ; 
 
 
@@ -10,7 +10,7 @@ include "header.php" ;
 <div class="container-fluid">
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Modifier les information de l'entreprise</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Modifier les information du client</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -24,51 +24,61 @@ include "header.php" ;
                     </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      Email
-                    </td>
-                    <td>
-                       <input type="text" name="email" value=<?php echo $company['email']; ?>>
-                    </td> 
-                  </tr>
+                    <tr>
+                        <td> Nom </td>
+                        <td>
+                            <!-- USER INFORMATION -->
+                        </td> 
+                    </tr>
+
+                    <tr>
+                        <td> Prenom </td>
+                        <td>
+                            <!-- USER INFORMATION -->
+                        </td> 
+                    </tr>
+
+                    <tr>
+                        <td> Email </td>
+                        <td>
+                            <!-- USER INFORMATION -->
+                        </td> 
+                    </tr>
 
                   <tr>
                     <td>
                        Numéro de téléphone
                     </td>
                     <td>
-                      <input type="text" name="num" value=<?php echo $company['numéro_tel']; ?>>
+                      <!-- USER INFORMATION -->
+                    </td> 
+                  </tr>
+
+                    <tr>
+                        <td> Mot de passe </td>
+                        <td>
+                           <!-- USER INFORMATION -->
+                        </td> 
+                    </tr>
+
+                  <tr>
+                    <td>Adresse</td>
+                    <td>
+                      <!-- USER INFORMATION -->
                     </td> 
                   </tr>
 
                   <tr>
+                    <td>Ville</td>
                     <td>
-                      Gérant
-                    </td>
-                    <td>
-                      <input type="text" name="gérant" value=<?php echo $company['gérant']; ?>>
+                      <!-- USER INFORMATION -->
                     </td> 
                   </tr>
 
                   <tr>
-                    <td>Chiffre d'affaire</td>
+                    <td>Code postal</td>
                     <td>
-                      <input type="text" name="chif_affaire" value=<?php echo $company['chiffre_daffaire']; ?>>
-                    </td> 
-                  </tr>
-
-                  <tr>
-                    <td>Durée de contrat</td>
-                    <td>
-                      <input type="text" name="contrat" value=<?php echo $company['contrat']; ?>>
-                    </td> 
-                  </tr>
-
-                  <tr>
-                    <td>Date du dernier payement</td>
-                    <td>
-                      <input type="text" name="date" value=<?php echo $company['date_de_payement']; ?>>
+                      <!-- USER INFORMATION -->
                     </td> 
                   </tr>      
                 </tbody>
