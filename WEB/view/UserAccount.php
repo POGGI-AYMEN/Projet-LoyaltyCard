@@ -1,8 +1,13 @@
-<?php 
+<?php
+
+
 include "../controllers/client.php" ; 
 include "../models/ventesModel.php" ; 
+include "../controllers/carte.php" ;
 
-$articlesCount = VentesModel::selectWhereCount("email" , $user['email']) ; 
+$articlesCount = VentesModel::selectWhereCount("client" , $_SESSION['clientId']) ; 
+$points = Cart::getPoints($user['num_carte']) ;
+$euro = Cart::pointsToEuro($points['points']) ;
 
 
 ?>
@@ -28,7 +33,6 @@ $articlesCount = VentesModel::selectWhereCount("email" , $user['email']) ;
 <?php require("navbar.php"); ?>
 <br><br>
 
-
 <div class="container__">
 		<div class="main-body">
 			<div class="row">
@@ -45,7 +49,7 @@ $articlesCount = VentesModel::selectWhereCount("email" , $user['email']) ;
 										<div class="col mr-2">
 											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 											Points</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">30</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $points['points'] ;  ?></div>
 										</div>
 										<div class="col-auto">
 											<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -79,7 +83,7 @@ $articlesCount = VentesModel::selectWhereCount("email" , $user['email']) ;
 										<div class="col mr-2">
 											<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
 											Vos points en euros</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $points[0]; ?></div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $euro ;  ?>
 										</div>
 										<div class="col-auto">
 											<i class="fas fa-euro-sign fa-2x text-gray-300"></i>
@@ -94,8 +98,4 @@ $articlesCount = VentesModel::selectWhereCount("email" , $user['email']) ;
 		</div>
 </div>
 
-<<<<<<< HEAD:WEB/view/UserAccount.php
 <?php require("footer.php"); ?>
-=======
-    <?php require("footer.php"); ?>
->>>>>>> 818cffd048ec960ed032720ea8baaeefce851685:WEB/view/User/UserAccount.php

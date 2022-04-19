@@ -9,7 +9,8 @@ include "../models/panierModel.php" ;
 
 $clientId = $_SESSION['clientId'] ; 
 
-$myPanel = PanelModel::selectAll() ; 
+
+$myPanel = PanelModel::selectAll($clientId) ; 
 
 
 // incrémenté un article dans le panier // 
@@ -29,9 +30,9 @@ if (isset($_GET['incArticle']) && !empty($_GET['incArticle']))
     }
         else
     {
-        PanelModel::updateWherePlus("article" , $article) ; 
+        PanelModel::updateWherePlus("article" , $article ,$clientId) ; 
 
-        ArticleModel::updateWhereMinus("nom" , $article) ; 
+        ArticleModel::updateWhereMinus("nom" , $article , $clientId) ; 
 
         header('location:../view/page_panier.php') ; 
 
@@ -50,9 +51,9 @@ if (isset($_GET['decArticle']) && !empty($_GET['decArticle']))
     
     if ($article['quantité'] > 1) 
     {
-        PanelModel::updateWhereMinus("article" , $articleName) ; 
+        PanelModel::updateWhereMinus("article" , $articleName , $clientId) ; 
 
-        ArticleModel::updateWherePlus("nom" , $articleName) ; 
+        ArticleModel::updateWherePlus("nom" , $articleName , $clientId) ; 
 
         header("location:../view/page_panier.php") ; 
 
@@ -62,13 +63,26 @@ if (isset($_GET['decArticle']) && !empty($_GET['decArticle']))
     else 
 
     {
-        PanelModel::deletFromWhere("article" , $articleName) ;
+        PanelModel::deletFromWhere("article" , $articleName , $clientId) ;
         
         header("location:../view/page_panier.php") ; 
 
         die() ; 
     }
 }
+
+// retirer un article du panier 
+
+if (isset($_GET['deleteArtilce'])) 
+{
+
+    $articleName = $_GET['deleteArtilce'] ; 
+    
+    PanelModel::deletFromWhere("article" , $articleName , $clientId) ; 
+
+    header('location:../view/page_panier.php') ; 
+}
+
 
 // Ajout d'un article au panier depuis la page des article de LoyaltyCard 
 
@@ -100,7 +114,5 @@ if (isset($_GET['addArticle'])&& !empty($_GET['addArticle']))
     header('location:../view/Articles.php?message=Article ajouter au panier') ; 
 
     die() ; 
-    
-
     
 }

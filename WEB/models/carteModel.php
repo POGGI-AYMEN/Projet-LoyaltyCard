@@ -28,4 +28,36 @@
             return $points ; 
         }
 
-    }
+        public function pointsCount($value)  
+        {
+            include "../config/database.php" ; 
+
+            $selectQuery = $con->prepare("SELECT * FROM Carte WHERE num_carte = ?") ; 
+
+            $selectQuery->execute([$value]) ; 
+
+            $points = $selectQuery->fetch(PDO::FETCH_ASSOC) ;
+            
+           return $points ; 
+
+        }
+
+       public function updatePoints($points , $client) 
+       {
+           include "../config/database.php" ; 
+
+           $updateQuery = $con->prepare("UPDATE Carte SET points = points - ? WHERE num_carte = ?") ; 
+
+           $updateQuery->execute([$points , $client]) ;
+       }
+
+       public function updatePointsAdd($points , $client) 
+       {
+           include "../config/database.php" ; 
+
+           $updateQuery = $con->prepare("UPDATE Carte SET points = points + ? WHERE num_carte = ?") ; 
+
+           $updateQuery->execute([$points , $client]) ; 
+       } 
+    
+}

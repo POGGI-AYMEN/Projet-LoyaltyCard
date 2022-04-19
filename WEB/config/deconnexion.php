@@ -6,4 +6,4 @@ session_start() ;
 session_destroy() ; 
 
 // redirection vers la page de connexion 
-header('location:../connexion.php') ; 
+header('location:../view/connexion.php') ; 

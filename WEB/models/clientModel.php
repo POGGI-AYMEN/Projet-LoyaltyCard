@@ -74,4 +74,28 @@
                 $whereValue 
             ]) ; 
         }
+
+        public function updateClientInfo($client , $id) 
+        {
+            include "../config/database.php" ; 
+
+            include "../config/database.php" ; 
+
+            $update = $con->prepare("UPDATE Clients SET nom = ? , prenom = ? , email = ? , mdp = ? , pays = ? , adresse = ? , num_tel = ? , code_postal = ?  WHERE id = ?") ;
+    
+            $update->execute([
+                $client['nom'] ,
+                $client['prenom'] ,
+                $client['email'] ,
+                $client['password'] ,
+                $client['pays'] , 
+                $client['adress'] , 
+                $client['phone'],
+                $client['code_postal'],
+    
+                
+                $id 
+            
+            ]) ; 
+        }
     }

@@ -31,13 +31,13 @@
             ]) ; 
         }
             // selectionne tous les article dans le panier 
-        public function selectAll() 
+        public function selectAll($client) 
         {
             include "../config/database.php" ; 
 
-            $selectQuery = $con->prepare("SELECT * FROM Panier") ; 
+            $selectQuery = $con->prepare("SELECT * FROM Panier WHERE client = ?") ; 
 
-            $selectQuery->execute() ; 
+            $selectQuery->execute([$client]) ; 
 
             $panier = $selectQuery->fetchAll() ; 
 
@@ -47,35 +47,35 @@
 
         // update 
 
-        public function updateWherePlus($where , $value) 
+        public function updateWherePlus($where , $value , $client) 
         {
             include "../config/database.php" ; 
 
-            $updateQuery = $con->prepare("UPDATE Panier SET quantité = quantité + 1 WHERE ".$where." = ?") ; 
+            $updateQuery = $con->prepare("UPDATE Panier SET quantité = quantité + 1 WHERE ".$where." = ? AND client = ?") ; 
 
-            $updateQuery->execute([$value]) ; 
+            $updateQuery->execute([$value , $client]) ; 
 
             
         }
 
-        public function updateWhereMinus($where , $value) 
+        public function updateWhereMinus($where , $value , $client) 
         {
             include "../config/database.php" ; 
 
-            $updateQuery = $con->prepare("UPDATE Panier SET quantité = quantité - 1 WHERE ".$where." = ?") ; 
+            $updateQuery = $con->prepare("UPDATE Panier SET quantité = quantité - 1 WHERE ".$where." = ? AND client = ?") ; 
 
-            $updateQuery->execute([$value]) ; 
+            $updateQuery->execute([$value , $client]) ; 
 
             
         }
 
-        public function deletFromWhere($where , $value) 
+        public function deletFromWhere($where , $value , $client) 
         {
             include "../config/database.php" ; 
 
-            $deleteQuery = $con->prepare("DELETE FROM Panier WHERE ".$where." = ?") ; 
+            $deleteQuery = $con->prepare("DELETE FROM Panier WHERE ".$where." = ? AND client = ?") ; 
 
-            $deleteQuery->execute([$value]) ; 
+            $deleteQuery->execute([$value , $client]) ; 
         }
     
     

@@ -1,3 +1,9 @@
+<?php 
+include "../controllers/client.php" ; 
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,6 +27,7 @@
 
 
 <div class="container__">
+	<p style="color:red;"><?php if(!empty($error)) { echo $error; } ?></p>
 		<div class="main-body">
 			<div class="row">
 			<?php require("menu.php") ?>
@@ -31,9 +38,18 @@
 							<div class="row mb-3">
 								<div class="col-sm-3">
 									<h6 class="mb-0">Nom</h6>
+									<form method="post">
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="John Doe">
+									<input name="nom" type="text" class="form-control" value="<?php echo $user['nom'] ;?>">
+								</div>
+							</div>
+							<div class="row mb-3">
+								<div class="col-sm-3">
+									<h6 class="mb-0">Prénom</h6>
+								</div>
+								<div class="col-sm-9 text-secondary">
+									<input  name="prenom"  type="text" class="form-control" value="<?php echo $user['prenom'] ;?>">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -41,7 +57,7 @@
 									<h6 class="mb-0">Email</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="john@example.com">
+									<input  name="email"  type="email" class="form-control" value="<?php echo $user['email'] ;?>">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -49,7 +65,7 @@
 									<h6 class="mb-0">Mot de passe</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" >
+									<input name="password" type="password" class="form-control" >
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -57,7 +73,7 @@
 									<h6 class="mb-0">Telephone</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="(239) 816-9029">
+									<input name="phone" type="text" class="form-control"value="<?php echo $user['num_tel'] ;?>">
 								</div>
 							</div>
 							
@@ -66,7 +82,7 @@
 									<h6 class="mb-0">Adresse</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="23 rue saint antoine ">
+									<input name="adress" type="text" class="form-control" value="<?php echo $user['adresse'] ;?>">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -74,7 +90,7 @@
 									<h6 class="mb-0">Ville</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="Noisy-le-sec">
+									<input name="ville" type="text" class="form-control" value="<?php echo $user['ville'] ;?>">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -82,7 +98,7 @@
 									<h6 class="mb-0">Code Postale</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="77400">
+									<input name="code_postal" type="text" class="form-control" value="<?php echo $user['code_postal'] ;?>">
 								</div>
 							</div>
 							<div class="row mb-3">
@@ -90,14 +106,15 @@
 									<h6 class="mb-0">Pays</h6>
 								</div>
 								<div class="col-sm-9 text-secondary">
-									<input type="text" class="form-control" value="France">
+									<input name="pays" type="text" class="form-control" value="<?php echo $user['pays'] ;?>">
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-sm-3"></div>
 								<div class="col-sm-9 text-secondary">
-									<input type="button" class="btn btn-primary px-4" value="Save Changes">
+									<input name="save" type="submit" class="btn btn-primary px-4" value="Enregistrer">
 								</div>
+</form>
 							</div>
 						</div>
 					</div>
@@ -106,3 +123,5 @@
 </div>
 
 <?php require("footer.php"); ?>
+<?php 
+
