@@ -18,7 +18,7 @@
                     <a class="nav-link link-dark lead" href="page_panier.php">Panier</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link link-dark lead" href="Articles.php">Articles</a>
+                    <a class="nav-link link-dark lead" href="artic.php">Articles</a>
                 </li>
 
             </ul>

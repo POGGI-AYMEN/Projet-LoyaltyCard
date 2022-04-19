@@ -19,7 +19,7 @@
     </div>
 
 
-<script src="/JS/scrollSpy.js"></script>
+<script src="../JS/scrollSpy.js"></script>
 </body> 
    
 </html>

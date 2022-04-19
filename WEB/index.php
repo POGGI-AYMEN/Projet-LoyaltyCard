@@ -85,7 +85,7 @@
                 <div class="flexbox_"> 
                     <div class="presentaation">
                         <p class="paragraph">  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vel nulla unde dolorem incidunt tempore similique vero alias sapiente velit, culpa itaque, quia soluta veniam voluptas maiores repudiandae non, quis beatae.</p>
-                        <button class="btn_stndr"><a href="#clienetOrEntreprise">Boutique</a></button>           
+                        <button class="btn_stndr"><a href="view/Articles.php">Boutique</a></button>           
 
                     </div>
                     <img src="images/undraw_mobile_pay_re.svg" alt="pay_online"  width="350px">
