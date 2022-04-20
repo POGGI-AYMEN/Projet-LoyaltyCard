@@ -20,6 +20,9 @@
                 <li class="nav-item ">
                     <a class="nav-link link-dark lead" href="artic.php">Articles</a>
                 </li>
+                <li class="nav-item ">
+                    <a class="nav-link link-dark lead" href="artic.php">Prestations</a>
+                </li>
 
             </ul>
     </nav>

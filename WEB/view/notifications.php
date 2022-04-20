@@ -40,6 +40,51 @@ Notification::deleteNotification($_SESSION['clientId']) ;
             <div class="col-lg-8">
             <div class="row notification-container">
   <h2 class="text-center"> Notifications</h2>
+
+  <p class="dismiss text-right"><a id="dismiss-all" href="#">Tout supprimer</a></p>
+  <div class="card notification-card ">
+    <div class="card-body">
+      <table>
+        <tr>
+          <td style="width:70%"><div class="card-title">Jane invited you to join '<b>Familia</b>' group</div></td>
+          <td style="width:30%">
+            <a href="notification_détails.php" class="btn btn-primary">View</a>
+            <a href="#" class="btn btn-danger dismiss-notification">Supprimer</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="card notification-card ">
+    <div class="card-body">
+       <table>
+        <tr>
+          <td style="width:70%"><div class="card-title">Your expenses for '<b>Groceries</b>' has exceeded its budget</div></td>
+          <td style="width:30%">
+            <a href="notification_détails.php" class="btn btn-primary">View</a>
+            <a href="#" class="btn btn-danger dismiss-notification">Supprimer</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+  <div class="card notification-card ">
+    <div class="card-body">
+       <table>
+        <tr>
+          <td style="width:70%"><div class="card-title">Insufficient budget to create '<b>Clothing</b>' budget category</div></td>
+          <td style="width:30%">
+            <a href="#" class="btn btn-primary">View</a>
+            <a href="#" class="btn btn-danger dismiss-notification">Supprimer</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+
   <p class="dismiss text-right"><a id="dismiss-all" href="notifications.php?delNotification=all">Tout supprimer</a></p>
 
 <?php 
@@ -48,6 +93,7 @@ foreach($notifications as $notification)
 {
 
 ?>
+
 
   <div class="card notification-card ">
     <div class="card-body">

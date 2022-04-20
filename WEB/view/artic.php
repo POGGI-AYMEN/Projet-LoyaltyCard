@@ -56,7 +56,10 @@ include "../controllers/article.php" ;
     ?>
 
         <div class="col-md-4 col-sm-6 col-xs-12">
+
             <article class="material-card Red">
+
+
 
                 <h2>
                     <span> <?php echo $article['nom'] ;  ?></span>
@@ -64,8 +67,10 @@ include "../controllers/article.php" ;
                     <a href="../controllers/panier.php?addArticle=<?php echo $article['codeArticle'] ;   ?>">Ajouter au panier </a>
                 </h2>
 
+                
+             
+                <div class="mc-content " >
 
-                <div class="mc-content">
                     <div class="img-container">
                         <img class="img-responsive" src="../uploads/images/<?php echo $article['image']; ?>" height="100%" width="100%">
                     </div>
@@ -81,6 +86,7 @@ include "../controllers/article.php" ;
                 </a>
 
             </article>
+           
         </div>
         <?php
               $i++ ;
@@ -94,6 +100,9 @@ include "../controllers/article.php" ;
 
 
 <!-- JavaScript Bundle with Popper -->
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script
   src="https://code.jquery.com/jquery-3.6.0.js"
