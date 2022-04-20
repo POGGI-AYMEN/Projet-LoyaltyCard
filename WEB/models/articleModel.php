@@ -44,5 +44,15 @@
 
             $updateQuery->execute([$value]) ; 
         }
+
+        public function updateQuantityMinus($quantity , $article) 
+        {
+            include "../config/database.php" ; 
+
+            $updateQuery = $con->prepare("UPDATE Article SET quantité = quantité - ? WHERE article = ?") ; 
+
+            $updateQuery->execute([$quantity , $article]) ; 
+
+        }
     
     }

@@ -1,30 +1,23 @@
-<?php
-  if(!empty($_GET['tid'] && !empty($_GET['product']))) {
-    $GET = filter_var_array($_GET, FILTER_SANITIZE_STRING);
-
-    $tid = $GET['tid'];
-    $product = $GET['product'];
-  } else {
-    header('Location: index.php');
-  }
+<?php  
+include "../controllers/client.php" ; 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <title>Thank You</title>
-</head>
-<body>
-  <div class="container mt-4 bg-success">
-    <h2>Thank you for purchasing </h2>
-    <hr>
-    
-    <p>Check your email for more info</p>
-    <p><a href="index.php" class="btn btn-light mt-2">Go Back</a></p>
-  </div>
-</body>
-</html>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+<div class="jumbotron text-center">
+  <h1 class="display-3">Thank You!</h1>
+  
+  <hr>
+  <p>
+    Vous rencontrez des probleme ? <a href="Contact_page.php">Contactez-nous</a>
+  </p>
+  
+  <p class="lead">
+    <a class="btn btn-primary btn-sm" href="UserAccount.php" role="button">Continue vers la page d'accueil</a>
+  </p>
+  <p class="lead">
+    <a class="btn btn-primary btn-sm" href="../config/download.php?fileName=<?php  echo $_GET['facture'] ; ?>" role="button">Télécharger votre facture</a>
+  </p>
+</div>
+
+<script src="../JS/push.js"></script>

@@ -1,5 +1,13 @@
 <?php  
+/**
+ * faire  : 
+ * l'utlisation des point de l'utilisateur 
+ * passage du prix au page de paiement stripe 
+ * boutton de supréssion de l'article
+ */
 include "../controllers/panier.php" ;
+
+
 
 $i = 0  ; 
 ?>
@@ -63,7 +71,7 @@ $i = 0  ;
                     <div class="col"><a href="../controllers/panier.php?decArticle=<?php echo $myPanel[$i]['article'] ?>" class="border">-</a></div>
 
                     <div class="col"><p class="price"> <?php echo $myPanel[$i]['prix'] * $myPanel[$i]['quantité']; ?></p> </div>
-                    <div class="col close"><a href="">&#10005;</a></div>
+                    <div class="col close"><a href="../controllers/panier.php?deleteArtilce=<?php echo $myPanel[$i]['article'] ?>">&#10005;</a></div>
                 </div>
             </div>
             
@@ -73,6 +81,12 @@ $i = 0  ;
                ?>
             
             <div class="back-to-shop"><a href="UserAccount.php">&leftarrow;</a><span class="text-muted">RETOUR AU PROFIL</span></div>
+
+            <p>Voulez-vous utilisé vos points</p> 
+            <p style="color:red" id="error"></p>
+            <input id="points" name="usedPoints" placeholder="nombre des points">
+            <button type="submit" id="use">Utiliser</button>
+
         </div>
         <div class="col-md-4 summary">
             <div>
@@ -87,7 +101,7 @@ $i = 0  ;
             <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
                 <div class="col">PRIX TOTAL</div>
                 <div id="totalSum" class="col text-right"></div>
-            </div> <a href="payement-page.php"><button class="btn">PAYER</button></a>
+            </div><button id="payment" class="btn">PAYER</button></a>
         </div>
     </div>
 </div>
@@ -96,3 +110,4 @@ $i = 0  ;
 
 <?php require("footer.php"); ?>
 
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

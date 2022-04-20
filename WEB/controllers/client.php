@@ -1,4 +1,6 @@
 <?php 
+
+    
 require '../models/clientModel.php' ;
 
 session_start() ; 
@@ -73,4 +75,37 @@ if (isset($_POST['inscription']))
 
 $clientCount = ClientModel::count() ; 
 
+if (isset($_POST['save']) && !empty($_POST['save'])) 
+{
+    if (empty($_POST['nom']) && empty($_POST['prenom'])&& empty($_POST['email']) && empty($_POST['password'])&&empty($_POST['ville']) && empty($_POST['pays'])&&
+    empty($_POST['adress']) && empty($_POST['phone']) && empty($_POST['code_postal'])) 
+    {
+        $error = "Veuillez remplire au minimum l'un des champs du formulaire" ; 
+    } 
+    else
+    {
 
+        if (!filter_var($_POST['email'] , FILTER_VALIDATE_EMAIL)) { $error = "Adresse email non valide !" ;}
+        
+        if(strlen($_POST['password']) < 6) { $error = "Mote de passe doit comprendre plus de 6 caracter" ; }
+
+
+        $client['nom'] = htmlspecialchars($_POST['nom']) ; 
+        
+        $client['prenom'] = htmlspecialchars($_POST['prenom']) ;
+      
+        $client['email'] = htmlspecialchars($_POST['email']) ; 
+        $client['password'] = base64_encode(hash_hmac('sha256' , $_POST['password'] , 'toto'));   
+
+
+        $client['pays'] = htmlspecialchars($_POST['pays']) ; 
+        $client['adress'] = htmlspecialchars($_POST['adress']) ; 
+        
+        $client['phone'] = htmlspecialchars($_POST['phone']) ; 
+        $client['code_postal'] = htmlspecialchars($_POST['code_postal']) ; 
+
+        ClientModel::updateClientInfo($client , $_SESSION['clientId']) ; 
+        header('location:../view/edit-profil.php') ;
+
+    }
+}

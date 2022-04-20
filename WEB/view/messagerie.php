@@ -1,5 +1,14 @@
 <?php 
 include "../controllers/client.php" ;
+
+include "../controllers/messagerie.php" ; 
+
+Messagerie::sendMessage() ; 
+
+
+$messages = Messagerie::getClientMessages($_SESSION['clientId']) ;  
+
+
 ?>
 
 <!DOCTYPE html>
@@ -39,41 +48,68 @@ include "../controllers/client.php" ;
 									<div class="py-2 px-4 border-bottom d-none d-lg-block">
 										
 									</div>
-
-									<div class="position-relative">
+								<div class="position-relative">
 										<div class="chat-messages p-4">
+					
 
-											<div class="chat-message-right pb-4">
-												<div>
-													<div class="text-muted small text-nowrap mt-2">2:33 am</div>
-												</div>
-												<div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3">
-													<div class="font-weight-bold mb-1">Vous</div>
-													Lorem ipsum dolor sit amet, vis erat denique in, dicunt prodesset te vix.
-												</div>
+										<?php   
+										
+										foreach($messages as $message)
+
+										if ($message['admin_message'] === "") 
+										{
+											echo 
+											"
+											<div class='chat-message-right pb-4'>
+											<div>
+												<div class='text-muted small text-nowrap mt-2'>". date('j/n/Y h:m')."</div>
 											</div>
-
-											<div class="chat-message-left pb-4">
-												<div>
-													<div class="text-muted small text-nowrap mt-2">2:34 am</div>
-												</div>
-												<div class="flex-shrink-1 bg-light rounded py-2 px-3 ml-3">
-													<div class="font-weight-bold mb-1">LoyaltyBoost</div>
-													Sit meis deleniti eu, pri vidit meliore docendi ut, an eum erat animal commodo.
-												</div>
+											<div class='flex-shrink-1 bg-light rounded py-2 px-3 mr-3'>
+												<div class='font-weight-bold mb-1'>Vous</div>
+												".$message['message']."
 											</div>
+										</div>
+						
+
+											
+											" ;
+										}
+
+										else
+										{
+
+											echo 
+											"
+											<div class='chat-message-left pb-4'>
+											<div>
+												<div class='text-muted small text-nowrap mt-2'>". date('j/n/Y h:m')."</div>
+											</div>
+											<div class='flex-shrink-1 bg-light rounded py-2 px-3 mr-3'>
+												<div class='font-weight-bold mb-1'>LoyaltyBoost</div>
+												".$message['admin_message']."
+											</div>
+										</div>
+						
+
+											
+											" ;
+										}
 
 
+										?>
+										
+				
+					
 										</div>
 									</div>
-
+	<form method="post">
 									<div class="flex-grow-0 py-3 px-4 border-top">
 										<div class="input-group">
-											<input type="text" class="form-control" placeholder="Type your message">
-											<button class="btn btn-primary">Send</button>
+											<input name="message" type="text" class="form-control" placeholder="Type your message">
+											<input name="send" type="submit" class="btn btn-primary"></input>
 										</div>
 									</div>
-
+</form>
 								</div>
 						</div>
 					

@@ -1,3 +1,13 @@
+<?php 
+include "../controllers/client.php" ; 
+
+include "../controllers/historique.php" ; 
+
+$products = Historique::getAll($_SESSION['clientId']) ; 
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -17,9 +27,17 @@
 </head>
 <body>
 <?php require("navbar.php"); ?>
-<br><br>
+<br>
 
+<style>
+
+    .card 
+    {
+        margin-top:50px;
+    }
+</style>
 <div class="card ">
+    
         <div class="col-md-12 cart">
             <div class="title">
                 <div class="row">
@@ -29,33 +47,29 @@
                    
                 </div>
             </div>
-            <div class="row border-top border-bottom">
-                <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
-                    <div class="col">
-                        <div class="row text-muted">Shirt</div>
-                        <div class="row">Cotton T-shirt</div>
-                    </div>
-                    <div class="col"><a href="#" class="border">1</a></div>
-                    <div class="col">&euro; 44.00 </div>
-                    <div class="col close"><a href="">Retour</a></div>
-                </div>
-            </div>
+            
+           <?php 
+        foreach($products as $product){
+           ?>
             <div class="row">
                 <div class="row main align-items-center">
                     <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"></div>
                     <div class="col">
-                        <div class="row text-muted">Shirt</div>
-                        <div class="row">Cotton T-shirt</div>
+                        <div class="row text-muted"><?php echo $product['date'] ;  ?></div>
+                        <div class="row"><?php echo $product['article'] ;  ?></div>
                     </div>
-                    <div class="col"> <a href="#" class="border">1</a> </div>
-                    <div class="col">&euro; 44.00 </div>
+                    <div class="col"> <a href="#" class="border"><?php echo $product['quantité'] ;  ?></a> </div>
+                    <div class="col"><?php echo $product['prix'] ?></div>
+                    <div class="col"><a href="../config/download.php?fileName=<?php echo $product['facture_code'] ; ?>"><img src="../images/pdf.svg" height="45px;"></a></div>
+
                     <div class="col close"><a href="">Retour</a></div>
                 </div>
             </div>
             <div class="row border-top border-bottom"></div>
                
-            
+            <?php 
+            }
+            ?>
             <div class="back-to-shop"><a href="UserAccount.php">&leftarrow;</a><span class="text-muted">RETOUR AU PROFIL</span></div>
         </div>
 </div>

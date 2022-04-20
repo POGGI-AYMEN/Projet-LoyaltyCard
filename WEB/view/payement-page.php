@@ -1,3 +1,12 @@
+<?php 
+if (isset($_GET['amount']) && !empty($_GET['amount'])) 
+{
+    $amount = $_GET['amount'] ; 
+    $points = $_GET['points'] ; 
+  
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,7 +24,7 @@
    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/UserAccount.css">
     <link rel="stylesheet" href="../css/user_footer.css"> 
-    <title>Notifications </title>
+    <title>Paiement</title>
 </head>
 <body>
 <?php require("navbar.php"); ?>
@@ -23,7 +32,7 @@
 
 <div class="container">
     <h2 class="my-4 text-center">Paiement</h2>
-    <form action="./charge.php" method="post" id="payment-form">
+    <form action="./charge.php?amount=<?php echo $amount ; ?>&&points=<?php echo $points; ?>" method="post" id="payment-form">
       <div class="form-row">
        <input type="text" name="first_name" class="form-control  mb-3 StripeElement StripeElement--empty" placeholder="Nom">
        <input type="text" name="last_name" class="form-control mb-3 StripeElement StripeElement--empty" placeholder="Prenom">

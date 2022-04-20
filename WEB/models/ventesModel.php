@@ -28,6 +28,22 @@ class VentesModel
         return $count ; 
     }
     
+    public function insert($product) 
+    {
+        include "../config/database.php" ; 
+
+        $insertQuery = $con->prepare("INSERT INTO Ventes (codeArticle , nom_article , client , date , entrepots , quantité, facture_code) VALUES (?, ? , ? , ? , ? ,? , ?)") ; 
+
+        $insertQuery->execute([
+            $product['codeArticle'] ,
+            $product['article'] , 
+            $product['client'] ,
+            $product['date'] ,
+            $product['entrepots'] ,
+            $product['quantité'],
+            $product['facture']
+        ]) ; 
+    }
 
 
 }

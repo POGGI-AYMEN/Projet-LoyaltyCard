@@ -14,4 +14,19 @@
 
             return $Admin ; 
         }
+
+        public function selectAll() 
+        {
+            include "../config/database.php" ; 
+
+
+            $selectQuery = $con->prepare("SELECT * FROM Admin") ; 
+
+            $selectQuery->execute() ; 
+
+            $Admins = $selectQuery->fetchAll() ; 
+
+            return $Admins ; 
+
+        }
     }
