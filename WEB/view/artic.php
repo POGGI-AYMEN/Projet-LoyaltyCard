@@ -49,7 +49,7 @@
     ?>
 
         <div class="col-md-4 col-sm-6 col-xs-12">
-            <article class="material-card Red">
+            <article class="material-card Red " >
                 
                 <h2>
                     <span> <?php echo $articles[$i]['nom'] ;  ?></span>
@@ -58,7 +58,7 @@
                 </h2>
                 
              
-                <div class="mc-content">
+                <div class="mc-content " >
                     <div class="img-container">
                         <img class="img-responsive" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.apple.com%2Ffr%2Fshop%2Fbuy-ipad%2Fipad-10-2&psig=AOvVaw1xVGyXT3nocnvUCxyO2pHz&ust=1650451801171000&source=images&cd=vfe&ved=0CAwQjRxqFwoTCMCkq6b6n_cCFQAAAAAdAAAAABAE" height="100%" width="100%">
                     </div>
@@ -71,6 +71,7 @@
                 </a>
                 
             </article>
+           
         </div>
         <?php 
               $i++ ; 
@@ -84,6 +85,9 @@
 
 
 <!-- JavaScript Bundle with Popper -->
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script
   src="https://code.jquery.com/jquery-3.6.0.js"

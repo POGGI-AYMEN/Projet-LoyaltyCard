@@ -1,0 +1,51 @@
+.card_{
+    height: 300px;
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background: radial-gradient(#1fe4f5, #3fbafe);
+    border-radius: 10px;
+}
+.qr-code {
+    max-width: 120px;
+    float: right;
+    margin-right: 30px;
+    margin-top: 100px;
+}
+.buttons{
+    width: 45%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    align-items: center;
+    margin: auto ;
+}
+h2{
+    margin-bottom: 50px;
+}
+.nom{
+    margin-top: 30px;
+}
+.font{
+    color: white;
+    margin-left: 40px;
+}
+.loyalty-card{
+    display: flex;
+    flex-direction: row;
+}
+.loyalty-card img{
+    height:80px ;
+    width:150px;
+}
+.loyalty-card h1{
+    margin-top: 10px;
+}
+.num-de-carte{
+    font-size: 30px;
+}

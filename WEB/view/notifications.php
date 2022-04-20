@@ -36,7 +36,7 @@
         <tr>
           <td style="width:70%"><div class="card-title">Jane invited you to join '<b>Familia</b>' group</div></td>
           <td style="width:30%">
-            <a href="#" class="btn btn-primary">View</a>
+            <a href="notification_détails.php" class="btn btn-primary">View</a>
             <a href="#" class="btn btn-danger dismiss-notification">Supprimer</a>
           </td>
         </tr>
@@ -50,7 +50,7 @@
         <tr>
           <td style="width:70%"><div class="card-title">Your expenses for '<b>Groceries</b>' has exceeded its budget</div></td>
           <td style="width:30%">
-            <a href="#" class="btn btn-primary">View</a>
+            <a href="notification_détails.php" class="btn btn-primary">View</a>
             <a href="#" class="btn btn-danger dismiss-notification">Supprimer</a>
           </td>
         </tr>
