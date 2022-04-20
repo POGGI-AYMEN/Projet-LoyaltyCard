@@ -108,4 +108,16 @@ if (isset($_POST['save']) && !empty($_POST['save']))
         header('location:../view/edit-profil.php') ;
 
     }
+
+    
 }
+if (isset($_GET['removeClient'])) 
+    {
+        $id = $_GET['removeClient'] ; 
+        
+        ClientModel::deletWhere("id" , $id) ; 
+    
+        header('location:../back-office_/gestion_client.php') ; 
+    
+        
+    }

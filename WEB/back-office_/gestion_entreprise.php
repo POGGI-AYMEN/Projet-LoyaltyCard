@@ -9,11 +9,7 @@ include "../controllers/admin.php" ;
 <div class="container-fluid">
 	<h1 class="h3 mb-2 text-gray-800">Entreprise</h1>
    	<div class="container">
-   		<?php 
-           
-			foreach($companys as $company) {
-		?>
-
+  
 		
 
 <div class="card shadow mb-4">
@@ -33,27 +29,33 @@ include "../controllers/admin.php" ;
                 </thead>
                 <tbody>
                     <tr>
+                    <?php 
+           
+           foreach($companys as $company) {
+       ?>
+
                         <td>
-							<a href="infoEntreprise.php?id=<?php echo $companys[$i]['id']; ?>"><?php echo $companys[$i]['id']. "  ".$companys[$i]['nom']; ?></a>
+							<a href="infoEntreprise.php?id=<?php echo $company['id']; ?>"><?php echo $company['id']. "  ".$company['nom']; ?></a>
 						</td>
                         <td>
-							<a id="delete" href="../controllers/entreprise.php?removeCompany=<?php echo $companys[$i]['id']; ?>">Supprimer</a>
+							<a id="delete" href="../controllers/entreprise.php?removeCompany=<?php echo $company['id']; ?>">Supprimer</a>
 						</td>
                         <td>
-							<a id="edit" href="editeEntrprise.php?editEmail=<?php echo $companys[$i]['email']; ?>">Modifier</a>
+							<a id="edit" href="editeEntrprise.php?editEmail=<?php echo $company['email']; ?>">Modifier</a>
 						</td>
                         <td>
-							<a id="contact" href="messageEntreprise.php?id=<?php echo $companys[$i]['id']; ?>">Contact</a>
+							<a id="contact" href="messageEntreprise.php?id=<?php echo $company['id']; ?>">Contact</a>
 						</td>
                     </tr>
+                    <?php }
+        $i++ ?>
                     
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-		<?php }
-        $i++ ?>
+	
 
 	</div>
 			</div>

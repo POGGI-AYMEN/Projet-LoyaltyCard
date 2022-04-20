@@ -1,6 +1,93 @@
-<?php  
-include "../models/articleModel.php" ; 
-include "client.php" ;
+<?php
 
-$articles = ArticleModel::selectAll() ; 
+include_once "../models/articleModel.php" ;
 
+
+
+$articles = ArticleModel::selectAll() ;
+
+
+
+if (isset($_POST['submit']))
+{
+
+    $article['prix'] = $_POST['prix'] ;
+    $article['catégorie'] = $_POST['catégorie'] ;
+    $article['quantité'] = $_POST['quantité'] ;
+    $article['Description'] = $_POST['Description'] ;
+
+    $article['codeArticle'] = $_GET['code'] ;
+
+    ArticleModel::updateArticle($article) ;
+
+    header('location:../back-office_/stockHandling.php') ;
+
+}
+
+if (isset($_GET['removeArticle']))
+
+{
+    include "admin.php" ;
+
+    $articleCode = $_GET['removeArticle'] ;
+
+    ArticleModel::deleteFrom($articleCode) ;
+
+    header('location:../back-office_/stockHandling.php') ;
+}
+
+
+
+
+if (isset($_POST['newArticle']) && !empty($_POST['newArticle']))
+
+{
+    include "admin.php" ;
+    if (empty($_POST['article']) || empty($_POST['prix']) || empty($_POST['quantité']) || empty($_POST['description']) || empty($_FILES['photo']) || empty($_POST['catégorie']) || empty($_POST['entrepots']))
+    {
+        $error = "Tous les champs doivent etre remplis ! " ;
+
+    }
+    else
+    {
+        $product['codeArticle'] =  ArticleModel::generateCode() ;
+        $product['nom'] = htmlspecialchars($_POST['article']) ;
+        $product['quantité'] = (int)htmlspecialchars($_POST['quantité']) ;
+        $product['prix'] = (int)htmlspecialchars($_POST['prix']) ;
+        $product['description'] = htmlspecialchars($_POST['description']) ;
+        $product['catégorie'] = htmlspecialchars($_POST['catégorie']) ;
+        $product['entrepots'] = $_POST['entrepots'] ;
+        $verif = ArticleModel::selectAllWhere("nom" , $product['nom']) ;
+
+
+        $imgName = $_FILES['photo']['name'] ;
+        $size = $_FILES['photo']['size'] ;
+        $extension = pathinfo($imgName , PATHINFO_EXTENSION) ;
+
+        if ($size > 42000000) { $error = "fichier trop volumineux" ; }
+
+        elseif(!in_array($extension , ["jpg" , "png" , "svg" , "jpeg"])) { $error = "seul les format jpg svg png et jpeg sont autorisé" ;}
+
+        elseif(!is_int($product['prix'])) { $error = "le prix doit etre une valeur numérique" ; var_dump($product['prix']) ;}
+
+        elseif(!is_int($product['quantité'])) { $error = "la quantité doit etre une valeur numérique" ;}
+
+        elseif(!empty($verif)) {$error = "cet article est déja enregistrer" ; }
+
+        else
+        {
+            $product['image'] = $imgName ;
+
+            ArticleModel::addNewArticle($product) ;
+
+            $path = $_SERVER['DOCUMENT_ROOT'].'/WEB/uploads/images/'.$product['image']  ;
+
+            move_uploaded_file($_FILES['photo']['tmp_name'], $path) ;
+
+            $suc = "Article Ajouter" ;
+
+        }
+
+
+    }
+}
