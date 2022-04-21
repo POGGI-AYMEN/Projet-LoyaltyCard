@@ -98,4 +98,13 @@
             
             ]) ; 
         }
+        public function deletWhere ($where , $value)  
+        {
+            include "../config/database.php" ; 
+
+            $deletQuery = $con->prepare("DELETE FROM Clients WHERE ".$where." = ?") ; 
+
+            $deletQuery->execute([$value]) ; 
+            
+        }
     }

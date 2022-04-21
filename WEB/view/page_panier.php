@@ -1,15 +1,15 @@
-<?php  
+<?php
 /**
- * faire  : 
- * l'utlisation des point de l'utilisateur 
- * passage du prix au page de paiement stripe 
+ * faire  :
+ * l'utlisation des point de l'utilisateur
+ * passage du prix au page de paiement stripe
  * boutton de supréssion de l'article
  */
 include "../controllers/panier.php" ;
 
 
 
-$i = 0  ; 
+$i = 0  ;
 ?>
 
 
@@ -21,16 +21,16 @@ $i = 0  ;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
-   
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../../back-office_/css/sb-admin-2.css">
 
    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/page_panier.css">
-    <link rel="stylesheet" href="../css/footer.css"> 
+    <link rel="stylesheet" href="../css/footer.css">
    <!-- <link rel="stylesheet" href="../css/UserAccount.css"> -->
   <!--  <link rel="stylesheet" href="../css/Articles.css"> -->
     <!-- <link rel="stylesheet" href="../css/Contact_page.css"> -->
@@ -48,20 +48,20 @@ $i = 0  ;
                     <div class="col center">
                         <h4><b>PANIER</b></h4>
                     </div>
-                   
+
                 </div>
-                <?php if (isset($_GET['error'])) 
+                <?php if (isset($_GET['error']))
                 {
                     echo $_GET['error'] ;
                 } ?>
             </div>
-            <?php 
-            foreach($myPanel as $panel) 
+            <?php
+            foreach($myPanel as $panel)
             {
             ?>
             <div class="row border-top border-bottom">
                 <div class="row main align-items-center">
-                    <div class="col-2"><img class="img-fluid" src="https://i.imgur.com/1GrakTl.jpg"></div>
+                    <div class="col-2"><img class="img-fluid" src="../uploads/images/<?php echo $myPanel[$i]['image']; ?>"></div>
                     <div class="col">
                         <div class="row text-muted"><?php echo $myPanel[$i]['catégorie'] ; ?></div>
                         <div class="row"><?php echo $myPanel[$i]['article'] ;  ?></div>
@@ -74,15 +74,15 @@ $i = 0  ;
                     <div class="col close"><a href="../controllers/panier.php?deleteArtilce=<?php echo $myPanel[$i]['article'] ?>">&#10005;</a></div>
                 </div>
             </div>
-            
-               <?php 
+
+               <?php
             $i++ ;
             }
                ?>
-            
+
             <div class="back-to-shop"><a href="UserAccount.php">&leftarrow;</a><span class="text-muted">RETOUR AU PROFIL</span></div>
 
-            <p>Voulez-vous utilisé vos points</p> 
+            <p>Voulez-vous utilisé vos points</p>
             <p style="color:red" id="error"></p>
             <input id="points" name="usedPoints" placeholder="nombre des points">
             <button type="submit" id="use">Utiliser</button>

@@ -89,6 +89,13 @@
                     <span>Candidatures</span></a>
             </li>
 
+            <!-- Nav Item - Messagerie -->
+            <li class="nav-item">
+                <a class="nav-link" href="Messagerie.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Messagerie</span></a>
+            </li>
+
             <!-- Nav Item - Ajouter une entreprise -->
             <li class="nav-item">
                 <a class="nav-link" href="ajoutEntreprise.php">

@@ -1,7 +1,11 @@
 <?php
 $i = 0 ;
-include "../controllers/client.php" ;
+session_start() ;
 include "../controllers/admin.php" ; 
+include "../models/clientModel.php" ; 
+
+$info_clients = ClientModel::selectAll() ; 
+
 
     require("header.php");
     ?>
@@ -9,12 +13,7 @@ include "../controllers/admin.php" ;
 <div class="container-fluid">
 	<h1 class="h3 mb-2 text-gray-800">Clients</h1>
    	<div class="container">
-   		<?php 
-           
-			foreach($info_clients as $info_client) {
-		?>
-
-		
+ 
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -22,40 +21,47 @@ include "../controllers/admin.php" ;
     </div>
     <div class="card-body">
         <div class="table-responsive">
+   
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                    <tr>
+               <tr>
                         <th>Client</th>
                         <th>Supprimer</th>
                         <th>Modifier</th>
                         <th>Contact</th>
                     </tr>
                 </thead>
+   
+   
                 <tbody>
+                <?php 
+           
+           foreach($info_clients as $info_client) {
+       ?>
+
                     <tr>
-                                            <!-- J'AI COPIÉ LE CODE DE GESTION ENTREPRISE -->
-                                            <!-- FAUT L'ADAPTER PAR RAPPORT AU CLIENT -->
+     
+                                           
                         <td>
-							<a href="info_client.php?id=<?php echo $info_client[$i]['id']; ?>"><?php echo $info_client[$i]['id']. "  ".$info_client[$i]['nom']; ?></a>
+							<a href="info_client.php?id=<?php echo $info_client[$i]['id']; ?>"><?php echo $info_client['id']. "  ".$info_client['nom']; ?></a>
 						</td>
                         <td>
-							<a id="delete" href="../controllers/entreprise.php?removeCompany=<?php echo $info_client[$i]['id']; ?>">Supprimer</a>
+							<a id="delete" href="../controllers/client.php?removeClient=<?php echo $info_client['id']; ?>">Supprimer</a>
 						</td>
                         <td>
-							<a id="edit" href="editeEntrprise.php?editEmail=<?php echo $info_client[$i]['email']; ?>">Modifier</a>
+							<a id="edit" href="editeEntrprise.php?editClient=<?php echo $info_client[$i]['email']; ?>">Modifier</a>
 						</td>
                         <td>
 							<a id="contact" href="messageEntreprise.php?id=<?php echo $info_client[$i]['id']; ?>">Contact</a>
 						</td>
                     </tr>
-                    
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-		<?php }
-        $i++ ?>
+	
 
 	</div>
 			</div>

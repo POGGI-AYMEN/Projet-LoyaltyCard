@@ -151,7 +151,7 @@ $content = ob_get_clean() ;
 $html2pdf = new Html2Pdf();
 $pdf = new HTML2PDF('p' , 'A4' , 'fr') ; 
 $pdf->writeHTML($content) ; 
-$pdf->Output('/opt/lampp/htdocs/WEB/uploads/factures/facture_'.$facture.'.pdf','F') ;
+$pdf->Output($_SERVER['DOCUMENT_ROOT'].'/WEB/uploads/factures/facture_'.$facture.'.pdf','F') ;
 
 header('location:../view/success.php?facture='.$facture) ; 
 

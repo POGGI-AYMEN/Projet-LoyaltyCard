@@ -1,10 +1,28 @@
 <?php
-$i = 0 ;
-include "../controllers/entreprise.php" ;
+
+session_start() ;
+
 include "../controllers/admin.php" ; 
+
+include "../models/articleModel.php" ;
+
+    $articles = ArticleModel::selectAll() ; 
 
     require("header.php");
     ?>
+
+    <style>
+        .actions{
+            display:flex;
+            justify-content:space-between;
+        }
+        .actions a{
+            margin-left:15px;
+            color:red;
+        }
+
+    </style>
+
 
 <div class="container-fluid">
     <div class="d-flex justify-content-between">
@@ -12,16 +30,9 @@ include "../controllers/admin.php" ;
         <h1 class="h3 mb-3 text-gray-800 btn"> <a href="ajouter_un_article.php"> Ajouter un article</a></h1>
     </div>
    	<div class="container">
-   		<?php 
-           
-			foreach($companys as $company) {
-		?>
-
-		
-
-<div class="card shadow mb-4">
+       <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">liste des articles</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Informations des entreprises</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -29,39 +40,55 @@ include "../controllers/admin.php" ;
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nom</th>
-                        <th>Supprimer</th>
-                        <th>Modifier</th>
-                        <th>Contact</th>
+                        <th>Article</th>
+                        <th>Prix</th>
+                        <th>Catégorie</th>
+                        <th>Quantité</th>
+                        <th>Description</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
+                    
+                        <?php  foreach($articles as $article) { ?>
                     <td>
-							<a href="infoEntreprise.php?id=<?php echo $companys[$i]['id']; ?>"><?php echo $companys[$i]['id']. "  ".$companys[$i]['nom']; ?></a>
+                    <form method="post" action="../controllers/article.php?code=<?php echo $article['codeArticle'] ?>">
+                       <p><?php echo $article['codeArticle'] ;  ?></p>
 						</td>
                         <td>
-							<a href="infoEntreprise.php?id=<?php echo $companys[$i]['id']; ?>"><?php echo $companys[$i]['id']. "  ".$companys[$i]['nom']; ?></a>
+                            <p><?php echo $article['nom'] ;  ?></p>
 						</td>
                         <td>
-							<a id="delete" href="../controllers/entreprise.php?removeCompany=<?php echo $companys[$i]['id']; ?>">Supprimer</a>
+                            <input type="text" name="prix" value="<?php echo $article['prix'] ?>">
 						</td>
                         <td>
-							<a id="edit" href="editeEntrprise.php?editEmail=<?php echo $companys[$i]['email']; ?>">Modifier</a>
+                        <input type="text" name="catégorie" value="<?php echo $article['catégorie'] ?>">
+
 						</td>
                         <td>
-							<a id="contact" href="messageEntreprise.php?id=<?php echo $companys[$i]['id']; ?>">Contact</a>
+                        <input type="text" name="quantité" value="<?php echo $article['quantité'] ?>">
+
 						</td>
+                        <td>
+                        <input type="text" name="Description" value="<?php echo $article['Description']; ?>">
+
+                        </td>
+                        <td class="actions">
+                            <input name="submit" type="submit" value="enregistrer">
+                            <a href="../controllers/article.php?removeArticle=<?php echo $article['codeArticle'] ?>">Supprimer</a>
+                        </td>
                     </tr>
+                    </form>
+                    <?php } ?>
+                       
                     
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-		<?php }
-        $i++ ?>
-
+		
 	</div>
 			</div>
 

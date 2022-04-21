@@ -1,43 +1,43 @@
-<?php 
+<?php
 
     class HistoriqueModel
 {
-    public function selectAll($client) 
+    public function selectAll($client)
     {
         include "../config/database.php" ;
-        
-        
-    	$selectQuery = $con->prepare('SELECT * FROM Historique WHERE client = ?') ; 
 
-    	$selectQuery->execute([$client]) ; 
 
-    	$articles = $selectQuery->fetchAll() ; 
+    	$selectQuery = $con->prepare('SELECT * FROM Historique WHERE client = ?') ;
 
-    	return $articles; 
+    	$selectQuery->execute([$client]) ;
+
+    	$articles = $selectQuery->fetchAll() ;
+
+    	return $articles;
     }
 
 
-        public function insert($product) 
+        public function insert($product)
     {
 
-        include "../config/database.php" ; 
+        include "../config/database.php" ;
 
-        $insert = $con->prepare("INSERT INTO Historique (article , prix , quantité , date , facture_code , client) VALUES (? , ? , ? , ? , ? , ?)") ; 
+        $insert = $con->prepare("INSERT INTO Historique (article , prix , quantité , date , facture_code , client , image) VALUES (? , ? , ? , ? , ? , ? , ?)") ;
 
-        $insert->execute([$product['article'] , $product['prix'], $product['quantité'] , $product['date'] , $product['facture'] , $product['client']]) ; 
+        $insert->execute([$product['article'] , $product['prix'], $product['quantité'] , $product['date'] , $product['facture'] , $product['client'] , $product['image']]) ; 
     }
-    
 
-    public function selectWhereFacture($facture) 
+
+    public function selectWhereFacture($facture)
     {
-    	include "../config/database.php" ; 
+    	include "../config/database.php" ;
 
-    	$selectQuery = $con->prepare('SELECT * FROM Historique WHERE facture_code = ?') ; 
+    	$selectQuery = $con->prepare('SELECT * FROM Historique WHERE facture_code = ?') ;
 
-    	$selectQuery->execute([$facture]) ; 
+    	$selectQuery->execute([$facture]) ;
 
-    	$articles = $selectQuery->fetchAll() ; 
+    	$articles = $selectQuery->fetchAll() ;
 
-    	return $articles; 
+    	return $articles;
     }
 }
