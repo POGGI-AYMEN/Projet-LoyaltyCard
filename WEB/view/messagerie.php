@@ -31,7 +31,7 @@ $messages = Messagerie::getClientMessages($_SESSION['clientId']) ;
     <link rel="stylesheet" href="../css/user_footer.css"> 
 
 
-    <title>Historique des achats </title>
+    <title>Messagerie </title>
 </head>
 <body>
 <?php require("navbar.php"); ?>
@@ -42,8 +42,8 @@ $messages = Messagerie::getClientMessages($_SESSION['clientId']) ;
 		<div class="main-body">
 			<div class="row">
 			<?php require("menu.php") ?>	
-				<main class="content col">
-					<div class="container__ p-0">
+				<main class="content col-lg-8">
+					<div class="container p-0">
 						<div class="card">							
 									<div class="py-2 px-4 border-bottom d-none d-lg-block">
 										
@@ -60,11 +60,11 @@ $messages = Messagerie::getClientMessages($_SESSION['clientId']) ;
 										{
 											echo 
 											"
-											<div class='chat-message-right pb-4'>
+											<div class='chat-message-right pb-4 '>
 											<div>
 												<div class='text-muted small text-nowrap mt-2'>". date('j/n/Y h:m')."</div>
 											</div>
-											<div class='flex-shrink-1 bg-light rounded py-2 px-3 mr-3'>
+											<div class='flex-shrink-1 bg-light col-md-6 rounded py-2 px-3 mr-3'>
 												<div class='font-weight-bold mb-1'>Vous</div>
 												".$message['message']."
 											</div>
@@ -80,7 +80,7 @@ $messages = Messagerie::getClientMessages($_SESSION['clientId']) ;
 
 											echo 
 											"
-											<div class='chat-message-left pb-4'>
+											<div class='chat-message-left  pb-4 '>
 											<div>
 												<div class='text-muted small text-nowrap mt-2'>". date('j/n/Y h:m')."</div>
 											</div>
@@ -102,14 +102,14 @@ $messages = Messagerie::getClientMessages($_SESSION['clientId']) ;
 					
 										</div>
 									</div>
-	<form method="post">
+								<form method="post">
 									<div class="flex-grow-0 py-3 px-4 border-top">
 										<div class="input-group">
 											<input name="message" type="text" class="form-control" placeholder="Type your message">
 											<input name="send" type="submit" class="btn btn-primary"></input>
 										</div>
 									</div>
-</form>
+								</form>
 								</div>
 						</div>
 					

@@ -15,9 +15,9 @@ session_start() ;
 
    <body>
 
-   		<header>
+   		
    		<?php  include "header.php" ;  ?>	
-   		</header>
+   	
       <?php 
       include "../config/database.php" ; 
 
