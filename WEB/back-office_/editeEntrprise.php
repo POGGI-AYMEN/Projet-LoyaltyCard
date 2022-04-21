@@ -29,7 +29,7 @@ include "header.php" ;
                       Email
                     </td>
                     <td>
-                       <input type="text" name="email" value=<?php echo $company['email']; ?>>
+                       <input class="form-control" type="text" name="email" value=<?php echo $company['email']; ?>>
                     </td> 
                   </tr>
 
@@ -38,7 +38,7 @@ include "header.php" ;
                        Numéro de téléphone
                     </td>
                     <td>
-                      <input type="text" name="num" value=<?php echo $company['numéro_tel']; ?>>
+                      <input class="form-control" type="text" name="num" value=<?php echo $company['numéro_tel']; ?>>
                     </td> 
                   </tr>
 
@@ -47,33 +47,33 @@ include "header.php" ;
                       Gérant
                     </td>
                     <td>
-                      <input type="text" name="gérant" value=<?php echo $company['gérant']; ?>>
+                      <input class="form-control" type="text" name="gérant" value=<?php echo $company['gérant']; ?>>
                     </td> 
                   </tr>
 
                   <tr>
                     <td>Chiffre d'affaire</td>
                     <td>
-                      <input type="text" name="chif_affaire" value=<?php echo $company['chiffre_daffaire']; ?>>
+                      <input  type="text" class="form-control" name="chif_affaire" value=<?php echo $company['chiffre_daffaire']; ?>>
                     </td> 
                   </tr>
 
                   <tr>
                     <td>Durée de contrat</td>
                     <td>
-                      <input type="text" name="contrat" value=<?php echo $company['contrat']; ?>>
+                      <input type="text" class="form-control" name="contrat" value=<?php echo $company['contrat']; ?>>
                     </td> 
                   </tr>
 
                   <tr>
                     <td>Date du dernier payement</td>
                     <td>
-                      <input type="text" name="date" value=<?php echo $company['date_de_payement']; ?>>
+                      <input type="text" class="form-control" name="date" value=<?php echo $company['date_de_payement']; ?>>
                     </td> 
                   </tr>      
                 </tbody>
             </table>
-            <input id="editB" type="submit" class="btn btn-secondary" name="updateEntreprise" value="Enregistrer">
+            <input id="editB" type="submit" class="btn btn-primary" name="updateEntreprise" value="Enregistrer">
         </div>
     </div>
 </form>
