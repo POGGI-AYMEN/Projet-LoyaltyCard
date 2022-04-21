@@ -17,9 +17,9 @@ include "../controllers/admin.php" ;
 
    <body>
 
-   		<header>
+   		
    		<?php  include "header.php" ;  ?>	
-   		</header>
+   	
       <?php 
       include "../config/database.php" ; 
 

@@ -41,7 +41,6 @@ Notification::deleteNotification($_SESSION['clientId']) ;
             <div class="row notification-container">
   <h2 class="text-center"> Notifications</h2>
 
-
   <p class="dismiss text-right"><a id="dismiss-all" href="notifications.php?delNotification=all">Tout supprimer</a></p>
 
 <?php 

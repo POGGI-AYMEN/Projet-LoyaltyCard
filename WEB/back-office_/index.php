@@ -104,6 +104,13 @@
                     <span>Candidatures</span></a>
             </li>
 
+             <!-- Nav Item - Contacter -->
+             <li class="nav-item">
+                <a class="nav-link" href="Contacter.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Contacter</span></a>
+            </li>
+
             <!-- Nav Item - Ajouter une entreprise -->
             <li class="nav-item">
                 <a class="nav-link" href="ajoutEntreprise.php">

@@ -18,7 +18,7 @@ include "../models/articleModel.php" ;
         }
         .actions a{
             margin-left:15px;
-            color:red;
+           
         }
 
     </style>
@@ -60,23 +60,23 @@ include "../models/articleModel.php" ;
                             <p><?php echo $article['nom'] ;  ?></p>
 						</td>
                         <td>
-                            <input type="text" name="prix" value="<?php echo $article['prix'] ?>">
+                            <input type="text" class="form-control" name="prix" value="<?php echo $article['prix'] ?>">
 						</td>
                         <td>
-                        <input type="text" name="catégorie" value="<?php echo $article['catégorie'] ?>">
+                        <input type="text" class="form-control" name="catégorie" value="<?php echo $article['catégorie'] ?>">
 
 						</td>
                         <td>
-                        <input type="text" name="quantité" value="<?php echo $article['quantité'] ?>">
+                        <input type="text" class="form-control" name="quantité" value="<?php echo $article['quantité'] ?>">
 
 						</td>
                         <td>
-                        <input type="text" name="Description" value="<?php echo $article['Description']; ?>">
+                        <input type="text" class="form-control" name="Description" value="<?php echo $article['Description']; ?>">
 
                         </td>
                         <td class="actions">
-                            <input name="submit" type="submit" value="enregistrer">
-                            <a href="../controllers/article.php?removeArticle=<?php echo $article['codeArticle'] ?>">Supprimer</a>
+                            <input class="btn btn-primary" name="submit" type="submit" value="enregistrer">
+                            <a class="btn btn-danger" href="../controllers/article.php?removeArticle=<?php echo $article['codeArticle'] ?>">Supprimer</a>
                         </td>
                     </tr>
                     </form>

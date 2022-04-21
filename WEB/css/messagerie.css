@@ -1,4 +1,6 @@
-
+.form-control{
+    height: 200px;
+}
 
 .chat-online {
     color: #34ce57
@@ -18,6 +20,7 @@
 .chat-message-left,
 .chat-message-right {
     display: flex;
+    max-width: 100px;
     flex-shrink: 0
 }
 
