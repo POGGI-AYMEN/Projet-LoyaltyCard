@@ -47,10 +47,10 @@ include "../controllers/client.php" ;
                             <h1 class="font">Loyalty Card</h1>
                         </div>
                         <div class="nom font">
-                            <h2>TIBICHE Lyes</h2>
+                            <h2><?php echo $user['nom']." ".$user['prenom'] ;  ?></h2>
                         </div>
                         <div class="num-de-carte font">
-                            2312312313
+                            <?php echo $user['num_carte'] ; ?>
                         </div>
                     </div>
                     <div class="text-center">
@@ -61,14 +61,9 @@ include "../controllers/client.php" ;
                 <div class="container-fluid">
                     <div class="form-horizontal">
                         <div class="form-group">
-                            <label class="control-label col-sm-12"
-                                for="content">
-                                Entrez le numero de votre carte puis generez le QR Code :
-                            </label>
+                          
                             <div  class="col-sm-10">
-                            <input type="text" size="60"
-			maxlength="60" class="form-control"
-            id="content" placeholder="Enterez le numero de la carte" />
+                            <h2 style="position:relative; left:45%;" id="content"><?php echo $user['num_carte'] ?></h2>
                             </div>
                         </div>
                         <div class="form-group">

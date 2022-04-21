@@ -99,3 +99,5 @@ $euro = Cart::pointsToEuro($points['points']) ;
 </div>
 
 <?php require("footer.php"); ?>
+
+            <script src="../JS/push.js"></script>

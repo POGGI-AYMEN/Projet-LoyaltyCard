@@ -4,10 +4,11 @@ include "../controllers/client.php" ;
 
 include "../controllers/notification.php" ; 
 
-$notificationCount = Notification::getNotificationsCount($_SESSION['clientId']) ; 
 
 
-echo json_encode($notificationCount) ; 
+ $notificationCount = Notification::getNotificationsCount($_SESSION['clientId']);
+
+ echo json_encode($notificationCount);
 
 if (isset($_GET['id'])) 
 {

@@ -59,5 +59,18 @@
 
            $updateQuery->execute([$points , $client]) ; 
        } 
+
+       public function selectAllWhere($where , $value) 
+       {
+        include "../config/database.php" ; 
+
+        $selectQuery = $con->prepare("SELECT * FROM Carte WHERE ".$where." = ?") ; 
+
+        $selectQuery->execute([$value]) ; 
+
+        $card = $selectQuery->fetch(PDO::FETCH_ASSOC) ;
+        
+       return $card ; 
+       }
     
 }

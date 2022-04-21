@@ -18,7 +18,7 @@
             // with the given data
             let finalURL =
     'https://chart.googleapis.com/chart?cht=qr&chl=' +
-            htmlEncode($('#content').val()) +
+            htmlEncode($('#content').text()) +
             '&chs=160x160&chld=L|0'
     
             // Replace the src of the image with
