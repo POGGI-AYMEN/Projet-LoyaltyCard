@@ -46,14 +46,14 @@ for ($i = 0 ; $i < count($myPanel) ; $i++)
 // update du stock
   include_once "../models/articleModel.php" ;
 
- ArticleModel::updateQuantityMinus($myPanel[$i]['quantité'] , $myPanel[$i]['article']) ;
+ ArticleModel::updateQuantityMinus($myPanel[$i]['quantité']  , $myPanel[$i]['article']) ;
 
  // on ajout l'achat dans l'historique des achat du client //
 
  include_once "../models/historiqueModel.php" ;
 
 $product['article'] = $myPanel[$i]['article']  ;
-$product['quantité'] = $myPanel[$i]['quantité'] ;
+$product['quantité'] = $myPanel[$i]['quantité']  ;
 $product['prix'] = $myPanel[$i]['prix'] ;
 $product['date'] = date("j/n/Y") ;
 $product['facture'] = $facture ;

@@ -1,5 +1,5 @@
 <?php 
-
+session_start() ;
 include "../controllers/article.php" ; 
 include_once "../controllers/admin.php" ; 
 
