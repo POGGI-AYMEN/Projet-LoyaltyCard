@@ -24,7 +24,7 @@ $messages = Messagerie::getClientMessages($_SESSION['clientId']) ;
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">   
 
 	<link rel="stylesheet" href="../back-office_/css/sb-admin-2.css">
-	<link rel="stylesheet" href="../css/messagerie.css">
+	<link rel="stylesheet" href="../css/messagrie.css">
 
    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/UserAccount.css">
@@ -64,7 +64,7 @@ $messages = Messagerie::getClientMessages($_SESSION['clientId']) ;
 											<div>
 												<div class='text-muted small text-nowrap mt-2'>". date('j/n/Y h:m')."</div>
 											</div>
-											<div class='flex-shrink-1 bg-light col-md-6 rounded py-2 px-3 mr-3'>
+											<div class='flex-shrink-1 bg-light rounded py-2 px-3 mr-3'>
 												<div class='font-weight-bold mb-1'>Vous</div>
 												".$message['message']."
 											</div>
@@ -82,7 +82,7 @@ $messages = Messagerie::getClientMessages($_SESSION['clientId']) ;
 											"
 											<div class='chat-message-left  pb-4 '>
 											<div>
-												<div class='text-muted small text-nowrap mt-2'>". date('j/n/Y h:m')."</div>
+												<div class='text-muted small md-col-6 text-nowrap mt-2'>". date('j/n/Y h:m')."</div>
 											</div>
 											<div class='flex-shrink-1 bg-light rounded py-2 px-3 mr-3'>
 												<div class='font-weight-bold mb-1'>LoyaltyBoost</div>
