@@ -54,5 +54,20 @@
             
         }
 
+        public function newMessageCount($client)
+        {
+            include_once "../models/messagerieModel.php" ;
+
+            $count = MessagerieModel::getMessageCount($client) ;
+
+            return $count ;
+        }
+
+        public function updateMessageCount($client)
+        {
+            include_once "../models/messagerieModel.php" ;
+
+            MessagerieModel::updateSeen($client) ;
+        }
 
     }

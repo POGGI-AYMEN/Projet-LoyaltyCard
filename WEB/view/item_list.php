@@ -30,7 +30,8 @@
 	</a>
 	<a href="artic.php" class="list-group-item list-group-item-action">Articles</a>
 	<a href="#" class="list-group-item list-group-item-action">Prestations</a>
-	<a href="messagerie.php" class="list-group-item list-group-item-action">Messagerie</a>
+	<div class="list-group-item list-group-item-action notif"><a href="messagerie.php">Messagerie</a><div class="circle" id="messageCount"></div></div>
+
 	<div class="list-group-item list-group-item-action notif"><a href="notifications.php">Notifications</a><div id="count" class="circle"></div></div>
 	<a href="page_panier.php" class="list-group-item list-group-item-action">Acceder a mon panier</a>
 	<a href="historique-des-achats.php" class="list-group-item list-group-item-action">Hisorique des achats</a>

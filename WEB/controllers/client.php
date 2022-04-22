@@ -55,7 +55,9 @@ if (isset($_POST['inscription']))
 
     $user = ClientModel::selectWhere("email" , $client['email']) ; 
 
-    $card_number = 10000000 + $user['id'] ; 
+    include "carte.php" ; 
+
+    $card_number = Cart::generateCardNumber() ; 
 
     ClientModel::updateWhere("num_carte" , $card_number , "email" , $client['email']) ; 
 

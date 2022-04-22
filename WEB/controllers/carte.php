@@ -49,4 +49,23 @@
             CarteModel::updatePointsAdd($total , $client) ; 
             
         }
+
+        public function generateCardNumber() 
+        {
+            include_once "../models/carteModel.php" ; 
+        do {
+            $characters = '1234567890';
+         $string = '';
+       
+         for ($count = 0; $count < 9 ; $count++) {     
+           $tmp = rand(0, strlen($characters) - 1);
+           $string .= $characters[$tmp];
+       }
+     
+       $verif = CarteModel::selectAllWhere("num_carte" , $string) ;
+
+        } while (!empty($verif)) ;
+        
+     return $string ; 
+        }
     }

@@ -117,5 +117,10 @@ $messages = Messagerie::getClientMessages($_SESSION['clientId']) ;
 			</div>
 		</div>
 	</div>
+
 </div>
 <?php require("footer.php"); ?>
+
+<script src="../JS/updateMessageCount.js"></script>
+
+

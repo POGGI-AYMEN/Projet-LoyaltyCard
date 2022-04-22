@@ -29,18 +29,28 @@
             return $messages ; 
         }
 
-        public function adminGetAll($client) 
+
+
+        public function getMessageCount($client)
         {
-            include "../config/database.php" ; 
+            include "../config/database.php" ;
 
-            $select = $con->prepare('SELECT * FROM AdminMessagerie WHERE reciver = ?') ; 
+            $select = $con->prepare('SELECT * FROM Messagerie WHERE seen = 0 AND reciver = ?') ;
 
-            $select->execute([$client]) ; 
+            $select->execute([$client]) ;
 
-            $messages = $select->fetchAll() ;
-            
-            return $messages ; 
+           $count = $select->rowCount() ;
 
+            return $count ;
         }
 
+        public function updateSeen($client)
+        {
+            include "../config/database.php" ;
+
+            $updateQuery = $con->prepare('UPDATE Messagerie SET seen = 1 WHERE reciver = ? ') ;
+
+            $updateQuery->execute([$client]) ;
+
+        }
     }

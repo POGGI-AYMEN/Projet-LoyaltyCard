@@ -1,27 +1,48 @@
 
-function showNotification() 
+var messageCount = document.getElementById('messageCount').innerHTML ;
+
+var notifCount = document.getElementById('count').innerHTML ;
+
+
+
+function showNotifications()
 {
-    const notification = new Notification("vous avez effecture un achat chez Loyalty Boost" , {
-        body: "consulter votre nouveau solde des points",
-        icon:"../images/logo.png"
-    }) ; 
-
-    notification.onclick = (e) =>
+    if (messageCount > 0)
     {
-        window.location.href = "../view/notifications.php" ; 
-    } ;
-}
+        const notification = new Notification("Vous avez un nouvau message de LoyaltyBoost" , {
+            body: "Nouveau message",
+            icon:"../images/logo.png"
+        }) ;
+        notification.onclick = (e) =>
+        {
+            window.location.href = "../view/messagerie.php" ;
+        } ;
+        return true ;
+    }
+    if (notifCount > 0)
+    {
+        const notification = new Notification("Vous avez un nouvau message de LoyaltyBoost" , {
+            body: "Nouveau message",
+            icon:"../images/logo.png"
+        }) ;
+        notification.onclick = (e) =>
+        {
+            window.location.href = "../view/messagerie.php" ;
+        } ;
 
+    }
+
+}
 if (Notification.permission === 'granted') 
 {
-    showNotification() ; 
+    showNotifications() ;
 } 
 else if (Notification.permission !== 'denied') 
 {
     Notification.requestPermission().then(permission => {
         if (Notification.permission === 'granted') 
         {
-            showNotification() ; 
+            showNotifications() ;
         }
     }) ;
 }
