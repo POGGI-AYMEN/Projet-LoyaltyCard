@@ -15,6 +15,7 @@
    
     <link rel="stylesheet" href="../css/homePage.css">
     <link rel="stylesheet" href="../css/header">
+    <link rel="stylesheet" href="../css/condidature_entreprise.css">
     <link rel="stylesheet" href="../css/UserAccount.css">
     <link rel="stylesheet" href="../css/Articles.css">
     <link rel="stylesheet" href="../css/footer.css">

@@ -16,6 +16,7 @@ if (isset($_POST['sub']))
         echo "veuillez remlire tous les champs" ; 
     }
 }
+require("header.php")
 
 ?>
 
