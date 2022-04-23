@@ -30,7 +30,7 @@ include "header.php" ;
                         <tr>
                             <td>Nom</td>
                             <td>
-                                <input type="text" name="entreprise" placeholder="nom">
+                                <input type="text" class="form-control" name="entreprise" placeholder="nom">
                             </td> 
                         </tr>
                     <tr>
@@ -38,7 +38,7 @@ include "header.php" ;
                         Email
                         </td>
                         <td>
-                        <input type="text" name="email" placeholder="Email">
+                        <input type="text" class="form-control" name="email" placeholder="Email">
                         </td> 
                     </tr>
 
@@ -47,7 +47,7 @@ include "header.php" ;
                         Numéro de téléphone
                         </td>
                         <td>
-                        <input type="text" name="num" placeholder="Téléphone">
+                        <input type="text" class="form-control" name="num" placeholder="Téléphone">
                         </td> 
                     </tr>
 
@@ -56,7 +56,7 @@ include "header.php" ;
                                Adresse
                             </td>
                             <td>
-                                <input type="text" name="adress" placeholder="Adress">
+                                <input type="text" class="form-control" name="adress" placeholder="Adress">
                             </td>
                         </tr>
                         <tr>
@@ -64,7 +64,7 @@ include "header.php" ;
                                 Code Postal
                             </td>
                             <td>
-                                <input type="text" name="code_postal" placeholder="code postal">
+                                <input type="text" class="form-control" name="code_postal" placeholder="code postal">
                             </td>
                         </tr>
                         <tr>
@@ -73,7 +73,7 @@ include "header.php" ;
                                 Ville
                             </td>
                             <td>
-                                <input type="text" name="ville" placeholder="ville">
+                                <input type="text" class="form-control" name="ville" placeholder="ville">
                             </td>
                         </tr>
                         <tr>
@@ -82,7 +82,7 @@ include "header.php" ;
                                 Pays
                             </td>
                             <td>
-                                <input type="text" name="pays" placeholder="Pays">
+                                <input type="text" class="form-control" name="pays" placeholder="Pays">
                             </td>
                         </tr>
 
@@ -92,42 +92,42 @@ include "header.php" ;
                         Gérant
                         </td>
                         <td>
-                        <input type="text" name="gérant" placeholder="Gérant">
+                        <input type="text" class="form-control" name="gérant" placeholder="Gérant">
                         </td> 
                     </tr>
 
                         <tr>
                             <td>Date de création</td>
                             <td>
-                                <input type="text" name="création" placeholder="Date de création">
+                                <input type="text" class="form-control" name="création" placeholder="Date de création">
                             </td> 
                         </tr>
 
                         <tr>
                             <td>Sécteur d'activité</td>
                             <td>
-                                <input type="text" name="activité" placeholder="Sécteur">
+                                <input type="text" class="form-control" name="activité" placeholder="Sécteur">
                             </td> 
                         </tr>
 
                         <tr>
                             <td>Siret</td>
                             <td>
-                                <input type="text" name="siret" placeholder="Siret">
+                                <input type="text" class="form-control" name="siret" placeholder="Siret">
                             </td> 
                         </tr>
 
                     <tr>
                         <td>Chiffre d'affaire</td>
                         <td>
-                        <input type="text" name="chif_affaire" placeholder="chiffre d'affaire">
+                        <input type="text" class="form-control" name="chif_affaire" placeholder="chiffre d'affaire">
                         </td> 
                     </tr>
 
                     <tr>
                         <td>Durée de contrat</td>
                         <td>
-                        <input type="text" name="contrat" placeholder="durée de contract">
+                        <input type="text" class="form-control" name="contrat" placeholder="durée de contract">
                         </td> 
                     </tr>
 

@@ -15,7 +15,7 @@ include_once "../controllers/entreprise.php" ;
      <link rel="stylesheet" href="css/gestion_entreprise.css">
      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-     <title>Gestion entreprise</title>
+     <title>Infos entreprise</title>
    </head>
    <?php if (isset($_SESSION['adminId'])) { ?>
 

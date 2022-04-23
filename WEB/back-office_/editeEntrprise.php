@@ -78,7 +78,9 @@ include "header.php" ;
                   </tr>      
                 </tbody>
             </table>
-            <input id="editB" type="submit" class="btn btn-primary" name="updateEntreprise" value="Enregistrer">
+            <input id="editB" type="submit" class="btn btn-secondary" name="updateEntreprise" value="Modifier">
+            <a href="gestion_entreprise.php" class="btn btn-primary">Retour</a>
+
         </div>
     </div>
 </form>

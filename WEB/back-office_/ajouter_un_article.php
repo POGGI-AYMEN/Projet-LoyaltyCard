@@ -47,7 +47,7 @@ include "header.php" ;
                     Nom
                     </td>
                     <td>
-                    <input type="text" name="article" style="width:80%; text-align:center; position:relative; left:10%;">
+                    <input type="text" class="form-control" name="article" style="width:80%; text-align:center; position:relative; left:10%;">
                     </td> 
                   </tr>
 
@@ -56,28 +56,28 @@ include "header.php" ;
                       Prix
                     </td>
                     <td>
-                    <input type="text" name="prix" style="width:80%; text-align:center; position:relative; left:10%;">
+                    <input type="text" class="form-control" name="prix" style="width:80%; text-align:center; position:relative; left:10%;">
                     </td> 
                   </tr>
 
                   <tr>
                     <td>Quantité en stock</td>
                     <td>
-                    <input type="text" name="quantité" style="width:80%; text-align:center; position:relative; left:10%;">
+                    <input type="text" class="form-control" name="quantité" style="width:80%; text-align:center; position:relative; left:10%;">
                     </td> 
                   </tr>
 
                   <tr>
                     <td>Description</td>
                     <td>
-                    <input type="text" name="description" style="width:80%; text-align:center; position:relative; left:10%;">
+                    <input type="text" class="form-control" name="description" style="width:80%; text-align:center; position:relative; left:10%;">
                     </td> 
                     
                   </tr>
                   <tr>
                     <td>Catégorie</td>
                     <td>
-                    <input type="text" name="catégorie" style="width:80%; text-align:center; position:relative; left:10%;">
+                    <input type="text" class="form-control" name="catégorie" style="width:80%; text-align:center; position:relative; left:10%;">
                     </td> 
                     
                   </tr>
@@ -99,7 +99,7 @@ include "header.php" ;
                   <tr>
                     <td>Photo d'article</td>
                     <td>
-                    <input type="file" name="photo" style="width:80%; text-align:center; position:relative; left:10%;">
+                    <input type="file"  name="photo" style="width:80%; text-align:center; position:relative; left:10%;">
                     </td> 
                     
                   </tr>

@@ -1,7 +1,7 @@
 <?php
 /* connexion a la base de donnée */
 $username = "root" ;
-$password = "" ;
+$password = "root" ;
 
 $con = new PDO('mysql:host=localhost;dbname=PA', $username , $password);
 

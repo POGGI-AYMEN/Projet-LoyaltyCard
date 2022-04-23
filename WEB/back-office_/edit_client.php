@@ -33,21 +33,21 @@ include "header.php" ;
                     <tr>
                         <td> Nom </td>
                         <td>
-                            <input type="text" name="nom" value="<?php  echo $client['nom'] ?>">
+                            <input type="text" class="form-control" name="nom" value="<?php  echo $client['nom'] ?>">
                         </td> 
                     </tr>
 
                     <tr>
                         <td> Prenom </td>
                         <td>
-                            <input type="text" name="prenom" value="<?php  echo $client['prenom'] ?>">
+                            <input type="text" class="form-control" name="prenom" value="<?php  echo $client['prenom'] ?>">
                         </td> 
                     </tr>
 
                     <tr>
                         <td> Email </td>
                         <td>
-                            <input type="text" name="email" value="<?php  echo $client['email'] ?>">
+                            <input type="text" class="form-control" name="email" value="<?php  echo $client['email'] ?>">
                         </td> 
                     </tr>
 
@@ -56,33 +56,34 @@ include "header.php" ;
                        Numéro de téléphone
                     </td>
                     <td>
-                        <input type="text" name="phone" value="<?php  echo $client['num_tel'] ?>">
+                        <input type="text" class="form-control" name="phone" value="<?php  echo $client['num_tel'] ?>">
                     </td> 
                   </tr>
 
                   <tr>
                     <td>Adresse</td>
                     <td>
-                        <input type="text" name="adress" value="<?php  echo $client['adresse'] ?>">
+                        <input type="text" class="form-control" name="adress" value="<?php  echo $client['adresse'] ?>">
                     </td> 
                   </tr>
 
                   <tr>
                     <td>Ville</td>
                     <td>
-                        <input type="text" name="ville" value="<?php  echo $client['ville'] ?>">
+                        <input type="text" class="form-control" name="ville" value="<?php  echo $client['ville'] ?>">
                     </td> 
                   </tr>
 
                   <tr>
                     <td>Code postal</td>
                     <td>
-                        <input type="text" name="code_postal" value="<?php  echo $client['code_postal'] ?>">
+                        <input type="text" class="form-control" name="code_postal" value="<?php  echo $client['code_postal'] ?>">
                     </td> 
                   </tr>      
                 </tbody>
             </table>
-            <input id="editB" type="submit" class="btn btn-secondary" name="editClient" value="Modifier">
+            <input id="editB" type="submit"  class="btn btn-secondary" name="editClient" value="Modifier">
+            <a href="gestion_client.php" class="btn btn-primary">Retour</a>
         </div>
     </div>
 </form>

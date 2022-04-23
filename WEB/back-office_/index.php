@@ -88,6 +88,20 @@
                     <span>Clients</span></a>
             </li>
 
+            <!-- Nav Item - Ventes -->
+            <li class="nav-item">
+                <a class="nav-link" href="ventes.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Ventes</span></a>
+            </li>
+
+            <!-- Nav Item - Retour d'article -->
+            <li class="nav-item">
+                <a class="nav-link" href="retour-d'article.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Retour d'articles</span></a>
+            </li>
+
             <!-- Nav Item - Catalogue de prestation -->
             <li class="nav-item">
                 <a class="nav-link" href="catalogueDePrestation.php">
