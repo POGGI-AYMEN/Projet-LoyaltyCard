@@ -1,6 +1,7 @@
 <?php
-$i = 0 ;
+
 session_start() ;
+$i = 0;
 include "../controllers/admin.php" ; 
 include "../models/clientModel.php" ; 
 
@@ -43,16 +44,16 @@ $info_clients = ClientModel::selectAll() ;
      
                                            
                         <td>
-							<a href="info_client.php?id=<?php echo $info_client[$i]['id']; ?>"><?php echo $info_client['id']. "  ".$info_client['nom']; ?></a>
+							<a href="info_client.php?id=<?php echo $info_client['id']; ?>"><?php echo $info_client['nom']; ?></a>
 						</td>
                         <td>
 							<a id="delete" href="../controllers/client.php?removeClient=<?php echo $info_client['id']; ?>">Supprimer</a>
 						</td>
                         <td>
-							<a id="edit" href="editeEntrprise.php?editClient=<?php echo $info_client[$i]['email']; ?>">Modifier</a>
+							<a id="edit" href="edit_client.php?id=<?php echo $info_client['id']; ?>">Modifier</a>
 						</td>
                         <td>
-							<a id="contact" href="messageEntreprise.php?id=<?php echo $info_client[$i]['id']; ?>">Contact</a>
+							<a id="contact" href="messageEntreprise.php?id=<?php echo $info_client['id']; ?>">Contact</a>
 						</td>
                     </tr>
                     <?php } ?>

@@ -39,7 +39,13 @@ $charge = \Stripe\Charge::create(array(
     "customer" => $customer->id
 ));
 
+
 $facture = Password::generatePassword() ;
+
+$articlsNumner = count($myPanel) ;
+
+var_dump($articlsNumner);
+
 
 for ($i = 0 ; $i < count($myPanel) ; $i++)
 {
@@ -48,7 +54,8 @@ for ($i = 0 ; $i < count($myPanel) ; $i++)
 
  ArticleModel::updateQuantityMinus($myPanel[$i]['quantité']  , $myPanel[$i]['article']) ;
 
- // on ajout l'achat dans l'historique des achat du client //
+
+  //on ajout l'achat dans l'historique des achat du client //
 
  include_once "../models/historiqueModel.php" ;
 
@@ -64,7 +71,7 @@ $product['image'] = $myPanel[$i]['image'];
 HistoriqueModel::insert($product) ;
 
 
-// insertion dans la table des ventes //
+//insertion dans la table des ventes //
 
 
 $articlData = ArticleModel::selectAllWhere("nom" , $myPanel[$i]['article']) ;
@@ -72,12 +79,13 @@ $articlData = ArticleModel::selectAllWhere("nom" , $myPanel[$i]['article']) ;
 $product['codeArticle'] = $articlData['codeArticle'] ;
 $product['entrepots'] = $articlData['entrepot'] ;
 $product['client'] = $_SESSION['clientId'] ;
+$product['vendeur'] = $articlData['vendeur'] ;
 
 include_once "../models/ventesModel.php" ;
 
 VentesModel::insert($product) ;
 
-// update du panier
+//update du panier
   include_once "../models/panierModel.php" ;
 
  PanelModel::deletFromWhere("article" , $myPanel[$i]['article'] , $user['id']) ;
@@ -98,6 +106,7 @@ Cart::updateClientPointsAdd($_GET['amount'] , $user['num_carte']) ;   // rajout 
 
 $newData = Cart::getPoints($user['num_carte']) ;
 $newPoints = $newData['points'] ;
+
 // envoi des notification a l'utilisateur //
 
 include "../models/notificationModel.php" ;

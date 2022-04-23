@@ -3,14 +3,16 @@
 
   include '../controllers/admin.php' ; 
   include "../models/entrepriseModel.php" ; 
-  include "../models/ventesModel.php" ; 
+
   include "../models/candidaturModel.php" ;
   include "../models/clientModel.php" ;
+
+  include "../controllers/ventes.php" ;
 
   $companyCount = EntrepriseModel::count() ; 
   $candidateCount = CandidatureModel::count() ;
   $clientCount = ClientModel::count() ; 
-  $salesCount = VentesModel::count() ;  
+
 
 
 ?>
@@ -385,7 +387,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             Articles vendus</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $salesCount;  ?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $salesCountAdmin;  ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>

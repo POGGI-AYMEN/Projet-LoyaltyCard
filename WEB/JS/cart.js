@@ -55,7 +55,8 @@ useMyPoints.onclick = function()
            if (points < pointValue) 
            {
                var errorMessage = document.getElementById('error') ;    // on affiche un message d'erreur si non 
-               errorMessage.innerHTML = "Vous avez pas assez de point dans votre compte " ; 
+               errorMessage.innerHTML = "Vous avez pas assez de point dans votre compte " ;
+
              
            }
            else 
@@ -84,7 +85,7 @@ checkout.onclick = function()
 {
     if (fixedSum === 0) 
     {
-window.location.href = "payement-page.php?amount="+String(sum)+"&&points="+pointValue ;        // si le client n'a pas utiliser des points
+window.location.href = "payement-page.php?amount="+String(sum)+"&&points=0" ;        // si le client n'a pas utiliser des points
     }
     else 
     {

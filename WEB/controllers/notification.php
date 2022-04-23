@@ -49,4 +49,12 @@
 
         }
 
+        public function getNotificationInfo($where ,$id )
+        {
+            include_once "../models/notificationModel.php" ;
+
+            $notification = NotificationModel::selectWhere($where , $id) ;
+
+            return $notification ;
+        }
     }

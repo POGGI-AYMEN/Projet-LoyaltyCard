@@ -59,7 +59,7 @@ $products = Historique::getAll($_SESSION['clientId']) ;
                         <div class="row"><?php echo $product['article'] ;  ?></div>
                     </div>
                     <div class="col"> <a href="#" class="border"><?php echo $product['quantité'] ;  ?></a> </div>
-                    <div class="col"><?php echo $product['prix'] ?></div>
+                    <div class="col"><?php echo $product['prix'] * $product['quantité'] ?></div>
                     <div class="col"><a href="../config/download.php?fileName=<?php echo $product['facture_code'] ; ?>"><img src="../images/pdf.svg" height="45px;"></a></div>
 
                     <div class="col close"><a href="">Retour</a></div>

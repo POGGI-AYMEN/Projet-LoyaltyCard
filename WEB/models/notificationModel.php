@@ -70,4 +70,19 @@
 
              $deleteQuery->execute([$id , $client]) ; 
          }
+
+         public function selectWhere($where , $value)
+         {
+             include "../config/database.php" ;
+             $selectQuery = $con->prepare("SELECT * FROM Notification WHERE ".$where." = ?") ;
+
+             $selectQuery->execute([$value]) ;
+
+             $result = $selectQuery->fetch(PDO::FETCH_ASSOC) ;
+
+             return $result ;
+
+
+
+         }
     }

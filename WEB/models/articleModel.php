@@ -49,9 +49,9 @@
         {
             include "../config/database.php" ; 
 
-            $updateQuery = $con->prepare("UPDATE Article SET quantité = quantité - ? WHERE article = ?") ; 
+            $updateQuery = $con->prepare("UPDATE Article SET quantité = quantité - ? WHERE nom = ?") ;
 
-            $updateQuery->execute([$quantity , $article]) ; 
+            $updateQuery->execute([$quantity , $article]) ;
 
         }
 

@@ -1,10 +1,5 @@
 <?php
-/**
- * faire  :
- * l'utlisation des point de l'utilisateur
- * passage du prix au page de paiement stripe
- * boutton de supréssion de l'article
- */
+
 include "../controllers/panier.php" ;
 
 

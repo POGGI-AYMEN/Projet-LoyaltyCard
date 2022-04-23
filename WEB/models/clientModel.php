@@ -15,7 +15,7 @@
                 $client['email'] , 
                 $client['password'] , 
                 $client['adresse'] , 
-                $client['city'] , 
+                $client['city'] ,
                 $client['code_postal'] , 
                 $client['country'] , 
                 $client['card_number']
@@ -81,18 +81,18 @@
 
             include "../config/database.php" ; 
 
-            $update = $con->prepare("UPDATE Clients SET nom = ? , prenom = ? , email = ? , mdp = ? , pays = ? , adresse = ? , num_tel = ? , code_postal = ?  WHERE id = ?") ;
+            $update = $con->prepare("UPDATE Clients SET nom = ? , prenom = ? , email = ?  , pays = ? , adresse = ? , num_tel = ? , code_postal = ? , ville = ? WHERE id = ?") ;
     
             $update->execute([
                 $client['nom'] ,
                 $client['prenom'] ,
                 $client['email'] ,
-                $client['password'] ,
                 $client['pays'] , 
                 $client['adress'] , 
                 $client['phone'],
                 $client['code_postal'],
-    
+
+                $client['ville'],
                 
                 $id 
             

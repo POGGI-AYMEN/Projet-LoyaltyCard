@@ -20,24 +20,29 @@ if (isset($_GET['incArticle']) && !empty($_GET['incArticle']))
     include "../models/articleModel.php" ;
 
     $article = $_GET['incArticle'] ;
+    $articleData = ArticleModel::selectAllWhere("nom" , $article) ;
+    $stock = $articleData['quantité'] ;
+    $panelData = PanelModel::quantity($article , $clientId) ;
+    $panelQuantity = (int)$panelData['quantité'] ;
 
-    $emptyStock = ArticleModel::selectAllWhere("nom" , $article) ;
-
-    if ($emptyStock['quantité'] <= 1)
+    if ($stock > 0)
     {
-        header("location:../view/page_panier.php?error=cet article n'est plus disponible dans le stock ") ;
-        die() ;
-    }
+        if ($stock > $panelQuantity)
+        {
+
+            PanelModel::updateWherePlus('article' , $article , $clientId) ;
+            header("location:../view/page_panier.php") ;
+        }
         else
-    {
-        PanelModel::updateWherePlus("article" , $article ,$clientId) ;
+        {
+            header("location:../view/page_panier.php?error=cet article n'est plus disponible en stock") ;
+        }
 
-        ArticleModel::updateWhereMinus("nom" , $article , $clientId) ;
-
-        header('location:../view/page_panier.php') ;
-
-        die() ;
     }
+
+
+
+
 }
 
 // decrementer un article du panier
@@ -53,7 +58,6 @@ if (isset($_GET['decArticle']) && !empty($_GET['decArticle']))
     {
         PanelModel::updateWhereMinus("article" , $articleName , $clientId) ;
 
-        ArticleModel::updateWherePlus("nom" , $articleName , $clientId) ;
 
         header("location:../view/page_panier.php") ;
 

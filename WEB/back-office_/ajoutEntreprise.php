@@ -1,6 +1,8 @@
-<?php 
+<?php
+session_start() ;
+
 include "../controllers/entreprise.php" ;
-include "../controllers/admin.php" ; 
+include_once "../controllers/admin.php" ;
 
 
 include "header.php" ;
@@ -12,6 +14,7 @@ include "header.php" ;
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Ajouter une entrepise</h6>
         </div>
+        <p style="color:red; margin-left: 10%;"><?php if(!empty($error)) {echo  $error ;} ?></p>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -27,7 +30,7 @@ include "header.php" ;
                         <tr>
                             <td>Nom</td>
                             <td>
-                                <input type="text" name="contrat" value=<?php echo $company['nom']; ?>>
+                                <input type="text" name="entreprise" placeholder="nom">
                             </td> 
                         </tr>
                     <tr>
@@ -35,7 +38,7 @@ include "header.php" ;
                         Email
                         </td>
                         <td>
-                        <input type="text" name="email" value=<?php echo $company['email']; ?>>
+                        <input type="text" name="email" placeholder="Email">
                         </td> 
                     </tr>
 
@@ -44,63 +47,94 @@ include "header.php" ;
                         Numéro de téléphone
                         </td>
                         <td>
-                        <input type="text" name="num" value=<?php echo $company['numéro_tel']; ?>>
+                        <input type="text" name="num" placeholder="Téléphone">
                         </td> 
                     </tr>
 
-                    <tr>
+                        <tr>
+                            <td>
+                               Adresse
+                            </td>
+                            <td>
+                                <input type="text" name="adress" placeholder="Adress">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Code Postal
+                            </td>
+                            <td>
+                                <input type="text" name="code_postal" placeholder="code postal">
+                            </td>
+                        </tr>
+                        <tr>
+                        <tr>
+                            <td>
+                                Ville
+                            </td>
+                            <td>
+                                <input type="text" name="ville" placeholder="ville">
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <td>
+                                Pays
+                            </td>
+                            <td>
+                                <input type="text" name="pays" placeholder="Pays">
+                            </td>
+                        </tr>
+
+
+                        <tr>
                         <td>
                         Gérant
                         </td>
                         <td>
-                        <input type="text" name="gérant" value=<?php echo $company['gérant']; ?>>
+                        <input type="text" name="gérant" placeholder="Gérant">
                         </td> 
                     </tr>
 
                         <tr>
                             <td>Date de création</td>
                             <td>
-                                <input type="text" name="contrat" value=<?php echo $company['date_de_création']; ?>>
+                                <input type="text" name="création" placeholder="Date de création">
                             </td> 
                         </tr>
 
                         <tr>
                             <td>Sécteur d'activité</td>
                             <td>
-                                <input type="text" name="contrat" value=<?php echo $company['activité']; ?>>
+                                <input type="text" name="activité" placeholder="Sécteur">
                             </td> 
                         </tr>
 
                         <tr>
                             <td>Siret</td>
                             <td>
-                                <input type="text" name="contrat" value=<?php echo $company['siret']; ?>>
+                                <input type="text" name="siret" placeholder="Siret">
                             </td> 
                         </tr>
 
                     <tr>
                         <td>Chiffre d'affaire</td>
                         <td>
-                        <input type="text" name="chif_affaire" value=<?php echo $company['chiffre_daffaire']; ?>>
+                        <input type="text" name="chif_affaire" placeholder="chiffre d'affaire">
                         </td> 
                     </tr>
 
                     <tr>
                         <td>Durée de contrat</td>
                         <td>
-                        <input type="text" name="contrat" value=<?php echo $company['contrat']; ?>>
+                        <input type="text" name="contrat" placeholder="durée de contract">
                         </td> 
                     </tr>
 
-                    <tr>
-                        <td>Date du dernier payement</td>
-                        <td>
-                        <input type="text" name="date" value=<?php echo $company['date_de_payement']; ?>>
-                        </td> 
-                    </tr>      
+
                     </tbody>
                 </table>
-                <input id="editB" type="submit" class="btn btn-secondary" name="updateEntreprise" value="Ajouter">
+                <input id="editB" type="submit" class="btn btn-secondary" name="addNewEntreprise" value="Ajouter">
             </div>
         </div>
     </form>

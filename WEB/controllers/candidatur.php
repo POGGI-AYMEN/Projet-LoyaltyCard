@@ -61,11 +61,11 @@ if (isset($_GET['addEntreprise']) && !empty($_GET['addEntreprise']))
     </html>" ; 
     $headers = 'From: loyalty.card6@gmail.com' . "\r\n" ;
 
-    mail($email , "candidaure" , $message) ;   
+    mail($candidat['email'] , "candidaure" , $message) ;
     
     header('location:../back-office_/Condidature.php') ; 
     
-    die() ; 
+
    
 }
 

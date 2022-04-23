@@ -76,6 +76,33 @@
             ]) ;
             
         }
+
+        public function paymentAmount($price)
+        {
+            if ($price < 200000) { return "Aucun cotisation a payer" ; }
+            elseif ($price < 800000 && $price > 200000) {return $price * 0.8 ;}
+            elseif ($price > 800000 && $price < 1500000 ) {return  $price * 0.6 ; }
+            elseif ($price > 1500000 && $price < 3000000) {return  $price * 0.4 ;}
+            elseif ($price > 3000000) {return  $price * 0.3 ; }
+        }
+
+        public function updateWhere($company , $id)
+        {
+            include "../config/database.php" ;
+
+            $updateQuery = $con->prepare('UPDATE Entreprise SET email = ? , gérant = ?, numéro_tel = ? , chiffre_daffaire = ? , contrat = ? , date_de_payement = ? WHERE id = ?') ;
+
+            $updateQuery->execute([
+                $company['email'] ,
+                $company['gérant'] ,
+                $company['num'] ,
+                $company['chif_affaire'] ,
+                $company['contrat'] ,
+                $company['date'] ,
+                $id
+            ]) ;
+            header('location:../back-office_/editeEntrprise.php?id='.$id) ;
+        }
         
       
     }

@@ -80,4 +80,18 @@
         }
 
 
+        public function quantity ($article , $client)
+        {
+            include "../config/database.php";
+
+            $selectQuery = $con->prepare('SELECT * FROM Panier WHERE client = ? AND article = ?') ;
+
+            $selectQuery->execute([$client , $article]) ;
+
+            $quantité = $selectQuery->fetch() ;
+
+            return $quantité ;
+
+        }
+
     }

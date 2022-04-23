@@ -21,13 +21,13 @@ function showNotifications()
     }
     if (notifCount > 0)
     {
-        const notification = new Notification("Vous avez un nouvau message de LoyaltyBoost" , {
-            body: "Nouveau message",
+        const notification = new Notification("Vous avez effectuer un nouveau achat chez loyaltyBoost " , {
+            body: "consulter votre nouveau sold des points",
             icon:"../images/logo.png"
         }) ;
         notification.onclick = (e) =>
         {
-            window.location.href = "../view/messagerie.php" ;
+            window.location.href = "../view/notifications.php" ;
         } ;
 
     }

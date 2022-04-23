@@ -1,13 +1,14 @@
 <?php
 
 
-include "../controllers/client.php" ; 
-include "../models/ventesModel.php" ; 
+include "../controllers/client.php" ;
+include "../controllers/ventes.php";
 include "../controllers/carte.php" ;
 
-$articlesCount = VentesModel::selectWhereCount("client" , $_SESSION['clientId']) ; 
+
 $points = Cart::getPoints($user['num_carte']) ;
 $euro = Cart::pointsToEuro($points['points']) ;
+
 
 
 ?>
@@ -67,7 +68,7 @@ $euro = Cart::pointsToEuro($points['points']) ;
 										<div class="col mr-2">
 											<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
 											Articles achetés</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $articlesCount;  ?></div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $salesCount;  ?></div>
 										</div>
 										<div class="col-auto">
 										<i class="fa-solid fa-cart-arrow-down"></i>

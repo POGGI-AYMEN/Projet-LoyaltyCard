@@ -1,7 +1,8 @@
 <?php
+session_start();
 $i = 0 ;
 include "../controllers/entreprise.php" ;
-include "../controllers/admin.php" ; 
+include_once "../controllers/admin.php" ;
 
     require("header.php");
     ?>
@@ -41,7 +42,7 @@ include "../controllers/admin.php" ;
 							<a id="delete" href="../controllers/entreprise.php?removeCompany=<?php echo $company['id']; ?>">Supprimer</a>
 						</td>
                         <td>
-							<a id="edit" href="editeEntrprise.php?editEmail=<?php echo $company['email']; ?>">Modifier</a>
+							<a id="edit" href="editeEntrprise.php?id=<?php echo $company['id']; ?>">Modifier</a>
 						</td>
                         <td>
 							<a id="contact" href="messageEntreprise.php?id=<?php echo $company['id']; ?>">Contact</a>

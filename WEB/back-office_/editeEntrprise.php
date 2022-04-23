@@ -1,6 +1,10 @@
-<?php 
+<?php
+
+session_start() ;
 include "../controllers/entreprise.php" ;
-include "../controllers/admin.php" ; 
+
+include_once "../controllers/admin.php" ;
+
 
 
 include "header.php" ;
@@ -12,6 +16,7 @@ include "header.php" ;
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Modifier les information de l'entreprise</h6>
     </div>
+    <p style="color: red; margin-left: 2%;margin-top: 1%;"><?php if(!empty($error)) {echo $error;}  ?></p>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

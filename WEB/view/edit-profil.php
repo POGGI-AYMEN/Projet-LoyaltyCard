@@ -60,14 +60,7 @@ include "../controllers/client.php" ;
 									<input  name="email"  type="email" class="form-control" value="<?php echo $user['email'] ;?>">
 								</div>
 							</div>
-							<div class="row mb-3">
-								<div class="col-sm-3">
-									<h6 class="mb-0">Mot de passe</h6>
-								</div>
-								<div class="col-sm-9 text-secondary">
-									<input name="password" type="password" class="form-control" >
-								</div>
-							</div>
+
 							<div class="row mb-3">
 								<div class="col-sm-3">
 									<h6 class="mb-0">Telephone</h6>

@@ -2,6 +2,12 @@
 
 include "../controllers/client.php" ;
 
+include "../controllers/notification.php" ;
+
+include "../config/database.php" ;
+
+$notificationInfo = Notification::getNotificationInfo("id" , $_GET['id']) ;
+$gained = (int)$notificationInfo['new_points'] - (int)$notificationInfo['curent_points'] ;
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +53,10 @@ include "../controllers/client.php" ;
                              <br><br>
                              <p id="notif-id"><?php echo $_GET['id'] ; ?></p>
                              <p>Carte nuéméro : <?php echo $user['num_carte']  ?> </p>
-                             <p>Votre sold actuel des points : <?php   ?></p>
+                             <p>Votre sold des points avant l'achat: <?php echo $notificationInfo['curent_points'];  ?></p>
+                                <p>Points gagner : <?php echo $gained ?> </p>
+                                <p>Votre nouveau sold des points : <?php echo $notificationInfo['new_points'] ; ?></p>
+                                <p></p>
                             </div><!-- /.view-mail -->
                         </div>
                     </div>
