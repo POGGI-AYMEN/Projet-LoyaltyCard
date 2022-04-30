@@ -8,9 +8,11 @@ if ($method === "GET")
 
     if (isset($_GET['client']))     // retourn les data d'un client  // client = l'id du client
     {
+        
         $client = $_GET['client'] ;
-        Client::getOneClient("id" , $client) ;
+        Client::getOneClient("id", $client) ;
         die() ;
+        
     } elseif(isset($_GET['delete']))        // delete = l'id du client -> supprime un client
     {
         $client = $_GET['delete'] ;
