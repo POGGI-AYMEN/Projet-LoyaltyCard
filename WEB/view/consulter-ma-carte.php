@@ -38,7 +38,7 @@ include "../controllers/client.php" ;
             <div class="col">
 
             <h2>Consulter ma carte</h2>
-                
+
                 <div id="toPDF" class=" card_">
 
                     <div class="left-side-card ">
@@ -54,10 +54,10 @@ include "../controllers/client.php" ;
                         </div>
                     </div>
                     <div class="text-center">
-                        <img src="https://chart.googleapis.com/chart?cht=qr&chl=Hello+World&chs=160x160&chld=L|0" class="qr-code img-thumbnail img-responsive" />
+                        <img  src="https://chart.googleapis.com/chart?cht=qr&chl=Hello+World&chs=160x160&chld=L|0" class="qr-code img-thumbnail img-responsive" />
                     </div>
                     
-                </div> 
+                </div>
                 <div class="container-fluid">
                     <div class="form-horizontal">
                         <div class="form-group">
@@ -76,8 +76,7 @@ include "../controllers/client.php" ;
                     </div>
                 </div> 
                 <div class="buttons">
-                    <button type="button" class="btn btn-info" id="generate">Generer le QR Code</button>
-                    <button id="getPDFf" type="button" class="btn btn-info" > Telecharger ma carte </button>
+                    <button style="margin-left: 30%;" id="getPDFf" type="button" class="btn btn-info" > Telecharger ma carte </button>
                 </div>
                 <!--<div id="editor"></div> -->
             </div>	
@@ -88,3 +87,42 @@ include "../controllers/client.php" ;
 </div>
 
 <?php require("footer.php"); ?>
+<script src=
+        "https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js">
+</script>
+<script>
+
+    setUpDownloadPageAsImage();
+
+    function setUpDownloadPageAsImage() {
+        document.getElementById("getPDFf").addEventListener("click", function() {
+            html2canvas(document.getElementById('toPDF')).then(function(canvas) {
+                console.log(canvas);
+                simulateDownloadImageClick(canvas.toDataURL(), 'LoayaltyCard.png');
+            });
+        });
+    }
+
+    function simulateDownloadImageClick(uri, filename) {
+        var link = document.createElement('a');
+        if (typeof link.download !== 'string') {
+            window.open(uri);
+        } else {
+            link.href = uri;
+            link.download = filename;
+            accountForFirefox(clickLink, link);
+        }
+    }
+
+    function clickLink(link) {
+        link.click();
+    }
+
+    function accountForFirefox(click) { // wrapper function
+        let link = arguments[1];
+        document.body.appendChild(link);
+        click(link);
+        document.body.removeChild(link);
+    }
+
+</script>

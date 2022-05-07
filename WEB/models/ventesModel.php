@@ -2,6 +2,8 @@
 
 class VentesModel
 {
+
+
     public function count () 
     {
         include "../config/database.php" ; 

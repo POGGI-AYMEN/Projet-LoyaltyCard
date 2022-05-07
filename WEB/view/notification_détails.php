@@ -53,9 +53,9 @@ $gained = (int)$notificationInfo['new_points'] - (int)$notificationInfo['curent_
                              <br><br>
                              <p id="notif-id"><?php echo $_GET['id'] ; ?></p>
                              <p>Carte nuéméro : <?php echo $user['num_carte']  ?> </p>
-                             <p>Votre sold des points avant l'achat: <?php echo $notificationInfo['curent_points'];  ?></p>
-                                <p>Points gagner : <?php echo $gained ?> </p>
-                                <p>Votre nouveau sold des points : <?php echo $notificationInfo['new_points'] ; ?></p>
+                             <p>Votre sold des points avant l'achat: <?php if ($notificationInfo['curent_points'] != 0) { echo $notificationInfo['curent_points']; } ?></p>
+                                <p>Points gagner : <?php if($gained != 0){ echo $gained ; } ?> </p>
+                                <p>Votre nouveau sold des points : <?php if($notificationInfo['new_points'] != 0){  echo $notificationInfo['new_points'] ;} ?></p>
                                 <p></p>
                             </div><!-- /.view-mail -->
                         </div>

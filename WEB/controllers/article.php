@@ -91,3 +91,121 @@ if (isset($_POST['newArticle']) && !empty($_POST['newArticle']))
 
     }
 }
+//
+//demande de retourner un article //
+
+if (isset($_GET['returnId']) && !empty($_GET['returnId']))
+{
+
+    include "../models/historiqueModel.php" ;
+
+    $articleData = HistoriqueModel::selectWhere("id" , $_GET['returnId'] , $_GET['clientId']) ;
+
+
+    $article['date_de_retoure'] = date("j/n/Y") ;
+
+    include "../models/clientModel.php" ;
+
+
+
+    $article['client'] = $_GET['clientId'] ;
+
+    $article['facture'] = $articleData[0]['facture_code'] ;
+
+    $article['image'] = $articleData[0]['image'] ;
+
+    $article['name'] = $articleData[0]['article'] ;
+
+    $article['code'] = ArticleModel::generateCode() ;
+
+    $exist = ArticleModel::verifReturn($article['facture']) ;
+
+    var_dump($exist);
+
+    if (empty($exist)) {  ArticleModel::return($article) ;  header('location:../view/returne_article.php?code='.$article['code']) ;}
+    else{ header('location:../view/historique-des-achats.php?error=cet demande de retout est en cour de traitement');}
+
+}
+//accepter le retour d'un article //
+
+if (isset($_GET['returned']))
+{
+    include  "../models/historiqueModel.php" ;
+    include "../models/clientModel.php";
+    include "../models/carteModel.php" ;
+    include "../models/notificationModel.php";
+    $code = $_GET['returned'] ;
+
+
+
+    $articleData = HistoriqueModel::selectWhere('facture_code' , $code , $_GET['client']) ;
+
+    $articleName = $articleData[0]['article'] ;
+
+    $points = $articleData[0]['prix'] * 0.3 ;
+
+    $clientData = ClientModel:: selectWhere("id" , $_GET['client']) ;
+
+    $client = $clientData['num_carte'] ;
+
+
+
+
+    ArticleModel::updateWherePlus('nom' ,$articleName ) ;
+
+    HistoriqueModel::deleteWhere("facture_code" , $code) ;
+
+    ArticleModel::deletReturn( "facture", $code) ;
+
+    CarteModel::updatePointsAdd($points , $client) ;
+
+
+    $notifcation['date'] = date("j/m/Y") ;
+    $notifcation['curentPoints'] =      0 ;
+    $notifcation['newPoints'] = $points ;
+    $notifcation['message'] = "Votre retour d'article est accepter vous etes rembourssé par des points" ;
+    $notifcation['status'] = 0 ;
+    $notifcation['client'] = $clientData['id'] ;
+
+
+    NotificationModel::insert($notifcation) ;
+
+    header("location:../back-office_/retour-d'article.php") ;
+
+}
+
+if (isset($_GET['canc']))
+{
+    echo "ok";
+    include  "../models/historiqueModel.php" ;
+    include "../models/clientModel.php";
+    include "../models/carteModel.php" ;
+    include "../models/notificationModel.php";
+    $code = $_GET['canc'] ;
+
+
+
+    $articleData = HistoriqueModel::selectWhere('facture_code' , $code , $_GET['client']) ;
+
+    $articleName = $articleData[0]['article'] ;
+
+    $points = $articleData[0]['prix'] * 0.3 ;
+
+    $clientData = ClientModel:: selectWhere("id" , $_GET['client']) ;
+
+    $client = $clientData['num_carte'] ;
+
+    $notifcation['date'] = date("j/m/Y") ;
+    $notifcation['curentPoints'] =      0 ;
+    $notifcation['newPoints'] = 0 ;
+    $notifcation['message'] = "Votre demande de retour a été refuser contacter-nous pour plus d'information" ;
+    $notifcation['status'] = 0 ;
+    $notifcation['client'] = $clientData['id'] ;
+
+
+    NotificationModel::insert($notifcation) ;
+
+   // header("location:../back-office_/retour-d'article.php") ;
+
+}
+

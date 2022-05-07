@@ -1,6 +1,19 @@
 <?php
-    require("header.php");
-    ?>
+session_start() ;
+require("header.php");
+include "../models/clientModel.php" ;
+include "../controllers/messagerie.php";
+
+$messages = Messagerie::getClientMessages($_GET['id']) ;
+
+$client = ClientModel::selectWhere('id' , $_GET['id']) ;
+
+$clientName = $client['nom']." ".$client['prenom'] ;
+
+Messagerie::sendAdminMessage($_GET['id'])
+
+
+?>
 
 <div class="container-fluid">
 	<h1 class="h3 mb-2 text-gray-800">Messagerie</h1>
@@ -27,7 +40,7 @@
 												<div class='text-muted small text-nowrap mt-2'>". date('j/n/Y h:m')."</div>
 											</div>
 											<div class='flex-shrink-1 bg-light col-md-6 rounded py-2 px-3 mr-3'>
-												<div class='font-weight-bold mb-1'>Vous</div>
+												<div class='font-weight-bold mb-1'>".$clientName."</div>
 												".$message['message']."
 											</div>
 										</div>
@@ -61,7 +74,7 @@
 									<div class="flex-grow-0 py-3 px-4 border-top">
 										<div class="input-group">
 											<input name="message" type="text" class="form-control" placeholder="Type your message">
-											<input name="send" type="submit" class="btn btn-primary"></input>
+											<input name="sendAdmin" type="submit" class="btn btn-primary"></input>
 										</div>
                                         <a href="Entreprise-a-contacter.php" class="btn btn-primary mt-3">Retour</a>
 									</div>

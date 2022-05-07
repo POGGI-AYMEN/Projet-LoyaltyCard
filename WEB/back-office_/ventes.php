@@ -1,6 +1,9 @@
 <?php
 session_start() ;
 require("header.php");
+
+include "../controllers/ventes.php" ;
+
 ?>
 
 <div class="container-fluid">
@@ -15,20 +18,32 @@ require("header.php");
         
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
+
                             <tr>
                                 <th>Produit</th>
+                                <th>Date</th>
+                                <th>Entrepots</th>
                                 <th>Quantité vendu</th>
                             </tr>
                         </thead>
                         <tbody>
+                        <?php  foreach ($salesList as $sale) { ?>
+
                             <tr>                  
                                 <td>
-                                    Produit1
+                                    <?php echo $sale['nom_article'] ; ?>
                                 </td>
                                 <td>
-                                    4
+                                    <?php echo $sale['date'] ; ?>
+                                </td>
+                                <td>
+                                    <?php echo $sale['entrepots'] ; ?>
+                                </td>
+                                <td>
+                                    <?php echo $sale['quantité'] ; ?>
                                 </td>
                             </tr>
+            <?php }?>
                         </tbody>
                     </table>
                 </div>

@@ -12,6 +12,7 @@
     <title>Header</title>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar-example">
+
    
     <nav id="navbar-example" class="navbar">
         <span><a class="logo navbar-brand link-dark lead" href="homePage.php"><img src="images/logo.png" alt="" height="50px" width="70px"></a></span>
@@ -111,6 +112,17 @@
                 <button class="btn_stndr"><a href="view/inscription.php">Hover me!</a></button>           
              </div>
         </div>
+</body>
+<!-- ConveyThis code -->
+<script src="//cdn.conveythis.com/javascript/convey this-initializer.js"></script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(e) {
+        ConveyThis_Initializer.init({
+            api_key: "pub_fba0545cae6d68da672a6f425a9df1e0"
+        });
+    });
+</script>
+<!-- End ConveyThis code -->                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 
         <script src="JS/scrollSpy.js" ></script>
 

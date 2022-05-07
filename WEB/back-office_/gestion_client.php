@@ -53,7 +53,7 @@ $info_clients = ClientModel::selectAll() ;
 							<a id="edit" href="edit_client.php?id=<?php echo $info_client['id']; ?>">Modifier</a>
 						</td>
                         <td>
-							<a id="contact" href="messageEntreprise.php?id=<?php echo $info_client['id']; ?>">Contact</a>
+							<a id="contact" href="Messagerie.php?id=<?php echo $info_client['id']; ?>">Contact</a>
 						</td>
                     </tr>
                     <?php } ?>

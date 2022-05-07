@@ -3,6 +3,8 @@ include "../controllers/client.php" ;
 
 include "../controllers/historique.php" ;
 
+
+
 $products = Historique::getAll($_SESSION['clientId']) ;
 
 ?>
@@ -44,7 +46,7 @@ $products = Historique::getAll($_SESSION['clientId']) ;
                     <div class="col center">
                         <h4><b>HISTORIQUE DES ACHATS</b></h4>
                     </div>
-
+                    <p style="color: red"><?php if(isset($_GET['error'])) echo $_GET['error']; ?></p>
                 </div>
             </div>
 
@@ -62,7 +64,7 @@ $products = Historique::getAll($_SESSION['clientId']) ;
                     <div class="col"><?php echo $product['prix'] * $product['quantité'] ?></div>
                     <div class="col"><a href="../config/download.php?fileName=<?php echo $product['facture_code'] ; ?>"><img src="../images/pdf.svg" height="45px;"></a></div>
 
-                    <div class="col close"><a href="">Retour</a></div>
+                    <div class="col close"><a href="../controllers/article.php?returnId=<?php echo $product['id'] ;?>&&clientId=<?php echo $_SESSION['clientId'];?>">Retour</a></div>
                 </div>
             </div>
             <div class="row border-top border-bottom"></div>

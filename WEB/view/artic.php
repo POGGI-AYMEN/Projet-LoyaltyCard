@@ -72,7 +72,13 @@ include "../controllers/article.php" ;
                 <div class="mc-content " >
 
                     <div class="img-container">
-                        <img class="img-responsive" src="../uploads/images/<?php echo $article['image']; ?>" height="100%" width="100%">
+                        <?php if (!empty($article['image'])) echo " 
+                        <img class='img-responsive' src='../uploads/images/".$article['image']."'' height='100%' width='100%'>
+                        " ;
+                        else
+                        {
+                            echo "     <img class='img-responsive' src='../images/logo.png' height='100%' width='100%'> " ;
+                        }?>
                     </div>
                     <div class="mc-description">
                     description : <?php  echo $article['Description'] ;   ?>
