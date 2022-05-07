@@ -30,7 +30,7 @@ if ($method === "GET")
     }
 }
 
-if ($method === "PATCH")
+if ($method === "PUT")
 {
     /**
      * modifier soit le prix ou la quantité d'un article choisi

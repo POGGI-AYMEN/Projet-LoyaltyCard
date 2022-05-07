@@ -11,9 +11,10 @@ include "config/responsse.php" ;
 
             $headers = [
                 "Content-Type" => "application/json",
+                "UTF-8"
             ];
 
-            $entreprise = EntrepriseModel::selectWhere("email" , $entreprise) ;
+            $entreprise = EntrepriseModel::selectWhere("id" , $entreprise) ;
 
 
             if (empty($entreprise))
@@ -22,7 +23,9 @@ include "config/responsse.php" ;
                 echo Response::json($statusCode, $headers, $body);
                 die() ;
             }
-            $body = ["success" => true, "entreprise" => $entreprise];
+            $body =[ "response" =>
+                ["success" => true, "entreprise" => $entreprise]
+                ];
             echo Response::json($statusCode, $headers, $body);
         }
 

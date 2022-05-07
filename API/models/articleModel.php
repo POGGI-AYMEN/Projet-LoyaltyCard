@@ -25,7 +25,7 @@ include "config/Database.php";
 
             $selectQuery->execute([$value]) ;
 
-            $article = $selectQuery->fetch(PDO::FETCH_ASSOC) ;
+            $article = $selectQuery->fetchAll() ;
 
             return $article ;
         }
@@ -47,7 +47,7 @@ include "config/Database.php";
 
             $updateQuery = $dbConnexion->prepare("UPDATE Article SET quantité = ? WHERE codeArticle = ?") ;
 
-            $updateQuery->execute([$data , $article]) ;
+            $updateQuery->execute([$data['data'] , $article]) ;
 
         }
 
@@ -57,7 +57,7 @@ include "config/Database.php";
 
             $updateQuery = $dbConnexion->prepare("UPDATE Article SET prix = ? WHERE codeArticle = ?") ;
 
-            $updateQuery->execute([$data , $article]) ;
+            $updateQuery->execute([$data['data'] , $article]) ;
         }
 
         public function create($product)
