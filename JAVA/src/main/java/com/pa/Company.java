@@ -6,14 +6,30 @@ public class Company
     private String email ;
     private String name ;
     private String contact ;
-    private int phoneNumber ;
+    private String phoneNumber ;
     private String address ;
-    private int code_postal ;
-
+    private String code_postal ;
+    private String city ;
     //*************** getters && setters**************** //
 
     public int getId() {
         return id;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setCode_postal(String code_postal) {
+        this.code_postal = code_postal;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public void setId(int id) {
@@ -44,12 +60,12 @@ public class Company
         this.contact = contact;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber = String.valueOf(phoneNumber);
     }
 
     public String getAddress() {
@@ -60,12 +76,12 @@ public class Company
         this.address = address;
     }
 
-    public int getCode_postal() {
+    public String getCode_postal() {
         return code_postal;
     }
 
     public void setCode_postal(int code_postal) {
-        this.code_postal = code_postal;
+        this.code_postal = String.valueOf(code_postal);
     }
 
     // ********************* methodes************************ //

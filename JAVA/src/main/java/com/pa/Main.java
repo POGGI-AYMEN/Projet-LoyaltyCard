@@ -1,24 +1,33 @@
-package com.example.pa;
+package com.pa;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends Application {
+
+    private static Stage stg;
+
+    public static Stage getStg() {
+        return stg;
+    }
+
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("log_in.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 600, 600);
-        stage.setTitle("Log in");
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage primaryStage) throws Exception {
+        stg = primaryStage;
+        primaryStage.setResizable(false);
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("log_in.fxml")));
+        primaryStage.setTitle("LoyaltyCard");
+        primaryStage.setScene(new Scene(root, 800, 470));
+        primaryStage.show();
     }
 
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
