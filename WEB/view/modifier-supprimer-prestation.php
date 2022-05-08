@@ -1,20 +1,33 @@
-<?php
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">   
+    <link rel="stylesheet" href="../back-office_/css/sb-admin-2.css">
+    <link rel="stylesheet" href="../css/header-entreprise.css">
+    <link rel="stylesheet" href="../css/profil-entreprise.css">
+    <link rel="stylesheet" href="../css/footer-entreprise.css"> 
+    <title>Profil Entreprise </title>
+</head>
+<body>
+<?php require("header-entreprise.php"); ?>
+<br><br>
 
-session_start() ;
-include "../controllers/entreprise.php" ;
 
-include_once "../controllers/admin.php" ;
-
-
-
-include "header.php" ;
-?>
-
-<!-- DataTales Example -->
-<div class="container-fluid">
-  <div class="card shadow mb-4">
+<div class="container__">
+	<div class="main-body">
+		<div class="row">
+			<?php require("menu-entreprise.php") ?>
+			<div class="col-lg-8">
+            <div class="container-fluid">
+  <div class="card  mb-4">
       <div class="card-header py-3">
-          <h6 class="m-0 font-weight-bold text-primary">Modifier les information de l'entreprise</h6>
+          <h6 class="m-0 font-weight-bold text-primary">Modifier ou supprimer une prestation</h6>
       </div>
       <p style="color: red; margin-left: 2%;margin-top: 1%;"><?php if(!empty($error)) {echo $error;}  ?></p>
       <div class="card-body">
@@ -23,24 +36,17 @@ include "header.php" ;
                   <thead>
                       <tr>
                         <form method="post">
+                          <th>Nom</th>
                           <th>Information</th>
-                          <th>Update</th>
                         
                       </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        Email
-                      </td>
-                      <td>
-                        <input class="form-control" type="text" name="email" value=<?php echo $company['email']; ?>>
-                      </td> 
-                    </tr>
+                  
 
                     <tr>
                       <td>
-                        Numéro de téléphone
+                        Nom du service
                       </td>
                       <td>
                         <input class="form-control" type="text" name="num" value=<?php echo $company['numéro_tel']; ?>>
@@ -49,7 +55,7 @@ include "header.php" ;
 
                     <tr>
                       <td>
-                        Gérant
+                        Prix
                       </td>
                       <td>
                         <input class="form-control" type="text" name="gérant" value=<?php echo $company['gérant']; ?>>
@@ -57,21 +63,21 @@ include "header.php" ;
                     </tr>
 
                     <tr>
-                      <td>Chiffre d'affaire</td>
+                      <td>Categorie</td>
                       <td>
                         <input  type="text" class="form-control" name="chif_affaire" value=<?php echo $company['chiffre_daffaire']; ?>>
                       </td> 
                     </tr>
 
                     <tr>
-                      <td>Durée de contrat</td>
+                      <td>Ville</td>
                       <td>
                         <input type="text" class="form-control" name="contrat" value=<?php echo $company['contrat']; ?>>
                       </td> 
                     </tr>
 
                     <tr>
-                      <td>Date du dernier payement</td>
+                      <td>Description</td>
                       <td>
                         <input type="text" class="form-control" name="date" value=<?php echo $company['date_de_payement']; ?>>
                       </td> 
@@ -79,15 +85,14 @@ include "header.php" ;
                   </tbody>
               </table>
               <input id="editB" type="submit" class="btn btn-secondary" name="updateEntreprise" value="Modifier">
-              <a href="gestion_entreprise.php" class="btn btn-primary">Retour</a>
+              <input id="editB" type="submit" class="btn btn-danger" name="updateEntreprise" value="Supprimer">
+              <a href="gestion-de-prestations.php" class="btn btn-primary">Retour</a>
 
           </div>
       </div>
   </div>
 </div>
-
-
-  
-<?php
-require("footer.php");
-?>
+            </div>
+        </div>
+    </div>
+</div>

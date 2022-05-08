@@ -14,7 +14,7 @@
 <body data-bs-spy="scroll" data-bs-target="#navbar-example">
    
     <nav id="navbar-example" class="navbar">
-        <span><a class="logo navbar-brand link-dark lead" href="homePage.php"><img src="images/logo.png" alt="" height="50px" width="70px"></a></span>
+        <span><a class="logo navbar-brand link-dark lead" href="index.php"><img src="images/logo.png" alt="" height="50px" width="70px"></a></span>
         <ul class="nav nav-pills">
             <li class="nav-item">
                 <a class="nav-link link-dark lead" href="#A_propos">A propos</a>

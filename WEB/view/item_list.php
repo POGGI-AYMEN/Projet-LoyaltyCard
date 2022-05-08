@@ -29,7 +29,7 @@
 		Dashboard
 	</a>
 	<a href="artic.php" class="list-group-item list-group-item-action">Articles</a>
-	<a href="#" class="list-group-item list-group-item-action">Prestations</a>
+	<a href="prestations.php" class="list-group-item list-group-item-action">Prestations</a>
 	<div class="list-group-item list-group-item-action notif"><a href="messagerie.php">Messagerie</a><div class="circle" id="messageCount"></div></div>
 
 	<div class="list-group-item list-group-item-action notif"><a href="notifications.php">Notifications</a><div id="count" class="circle"></div></div>

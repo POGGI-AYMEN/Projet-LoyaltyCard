@@ -54,7 +54,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="society_name" placeholder="Nom de la société" value=""/>
+                                        <input type="text" class="form-control" name="society_name" placeholder="Nom " value=""/>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Email" name="email" value=""/>

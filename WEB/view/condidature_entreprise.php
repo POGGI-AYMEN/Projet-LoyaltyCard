@@ -13,7 +13,7 @@ if (isset($_POST['sub']))
     }
     else
     {
-        echo "veuillez remlire tous les champs" ; 
+        echo "veuillez remlir tous les champs" ; 
     }
 }
 require("header.php")
@@ -21,25 +21,26 @@ require("header.php")
 ?>
 
 
-<form method="post"  enctype="multipart/form-data">
-
-<input type="text" name="entreprise" placeholder="entreprise">
-<br>
-<input type="text" name="email" placeholder="email">
-<br>
-<input type="text" name="tel" placeholder="téléphone">
-<br>
-<input type="text" name="ville" placeholder="ville">
-<br>
-<input type="text" name="secteur" placeholder="secteur">
-<br>
-<input type="text" name="chiffre_aff" placeholder="chiffre d'affaire">
-<br>
-<input type="file" name="cataloge" placeholder="catalog">
-<br>
-<input type="submit" name="sub" placholder="envoyer">
-
-
+    <form method="post" class="w-50 mx-auto mt-5"  enctype="multipart/form-data">
+        <input class="form-control" type="text" name="entreprise" placeholder="entreprise">
+        <br>
+        <input class="form-control" type="text" name="email" placeholder="email">
+        <br>
+        <input class="form-control" type="text" name="tel" placeholder="téléphone">
+        <br>
+        <input class="form-control" type="text" name="ville" placeholder="ville">
+        <br>
+        <input class="form-control" type="text" name="secteur" placeholder="secteur">
+        <br>
+        <input class="form-control" type="text" name="chiffre_aff" placeholder="chiffre d'affaire">
+        <br>
+        <input class="form-control" type="file" name="cataloge" placeholder="catalog">
+        <br>
+        <input class="btn btn-primary " type="submit" name="sub" placholder="envoyer">
+    </form>
 
 
-</form>
+<!-- get the footer -->
+<?php
+require("footer.php")
+?>
