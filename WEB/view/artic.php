@@ -71,15 +71,14 @@ include "../controllers/article.php" ;
                 
                     <div class="mc-content " >
 
-<<<<<<< HEAD
-                        <div class="img-container">
-                            <img class="img-responsive" src="../uploads/images/<?php echo $article['image']; ?>" height="100%" width="100%">
-                        </div>
-                        <div class="mc-description">
-                        description : <?php  echo $article['Description'] ;   ?>
-=======
+
+
+
                     <div class="img-container">
-                        <?php if (!empty($article['image'])) echo " 
+
+                        <?php
+
+                        if (($article['image']) != "logo.png") echo " 
                         <img class='img-responsive' src='../uploads/images/".$article['image']."'' height='100%' width='100%'>
                         " ;
                         else
@@ -89,7 +88,7 @@ include "../controllers/article.php" ;
                     </div>
                     <div class="mc-description">
                     description : <?php  echo $article['Description'] ;   ?>
->>>>>>> 1d01704c104ccfafcf81e8c692b26f5bfa4b0324
+
 
                         <p>Vendeur : <?php echo $article['vendeur'];  ?></p>
 

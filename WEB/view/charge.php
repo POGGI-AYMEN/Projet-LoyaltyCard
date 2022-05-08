@@ -80,6 +80,7 @@ $product['codeArticle'] = $articlData['codeArticle'] ;
 $product['entrepots'] = $articlData['entrepot'] ;
 $product['client'] = $_SESSION['clientId'] ;
 $product['vendeur'] = $articlData['vendeur'] ;
+$product['prix'] = $articlData['prix'] ;
 
 include_once "../models/ventesModel.php" ;
 

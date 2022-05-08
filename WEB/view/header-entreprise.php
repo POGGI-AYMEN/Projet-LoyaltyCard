@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <body>
 <div class="container_">
     <nav id="navbar-example" class="navbar ">

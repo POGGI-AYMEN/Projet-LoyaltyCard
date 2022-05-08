@@ -1,3 +1,11 @@
+
+<?php
+
+include "../controllers/article.php";
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -41,14 +49,19 @@
                                             <th>Articles</th>
                                            
                                         </tr>
+                                    <?php foreach ($articles as $artic)  { ?>
+
+
+
                                     </thead>        
                                     <tbody>
                                         <tr>             
                                             <td>
-                                                <a href="delete-or-edit-article.php">Article 1</a>
+                                                <a href="delete-or-edit-article.php?id=<?php echo $artic['codeArticle'] ;?>"><?php echo $artic['nom'] ;?></a>
                                             </td>
                                            
                                         </tr>
+<?php } ?>
                                     </tbody>
                                 </table>
                             </div>

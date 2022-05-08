@@ -1,3 +1,12 @@
+<?php
+
+include "../controllers/client.php";
+
+include "../controllers/prestation.php";
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,31 +34,57 @@
 	<div class="container py-2">
 		<div class="h1 text-center text-dark" id="pageHeaderTitle">Prestations</div>
 
+        <?php foreach($prstations as $prstation){ ?>
+
+
 		<article class="postcard light blue">
 			<a class="postcard__img_link" href="#">
-				<img class="postcard__img" src="https://picsum.photos/1000/1000" alt="Image Title" />
+				<img class="postcard__img" src="../uploads/images/<?php echo $prstation['image']; ?>" alt="Image Title" />
 			</a>
 			<div class="postcard__text t-dark">
-				<h1 class="postcard__title blue"><a href="#">Voyage a barcelone</a></h1>
+				<h1 class="postcard__title blue"><a href="#"><?php  echo $prstation['nom']; ?></a></h1>
 				<div class="postcard__subtitle small">
 					<time datetime="2020-05-25 12:00:00">
-						<i class="fas fa-calendar-alt mr-2"></i> Mon, May 25th 2020
+						<i class="fas fa-calendar-alt mr-2"></i><?php echo $prstation['date_debut']." jusqu'à ".$prstation['date_fin'] ; ?>
 					</time>
 				</div>
 				<div class="postcard__bar"></div>
-				<div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
+				<div class="postcard__preview-txt"><?php echo $prstation['description'] ?></div>
                 <div class="d-flex justify-content-between">
                     <ul class="postcard__tagbox">
-                        <li class="tag__item"><i class="fas fa-tag mr-2"></i>Categorie</li>
-                        <li class="tag__item"><i class="fas fa-tag mr-2"></i>Entreprise name</li>
-                        <li class="tag__item"><i class="fas fa-tag mr-2"></i> Ville</li>	
-                        <li class="tag__item"><i class="fas fa-dollar-sign"></i> Prix</li>	
+                        <li class="tag__item"><i class="fas fa-tag mr-2"></i><?php echo $prstation['catégorie'] ?></li>
+                        <li class="tag__item"><i class="fas fa-tag mr-2"></i><?php echo $prstation['description'] ?></li>
+                        <li class="tag__item"><i class="fas fa-tag mr-2"></i><?php echo $prstation['entreprise'] ;?></li>
+
                        
                     </ul>
-                    <button type="button" class="btn btn-secondary">Prendre</button>
+                    <?php
+                    include "../config/database.php";
+
+                    $query = $con->prepare("SELECT * FROM Prestation_clients WHERE prestation = ? AND client = ?") ;
+
+                    $query->execute([$prstation['id'] , $_SESSION['clientId']]) ;
+
+                    $res = $query->fetch(PDO::FETCH_ASSOC) ;
+
+                    if (empty($res))
+                    {
+                        echo "
+                        <a href='../controllers/prestation.php?clientId=".$_SESSION['clientId']."&&prestation=".$prstation['id']."'type='button' class='btn btn-secondary'>S'inscrir</a> " ;
+                    }
+                    else
+                    {
+                     echo "    <a href='../controllers/prestation.php?clientId=".$_SESSION['clientId']."&&cancel=".$prstation['id']."'type='button' class='btn btn-secondary'>Annuler</a> " ;
+                    }
+
+
+                    ?>
                 </div>
 			</div>
 		</article>
+		<?php } ?>
+
+
 
 	</div>
 </section>

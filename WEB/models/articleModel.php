@@ -23,9 +23,35 @@
 
             $selectQuery->execute([$value]) ; 
 
-            $article = $selectQuery->fetch(PDO::FETCH_ASSOC) ; 
+            $article = $selectQuery->fetch(PDO::FETCH_ASSOC) ;
 
             return $article ; 
+        }
+
+        public function selectAllArticlesWhere($where , $value)
+        {
+            include "../config/database.php" ;
+
+            $selectQuery = $con->prepare("SELECT * FROM Article WHERE ".$where." = ?") ;
+
+            $selectQuery->execute([$value]) ;
+
+            $article = $selectQuery->fetchAll() ;
+
+            return $article ;
+        }
+
+        public function selectAllWherCount($where , $value)
+        {
+            include "../config/database.php" ;
+
+            $selectQuery = $con->prepare("SELECT * FROM Article WHERE ".$where." = ?") ;
+
+            $selectQuery->execute([$value]) ;
+
+            $article = $selectQuery->rowCount() ;
+
+            return $article ;
         }
 
         public function updateWhereMinus($where , $value) 
@@ -106,7 +132,7 @@
     {
         include "../config/database.php" ; 
 
-        $insertQuery = $con->prepare("INSERT INTO Article (codeArticle , nom , catégorie , prix , vendeur , quantité , entrepot ,Description , image ) VALUES (? , ?, ?, ?, 'LoyaltyBoost',? ,?,?,?)") ; 
+        $insertQuery = $con->prepare("INSERT INTO Article (codeArticle , nom , catégorie , prix , vendeur , quantité , entrepot ,Description , image ) VALUES (? , ?, ?, ?, ? ,? ,?,?,?)") ;
 
         $insertQuery->execute([
 
@@ -114,10 +140,11 @@
         $product['nom'] ,
         $product['catégorie'] ,
         $product['prix'] ,
+        $product['vendeur'],
         $product['quantité'] ,
         $product['entrepots'] ,
         $product['description'],
-        $product['image'] 
+        $product['image']
         
       
        

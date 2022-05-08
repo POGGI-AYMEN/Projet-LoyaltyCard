@@ -1,3 +1,13 @@
+<?php
+include "header-entreprise.php";
+
+include "../controllers/prestation.php";
+
+include_once "../controllers/entreprise.php";
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,14 +25,17 @@
     <title>Profil Entreprise </title>
 </head>
 <body>
-<?php require("header-entreprise.php"); ?>
+<?php ?>
 <br><br>
 
 
 <div class="container__">
 	<div class="main-body">
 		<div class="row">
-			<?php require("menu-entreprise.php") ?>
+			<?php require("menu-entreprise.php")
+            ;
+
+            ?>
 			<div class="col-lg-8">
             <div class="container-fluid">
   <div class="card  mb-4">
@@ -30,12 +43,13 @@
           <h6 class="m-0 font-weight-bold text-primary">Modifier ou supprimer une prestation</h6>
       </div>
       <p style="color: red; margin-left: 2%;margin-top: 1%;"><?php if(!empty($error)) {echo $error;}  ?></p>
+      <p style="color: green; margin-left: 2%;margin-top: 1%;"><?php if(!empty($suc)) {echo $suc;}  ?></p>
       <div class="card-body">
           <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                       <tr>
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data" action="../controllers/prestation.php?id=<?php  echo $entreprise['nom'] ; ?>">
                           <th>Nom</th>
                           <th>Information</th>
                         
@@ -49,42 +63,52 @@
                         Nom du service
                       </td>
                       <td>
-                        <input class="form-control" type="text" name="num" value=<?php echo $company['numéro_tel']; ?>>
+                        <input class="form-control" type="text" name="prestation">
                       </td> 
                     </tr>
 
                     <tr>
                       <td>
-                        Prix
+                          Date de début
                       </td>
                       <td>
-                        <input class="form-control" type="text" name="gérant" value=<?php echo $company['gérant']; ?>>
+                        <input class="form-control" type="text" name="date_debut">
                       </td> 
                     </tr>
+                    <tr>
+                        <td>
+                            Date de fin
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" name="date_fin">
+                        </td>
+                    </tr>
+
 
                     <tr>
                       <td>Categorie</td>
                       <td>
-                        <input  type="text" class="form-control" name="chif_affaire" value=<?php echo $company['chiffre_daffaire']; ?>>
+                        <input  type="text" class="form-control" name="catégorie">
+                      </td> 
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>
+                            <input  type="text" class="form-control" name="description">
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                      <td>Image</td>
+                      <td>
+                        <input type="file" class="form-control" name="image">
                       </td> 
                     </tr>
 
-                    <tr>
-                      <td>Ville</td>
-                      <td>
-                        <input type="text" class="form-control" name="contrat" value=<?php echo $company['contrat']; ?>>
-                      </td> 
-                    </tr>
-
-                    <tr>
-                      <td>Description</td>
-                      <td>
-                        <input type="text" class="form-control" name="date" value=<?php echo $company['date_de_payement']; ?>>
-                      </td> 
-                    </tr>      
                   </tbody>
               </table>
-              <input id="editB" type="submit" class="btn btn-secondary" name="updateEntreprise" value="Ajouter">
+              <input id="editB" type="submit" class="btn btn-secondary" name="addPrestation" value="Ajouter">
               
               <a href="gestion-de-prestations.php" class="btn btn-primary">Retour</a>
 
@@ -96,3 +120,4 @@
         </div>
     </div>
 </div>
+

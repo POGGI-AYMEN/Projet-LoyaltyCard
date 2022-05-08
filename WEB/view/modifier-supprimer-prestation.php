@@ -1,3 +1,9 @@
+<?php
+include "../controllers/prestation.php";
+
+$prestation = PrestationModel::selectAllWhere("id" , $_GET['id']) ;
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -49,43 +55,36 @@
                         Nom du service
                       </td>
                       <td>
-                        <input class="form-control" type="text" name="num" value=<?php echo $company['numéro_tel']; ?>>
+                        <input class="form-control" type="text" name="prestation" value=<?php echo $prestation['nom'];?>>
                       </td> 
                     </tr>
 
-                    <tr>
-                      <td>
-                        Prix
-                      </td>
-                      <td>
-                        <input class="form-control" type="text" name="gérant" value=<?php echo $company['gérant']; ?>>
-                      </td> 
-                    </tr>
 
                     <tr>
                       <td>Categorie</td>
                       <td>
-                        <input  type="text" class="form-control" name="chif_affaire" value=<?php echo $company['chiffre_daffaire']; ?>>
-                      </td> 
+                        <input  type="text" class="form-control" name="catégorie" value=<?php  echo $prestation['catégorie']; ?>>
+                      </td>
                     </tr>
 
                     <tr>
-                      <td>Ville</td>
-                      <td>
-                        <input type="text" class="form-control" name="contrat" value=<?php echo $company['contrat']; ?>>
-                      </td> 
+                        <td>Date de fin</td>
+                        <td>
+                            <input  type="text" class="form-control" name="date_fin" value=<?php  echo $prestation['date_fin']; ?>>
+                        </td>
                     </tr>
+
 
                     <tr>
                       <td>Description</td>
                       <td>
-                        <input type="text" class="form-control" name="date" value=<?php echo $company['date_de_payement']; ?>>
+                        <input type="text" class="form-control" name="description" value=<?php echo $prestation['description']; ?>>
                       </td> 
                     </tr>      
                   </tbody>
               </table>
-              <input id="editB" type="submit" class="btn btn-secondary" name="updateEntreprise" value="Modifier">
-              <input id="editB" type="submit" class="btn btn-danger" name="updateEntreprise" value="Supprimer">
+              <input id="editB" type="submit" class="btn btn-secondary" name="updatePrestation" value="Modifier">
+              <input id="editB" type="submit" class="btn btn-danger" name="deletePrestation" value="Supprimer">
               <a href="gestion-de-prestations.php" class="btn btn-primary">Retour</a>
 
           </div>

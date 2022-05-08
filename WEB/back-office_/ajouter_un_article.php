@@ -93,8 +93,8 @@ include "header.php" ;
                         <option value="site 5">Site 5</option>
 
                       </select>
-                    </td> 
-                    
+                    </td>
+
                   </tr>
                   <tr>
                     <td>Photo d'article</td>

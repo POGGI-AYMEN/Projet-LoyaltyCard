@@ -1,3 +1,8 @@
+<?php
+include "../controllers/prestation.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -43,12 +48,14 @@
                                         </tr>
                                     </thead>        
                                     <tbody>
+                                    <?php foreach($prstations as $prstation ) { ?>
                                         <tr>             
                                             <td>
-                                                <a href="modifier-supprimer-prestation.php">Voyage a barcelone</a>
+                                                <a href="modifier-supprimer-prestation.php?id=<?php echo $prstation['id'] ?>"><?php echo $prstation['nom'] ; ?></a>
                                             </td>
                                            
                                         </tr>
+                                    <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

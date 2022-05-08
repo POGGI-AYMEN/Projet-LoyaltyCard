@@ -3,7 +3,7 @@
 
 include "../models/entrepriseModel.php" ;
 
-include_once "admin.php" ;
+
 
 function valideDate($date, $format = 'Y-m-d H:i:s')
 {
@@ -120,5 +120,119 @@ if (isset($_POST['updateEntreprise'])) {
 
     }
 
+}
+
+if (isset($_SESSION['entrepriseID']))
+{
+
+    $entreprise = EntrepriseModel::selectWhere("id" , $_SESSION['entrepriseID']) ;
+
+    include_once "../models/articleModel.php" ;
+
+    $articleCount = ArticleModel::selectAllWherCount("vendeur" , $entreprise['nom']) ;
+
+    include_once "../models/ventesModel.php";
+    include_once "../models/articleModel.php";
+
+    $sales = VentesModel::selectWhere("vendeur" , $entreprise['nom']) ;
+
+    $salesCount = 0 ;
+    $gain = 0 ;
+
+    for( $i = 0 ; $i < count($sales) ; $i++)
+    {
+       $gain = $gain + ($sales[$i]['quantité'] * $sales[$i]['prix']) ;
+    }
+
+    $articles = ArticleModel::selectAllArticlesWhere("vendeur" , $entreprise['nom']) ;
+
+
+    if (isset($_POST['deleteArticle']))
+    {
+        $article = $_GET['id'] ;
+
+        include_once "../models/articleModel.php";
+
+        ArticleModel::deleteFrom($article) ;
+
+        header('location:../view/articles-mis-en-ligne.php');
+
+    }
+
+
+    if (isset($_POST['addArticle']))
+    {
+
+        include_once "../models/articleModel.php";
+            if (empty($_POST['article']) || empty($_POST['prix']) || empty($_POST['quantité']) || empty($_POST['description']) || empty($_FILES['photo']) || empty($_POST['catégorie']))
+            {
+                $error = "Tous les champs doivent etre remplis ! " ;
+
+            }
+            else
+            {
+                $product['codeArticle'] =  ArticleModel::generateCode() ;
+                $product['nom'] = htmlspecialchars($_POST['article']) ;
+                $product['quantité'] = (int)htmlspecialchars($_POST['quantité']) ;
+                $product['prix'] = (int)htmlspecialchars($_POST['prix']) ;
+                $product['description'] = htmlspecialchars($_POST['description']) ;
+                $product['catégorie'] = htmlspecialchars($_POST['catégorie']) ;
+                $product['entrepots'] = "" ;
+
+
+                $imgName = $_FILES['photo']['name'] ;
+                $size = $_FILES['photo']['size'] ;
+                $extension = pathinfo($imgName , PATHINFO_EXTENSION) ;
+
+                if ($size > 42000000) { $error = "fichier trop volumineux" ; }
+
+                elseif(!in_array($extension , ["jpg" , "png" , "svg" , "jpeg"])) { $error = "seul les format jpg svg png et jpeg sont autorisé" ;}
+
+                elseif(!is_int($product['prix'])) { $error = "le prix doit etre une valeur numérique" ; var_dump($product['prix']) ;}
+
+                elseif(!is_int($product['quantité'])) { $error = "la quantité doit etre une valeur numérique" ;}
+
+                elseif(!empty($verif)) {$error = "cet article est déja enregistrer" ; }
+
+                else
+                {
+                    $product['image'] = $imgName ;
+                    $product['vendeur'] = $entreprise['nom'] ;
+
+                    ArticleModel::addNewArticle($product) ;
+
+                    $path = $_SERVER['DOCUMENT_ROOT'].'/WEB/uploads/images/'.$product['image']  ;
+
+                    move_uploaded_file($_FILES['photo']['tmp_name'], $path) ;
+
+                    $suc = "Article Ajouter" ;
+
+                }
+
+
+            }
+    }
+
+    if (isset($_POST['updateArticle']))
+    {
+
+        $article['prix'] = $_POST['prix'] ;
+        $article['catégorie'] = $_POST['catégorie'] ;
+        $article['quantité'] = $_POST['quantité'] ;
+        $article['Description'] = $_POST['Description'] ;
+
+        $article['codeArticle'] = $_GET['id'] ;
+
+        ArticleModel::updateArticle($article) ;
+
+        header('location:../view/delete-or-edit-article.php?id='.$_GET['id']);
+    }
+}
+
+
+
+else
+{
+    header("location:error.php?message=403 Forbbiden");
 }
 

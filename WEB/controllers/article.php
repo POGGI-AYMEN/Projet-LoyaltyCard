@@ -77,6 +77,7 @@ if (isset($_POST['newArticle']) && !empty($_POST['newArticle']))
         else
         {
             $product['image'] = $imgName ;
+            $product['vendeur'] = 'LoyaltyBoost' ;
 
             ArticleModel::addNewArticle($product) ;
 

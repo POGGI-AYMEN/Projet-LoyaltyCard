@@ -1,3 +1,13 @@
+<?php
+
+include "../models/articleModel.php";
+
+$articleInfo = ArticleModel::selectAllWhere("codeArticle" , $_GET['id']) ;
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -43,56 +53,42 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>
-                      ID
-                      </td>
-                      <td>
-                        <input class="form-control" type="text" name="email" value=<?php echo $company['email']; ?>>
-                      </td> 
-                    </tr>
 
-                    <tr>
-                      <td>
-                        Article 
-                      </td>
-                      <td>
-                        <input class="form-control" type="text" name="num" value=<?php echo $company['numéro_tel']; ?>>
-                      </td> 
-                    </tr>
+
 
                     <tr>
                       <td>
                         Prix
                       </td>
                       <td>
-                        <input class="form-control" type="text" name="gérant" value=<?php echo $company['gérant']; ?>>
+                        <input class="form-control" type="text" name="prix" value=<?php echo $articleInfo['prix']; ?>>
                       </td> 
                     </tr>
 
                     <tr>
                       <td>Categorie</td>
                       <td>
-                        <input  type="text" class="form-control" name="chif_affaire" value=<?php echo $company['chiffre_daffaire']; ?>>
+                        <input  type="text" class="form-control" name="catégorie" value=<?php echo $articleInfo['catégorie']; ?>>
                       </td> 
                     </tr>
 
                     <tr>
                       <td>Quantité</td>
                       <td>
-                        <input type="text" class="form-control" name="contrat" value=<?php echo $company['contrat']; ?>>
+                        <input type="text" class="form-control" name="quantité" value=<?php echo $articleInfo['quantité']; ?>>
                       </td> 
                     </tr>
-
                     <tr>
-                      <td>Description</td>
-                      <td>
-                        <input type="text" class="form-control" name="date" value=<?php echo $company['date_de_payement']; ?>>
-                      </td> 
-                    </tr>      
+                        <td>Description</td>
+                        <td>
+                            <input type="text" class="form-control" name="Description" value=<?php echo $articleInfo['Description']; ?>>
+                        </td>
+                    </tr>
+
                   </tbody>
               </table>
-              <input id="editB" type="submit" class="btn btn-secondary" name="updateEntreprise" value="Modifier">
-              <input id="editB" type="submit" class="btn btn-danger" name="updateEntreprise" value="Supprimer">
+              <input id="editB" type="submit" class="btn btn-secondary" name="updateArticle" value="Modifier">
+              <input id="editB" type="submit" class="btn btn-danger" name="deleteArticle" value="Supprimer">
               <a href="articles-mis-en-ligne.php" class="btn btn-primary">Retour</a>
 
           </div>

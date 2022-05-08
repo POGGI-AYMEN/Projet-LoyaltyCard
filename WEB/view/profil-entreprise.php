@@ -35,7 +35,7 @@
 										<div class="col mr-2">
 											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 											Articles</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $points['points'] ;  ?></div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $articleCount ;  ?></div>
 										</div>
 										<div class="col-auto">
 											<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -69,7 +69,7 @@
 										<div class="col mr-2">
 											<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
 											Profits</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $euro ;  ?>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $gain ;  ?>
 										</div>
 										<div class="col-auto">
 											<i class="fas fa-euro-sign fa-2x text-gray-300"></i>

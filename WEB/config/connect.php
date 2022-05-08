@@ -7,8 +7,8 @@ if (isset($_POST['connect'])) {
         /*recupération des variable POST */
 
         $email = htmlspecialchars($_POST['email']) ; 
-        $password = base64_encode(hash_hmac('sha256' , $_POST['password'] , 'toto'));   /*hash du mot de pass */
-
+        //$password = base64_encode(hash_hmac('sha256' , $_POST['password'] , 'toto'));   /*hash du mot de pass */
+        $password = $_POST['password'] ;
         /* tableau des requets SQL */ 
         $sql = [
             "SELECT * FROM Clients WHERE email = :email AND mdp = :password" , 
@@ -39,7 +39,7 @@ if (isset($_POST['connect'])) {
 
                 } elseif($count == 2) {
                     $_SESSION['entrepriseID'] = $result['id'] ; 
-                    header('location:entrepriseProfil.php') ;  /* redirection vers la page du profile de l'entreprise */ 
+                    header('location:profil-entreprise.php') ;  /* redirection vers la page du profile de l'entreprise */
 
                 }
                 

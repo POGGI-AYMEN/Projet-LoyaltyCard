@@ -29,12 +29,26 @@ class VentesModel
 
         return $count ; 
     }
-    
-    public function insert($product) 
+
+    public function selectWhere($where , $value)
+    {
+        include "../config/database.php";
+
+        $selectQuery = $con->prepare("SELECT * FROM Ventes WHERE " . $where . " = ?");
+
+        $selectQuery->execute([$value]);
+
+        $result = $selectQuery->fetchAll() ;
+
+        return $result ;
+
+
+    }
+        public function insert($product)
     {
         include "../config/database.php" ; 
 
-        $insertQuery = $con->prepare("INSERT INTO Ventes (codeArticle , nom_article , client , date , entrepots , quantité, facture_code , vendeur) VALUES (?,?, ? , ? , ? , ? ,? , ?)") ;
+        $insertQuery = $con->prepare("INSERT INTO Ventes (codeArticle , nom_article , client , date , entrepots , quantité, facture_code , vendeur , prix) VALUES (?,?, ?,? , ? , ? , ? ,? , ?)") ;
 
         $insertQuery->execute([
             $product['codeArticle'] ,
@@ -44,7 +58,8 @@ class VentesModel
             $product['entrepots'] ,
             $product['quantité'],
             $product['facture'],
-            $product['vendeur']
+            $product['vendeur'],
+            $product['prix']
         ]) ; 
     }
 
