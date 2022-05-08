@@ -2,11 +2,11 @@
 <div class="container_">
     <nav id="navbar-example" class="navbar ">
             <span>
-                <a href="index.php">LoyaltyBoost</a>
+                <a href="../index.php">LoyaltyBoost</a>
             </span>
             <ul class="nav nav-pills">
                 <li class="nav-item">
-                    <a class="nav-link link-dark lead" href="UserAccount.php">Profile</a>
+                    <a class="nav-link link-dark lead" href="profil-entreprise.php">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link link-dark lead" href="notifications.php">Notifications</a>
@@ -14,15 +14,11 @@
                 <li class="nav-item">
                     <a class="nav-link link-dark lead" href="messagerie.php">Messages</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link link-dark lead" href="page_panier.php">Panier</a>
+                <li class="nav-item">
+                    <a class="nav-link link-dark lead" href="messagerie.php">Deconnexion</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link link-dark lead" href="artic.php">Articles</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link link-dark lead" href="prestations.php">Prestations</a>
-                </li>
+               
+             
 
             </ul>
     </nav>

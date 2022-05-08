@@ -118,6 +118,7 @@ include_once "../controllers/entreprise.php" ;
                   </tr> 
                 </tbody>
             </table>
+            <a href="gestion_entreprise.php" class="btn btn-primary" >Retour</a>
             
         </div>
     </div>

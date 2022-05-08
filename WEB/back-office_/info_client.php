@@ -85,6 +85,8 @@ $client = ClientModel::selectWhere("id" , $_GET['id']) ;
 
                 </tbody>
             </table>
+            <a href="gestion_client.php" class="btn btn-primary" >Retour</a>
+
 
         </div>
     </div>
