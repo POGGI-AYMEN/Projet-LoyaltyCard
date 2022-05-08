@@ -70,4 +70,29 @@
             MessagerieModel::updateSeen($client) ;
         }
 
+        public function sendAdminMessage($id)
+        {
+            if (isset($_POST['sendAdmin']) && !empty($_POST['sendAdmin']))
+                {
+                    if (!empty($_POST['message']))
+                    {
+                        $reciver = $id ;
+
+                        $sender = $_SESSION['adminId'] ;
+
+                       $message = $_POST['message'] ;
+
+                       $clientMessage ="" ;
+
+                       MessagerieModel::sendClientMessage($sender , $reciver , $clientMessage , $message) ;
+
+                     header('location:index.php');
+
+
+                    }
+
+
+                }
+        }
+
     }

@@ -1,3 +1,7 @@
+<?php
+include_once "../controllers/admin.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +28,7 @@
     <link href="css/sb-admin-2.css" rel="stylesheet">
 
 </head>
+
 
 <body id="page-top">
 
@@ -104,11 +109,7 @@
             </li>
 
             <!-- Nav Item - Contacter -->
-            <li class="nav-item">
-                <a class="nav-link" href="Contacter.php">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Contacter</span></a>
-            </li>
+
 
             <!-- Nav Item - Ajouter une entreprise -->
             <li class="nav-item">
@@ -134,6 +135,11 @@
                     <span>Repots Excel</span></a>
             </li>
             
+<<<<<<< HEAD
+=======
+            <!-- Nav Item - Tables -->
+
+>>>>>>> 1d01704c104ccfafcf81e8c692b26f5bfa4b0324
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -323,9 +329,7 @@
                 </nav>
                 <!-- End of Topbar -->
 
-               
 
 
-  
 
 

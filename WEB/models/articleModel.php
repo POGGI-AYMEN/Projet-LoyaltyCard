@@ -125,4 +125,54 @@
 
 
     }
+    // retour d'article
+        public function return($article)
+        {
+            include "../config/database.php" ;
+
+            $query = $con->prepare("INSERT INTO Retour (article , client , date_de_demande , facture , photo , code) VALUES (? , ? , ? ,? , ? , ?) ") ;
+
+            $query->execute([
+                $article['name'] , $article['client'] , $article['date_de_retoure'] , $article['facture'] , $article['image'] , $article['code']
+            ]) ;
+        }
+
+        public function verifReturn($code)
+        {
+            include "../config/database.php" ;
+
+            $selectQuery = $con->prepare("SELECT * FROM Retour WHERE facture = ?") ;
+
+            $selectQuery->execute([$code]) ;
+
+            $article = $selectQuery->fetch(PDO::FETCH_ASSOC) ;
+
+            return $article ;
+
+        }
+
+        public function selectReturn()
+        {
+            include "../config/database.php" ;
+
+            $selectQuery = $con->prepare("SELECT * FROM Retour ") ;
+
+            $selectQuery->execute() ;
+
+            $article = $selectQuery->fetchAll() ;
+
+            return $article ;
+
+        }
+
+        public function deletReturn( $where, $value)
+        {
+            include "../config/database.php";
+
+
+            $delet = $con->prepare("DELETE FROM Retour WHERE ".$where." = ?") ;
+
+            $delet->execute([$value]) ;
+        }
+
 }

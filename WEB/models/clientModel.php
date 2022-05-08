@@ -93,7 +93,6 @@
                 $client['code_postal'],
 
                 $client['ville'],
-                
                 $id 
             
             ]) ; 

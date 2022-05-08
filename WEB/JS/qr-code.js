@@ -11,7 +11,7 @@
     
         // Specify an onclick function
         // for the generate button
-        $('#generate').click(function () {
+
     
             // Generate the link that would be
             // used to generate the QR Code
@@ -25,4 +25,6 @@
             // the QR code image
             $('.qr-code').attr('src', finalURL);
         });
-        });
+
+
+htmlEncode() ;

@@ -20,3 +20,4 @@ for ($i = 0 ; $i < count($salesAdmin) ; $i++)
     $salesCountAdmin = $salesCountAdmin + $salesAdmin[$i]['quantité'] ;
 }
 
+$salesList = VentesModel::selectAll() ;

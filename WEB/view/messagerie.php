@@ -6,7 +6,7 @@ include "../controllers/messagerie.php" ;
 Messagerie::sendMessage() ; 
 
 
-$messages = Messagerie::getClientMessages($_SESSION['clientId']) ;  
+$messages = Messagerie::getClientMessages($_SESSION['clientId']) ;
 
 
 ?>
