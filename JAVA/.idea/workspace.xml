@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="pa:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="05625bf0-9331-4079-8091-478110d2875d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/pa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pa/AddArticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pa/AddArticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pa/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pa/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/pa_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pa/AddPrestation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pa/Confirm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pa/EditPrestation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pa/Prestations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pa/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/pa/UsersList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/img/icons8-users-64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/pa/add_prestation.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/pa/confirm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/pa/edit_prestation.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/pa/users_list.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pa/Article.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pa/Article.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pa/Articles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pa/Articles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pa/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pa/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pa/Edit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pa/Edit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pa/EditArticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pa/EditArticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pa/LogIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pa/LogIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/pa/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pa/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pa/Points.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pa/Points.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/pa/Prestation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/pa/Prestation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/pa/app.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pa/app.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/pa/article.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pa/article.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/pa/edit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pa/edit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/pa/edit_article.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pa/edit_article.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/pa/log_in.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pa/log_in.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/pa/edit.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/pa/points.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pa/points.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/pa/prestation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/pa/prestation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pa/Article.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pa/Article.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pa/Points.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pa/Points.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pa/Prestation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pa/Prestation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pa/app.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pa/app.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pa/article.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pa/article.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pa/edit.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pa/points.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pa/points.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/pa/prestation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/pa/prestation.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +88,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/img" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -124,7 +136,11 @@
       <workItem from="1651827966491" duration="16227000" />
       <workItem from="1651917156402" duration="8385000" />
       <workItem from="1651927496288" duration="13429000" />
-      <workItem from="1651941427732" duration="7440000" />
+      <workItem from="1651941427732" duration="10299000" />
+      <workItem from="1652031666562" duration="6052000" />
+      <workItem from="1652037854817" duration="16465000" />
+      <workItem from="1652087818019" duration="6096000" />
+      <workItem from="1652094623315" duration="119000" />
     </task>
     <servers />
   </component>

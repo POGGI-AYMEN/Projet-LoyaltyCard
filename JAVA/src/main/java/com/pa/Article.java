@@ -35,6 +35,7 @@ public class Article implements Initializable
     private TableColumn<Articles, String> articleCatégorie;
 
     @FXML
+
     private TableColumn<Articles, String> articleName;
 
     @FXML

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="458.0" prefWidth="748.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pa.UsersList">
+   <children>
+      <TableView fx:id="usersView" layoutX="43.0" layoutY="66.0" prefHeight="362.0" prefWidth="663.0">
+        <columns>
+          <TableColumn fx:id="userId" prefWidth="75.0" text="id" />
+          <TableColumn fx:id="ClientsName" prefWidth="587.0" text="Clients" />
+        </columns>
+      </TableView>
+      <Label layoutX="293.0" layoutY="22.0" text="Liste des Clients">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

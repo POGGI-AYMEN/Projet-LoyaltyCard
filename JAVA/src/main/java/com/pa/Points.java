@@ -53,10 +53,10 @@ public class Points {
 
     public void usePoints(ActionEvent event) throws IOException {
 
+        int status = 0;
         try {
             int prix = Integer.parseInt(usePrice.getText());
-        } catch (NumberFormatException e)
-        {
+        } catch (NumberFormatException e) {
             error.setText("Valeur de prix doit etre numérique");
 
         }
@@ -78,35 +78,103 @@ public class Points {
             while ((responseLine = br.readLine()) != null) {
                 response.append(responseLine.trim());
 
-                JSONObject result = new JSONObject(response.toString()) ;
+                System.out.println(response);
+                JSONObject result = new JSONObject(response.toString());
 
-                if (!result.getJSONObject("response").getBoolean("success")) {error.setText("Numéro de carte non valide") ; }
+                status = result.getJSONObject("response").getInt("success");
 
-                else
-                {
-                    userPoints = result.getJSONObject("response").getJSONObject("users").getInt("points") ;
+
+                if (status != 0) {
+
+                    userPoints = result.getJSONObject("response").getJSONObject("users").getInt("points");
+
+
                 }
+            }
+            if (status != 0) {
+                int myPonits = Integer.parseInt(usedPoints.getText());
 
+                if (myPonits > userPoints) {
+                    error.setText("Votre solde actuel des point est :" + userPoints);
+                } else {
+                    double reduction = myPonits * 0.3;
+
+
+                    double newPrice = Double.parseDouble(usePrice.getText()) - reduction;
+
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("confirm.fxml"));
+                    Parent root = (Parent) loader.load();
+                    Stage stage = new Stage();
+                    Confirm controller = loader.getController();
+
+                    controller.setData(newPrice, myPonits, stage, Integer.parseInt(cardNumber));
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("LoyaltyBoost");
+                    stage.setResizable(false);
+                    ;
+                    stage.show();
+                    error.setText("");
+
+                }
+            }
+            else {
+                error.setText("Numéro de carte non valide");
             }
         }
-        int myPonits = Integer.parseInt(usedPoints.getText());
+    }
 
-        if (myPonits  > userPoints)
-        {
-            error.setText("Votre solde actuel des point est :" + userPoints);
+
+    public void winPoints(ActionEvent event) throws IOException {
+
+        double price = Double.parseDouble(winPrice.getText());
+
+        int card = Integer.parseInt(winCard.getText());
+
+        int userPoints = 0;
+
+        int status = 0;
+
+        URL url = new URL("http://localhost/API/carte.php?cardNumber=" + card);
+
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+        con.setRequestMethod("GET");
+
+
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(con.getInputStream(), "utf-8"))) {
+            StringBuilder response = new StringBuilder();
+            String responseLine = null;
+            while ((responseLine = br.readLine()) != null) {
+                response.append(responseLine.trim());
+
+                System.out.println(response);
+                JSONObject result = new JSONObject(response.toString());
+
+                status = result.getJSONObject("response").getInt("success");
+
+            }
+
         }
+        if (status == 0 ) { error.setText("numéro de carte invalide");}
         else
         {
-            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("confirm.fxml"));
+            Parent root = (Parent) loader.load();
+            Stage stage = new Stage();
+            Confirm controller = loader.getController();
+
+            controller.setData(price , 0 , stage , card);
+            stage.setScene(new Scene(root));
+            stage.setTitle("LoyaltyBoost");
+            stage.setResizable(false);
+            ;
+            stage.show();
+            error.setText("");
+
         }
     }
-
-
-    public void winPoints(ActionEvent event)
-    {
-
-    }
-
 
 
 
