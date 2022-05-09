@@ -17,7 +17,7 @@ if ($method === "GET")
 
 
 // modifier les point d'un carte
-if ($method === "PATCH") {
+if ($method === "PUT") {
 /*
  *  passer deux paramttre dans le get
  * cardNumber ==> le numéro de la carte concerné

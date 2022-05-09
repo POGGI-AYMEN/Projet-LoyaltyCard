@@ -45,7 +45,7 @@ include_once "config/Database.php" ;
 
             $updateQuery = $dbConnexion->prepare("UPDATE Carte SET points = points + ? WHERE num_carte = ?") ;
 
-            $updateQuery->execute([$data , $cardNumber]) ;
+            $updateQuery->execute([$data['data'] , $cardNumber]) ;
         }
 
 
@@ -55,7 +55,7 @@ include_once "config/Database.php" ;
 
             $updateQuery = $dbConnexion->prepare("UPDATE Carte SET points = points - ? WHERE num_carte = ?") ;
 
-            $updateQuery->execute([$data , $cardNumber]) ;
+            $updateQuery->execute([$data['data'] , $cardNumber]) ;
 
 
         }

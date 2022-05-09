@@ -19,11 +19,14 @@ include "config/responsse.php";
 
             if (empty($card))
             {
-                $body = ["success" => false, "card" => null] ;
+                $body = [ "response" =>
+                    ["success" => 0, "users" => $card]
+                ] ;
             } else
             {
-                $body = ["success" => true, "users" => $card] ;
-            }
+                $body = [ "response" =>
+                     ["success" => 1, "users" => $card]
+            ] ; }
 
             echo Response::json($statusCode, $headers, $body);
         }

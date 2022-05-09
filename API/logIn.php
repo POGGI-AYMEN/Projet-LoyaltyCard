@@ -14,8 +14,8 @@ $data =  json_decode(file_get_contents("php://input") , true);
 
 $email = $data['email'] ;
 
-$password = base64_encode(hash_hmac('sha256' , $data['password'] , 'toto'));
-//$password = $data['password'] ;
+//$password = base64_encode(hash_hmac('sha256' , $data['password'] , 'toto'));
+$password = $data['password'] ;
 
 
 $query = $dbConnexion->prepare('SELECT * FROM Entreprise WHERE email = ? AND mdp = ?') ;
